@@ -24,14 +24,12 @@ ajax.interceptors.request.use(
 )
 
 /** 添加响应拦截器, 筛选出返回的有效数据, 以及进行统一的错误处理 */
-axios.interceptors.response.use(
+ajax.interceptors.response.use(
 	response => {
 		return response.data
 	},
 	error => {
-		console.error('ResponseError: ' + error)
-    message.error(`请求失败, ${error}`)
-    
+    message.error(`请求失败 ${error}`)  
     // 返回一个pending状态的promise, 中断promise链
     return new Promise(() => {})
 	}
