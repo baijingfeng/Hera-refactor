@@ -29,7 +29,7 @@ ajax.interceptors.response.use(
 		return response.data
 	},
 	error => {
-    message.error(`请求失败 ${error}`)  
+		message.error(`请求失败 ${error}`)
     // 返回一个pending状态的promise, 中断promise链
     return new Promise(() => {})
 	}
