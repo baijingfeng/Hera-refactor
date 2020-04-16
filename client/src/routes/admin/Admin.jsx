@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { Redirect, Switch, Route } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
 
 import memoryUtils from '../../utils/memoryUtils'
-import LeftNav from '../../components/left-nav/LeftNav'
+import baseConfig from '../../configs/baseConfig'
+
+import NavMenu from '../../components/left-nav/NavMenu'
 import Header from '../../components/header/Header'
 
-import Home from '../../views/home/Home'
-import System from '../../views/system/System'
+import './admin.less'
 
 const { Footer, Sider, Content } = Layout
 
@@ -19,21 +20,18 @@ export default class Admin extends Component {
 			return <Redirect to="/login" />
 		}
 
+		const { children } = this.props
+
 		return (
 			<div>
-				<Layout style={{ height: '100vh' }}>
-					<Sider width="250">
-						<LeftNav />
+				<Layout style={{ height: '100vh' }} className="admin">
+					<Sider width="250" className="sider">
+						<header className="header">{baseConfig.AppName}</header>
+						<NavMenu />
 					</Sider>
-					<Layout>
+					<Layout className="main">
 						<Header />
-						<Content style={{ backgroundColor: 'white' }}>
-							<Switch>
-								<Route path="/home" component={Home} />
-								<Route path="/system" component={System} />
-								<Redirect to="/home" />
-							</Switch>
-						</Content>
+						<Content style={{ backgroundColor: 'white' }}>{children}</Content>
 						<Footer>Footer</Footer>
 					</Layout>
 				</Layout>
