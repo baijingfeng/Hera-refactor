@@ -8,24 +8,25 @@ import TradeCreate from '../views/storage-manage/trade/TradeCreate'
 import RentCreate from '../views/storage-manage/rent/RentCreate'
 
 export default class Routers extends Component {
+	// TODO: 之后改为config配置的形式
 	render() {
 		return (
 			<Router history={history}>
 				<Switch>
 					<Route path="/login" component={Login} />
-					<Route path="/">
-						<Admin>
-							<Route path="home" component={Home} />
-							<Route path="storage-manage">
-								<Route path="/trade" component={TradeCreate} />
-								<Route path="/rent" component={RentCreate} />
+					<Admin>
+						<Switch>
+							<Route path="/home" component={Home} />
+							<Route path="/storage-manage/trade" component={TradeCreate} />
+							<Route path="/storage-manage/rent" component={RentCreate} />
+							<Route path="/storage-query">{/* <Route path="/trade" component={}/> */}</Route>
+							<Route path="/company" component={RentCreate}>
+								{/* <Route path="/trade" component={}/> */}
 							</Route>
-							<Route path="storage-query">{/* <Route path="/trade" component={}/> */}</Route>
-							<Route path="company">{/* <Route path="/trade" component={}/> */}</Route>
-							<Route path="system">{/* <Route path="/trade" component={}/> */}</Route>
-							<Redirect to="home" />
-						</Admin>
-					</Route>
+							<Route path="/system">{/* <Route path="/trade" component={}/> */}</Route>
+							<Redirect to="/home" />
+						</Switch>
+					</Admin>
 				</Switch>
 			</Router>
 		)

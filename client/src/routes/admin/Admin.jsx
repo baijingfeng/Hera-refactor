@@ -12,7 +12,7 @@ import './admin.less'
 
 const { Footer, Sider, Content } = Layout
 
-export default class Admin extends Component {
+class Admin extends Component {
 	render() {
 		const token = memoryUtils.token
 
@@ -39,3 +39,5 @@ export default class Admin extends Component {
 		)
 	}
 }
+
+export default Admin

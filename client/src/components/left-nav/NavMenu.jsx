@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Menu } from 'antd'
 
@@ -8,7 +8,48 @@ import { leftNavStyle } from '../../configs/styleConfig'
 
 const { SubMenu, Item } = Menu
 
-class NavMenu extends Component {
+const getNode = (menu, type) =>
+	type === 'SubMenu' ? (
+		<span>
+			{menu.icon && React.createElement(Icons[menu.icon])}
+			<span style={leftNavStyle}>{menu.title}</span>
+		</span>
+	) : (
+		<Link to={menu.path}>
+			{menu.icon && React.createElement(Icons[menu.icon])}
+			<span style={leftNavStyle}>{menu.title}</span>
+		</Link>
+	)
+
+const getMenuItems = menuList => {
+	return menuList.map(menu =>
+		menu.children instanceof Array ? (
+			<SubMenu key={menu.path} title={<span>{getNode(menu, 'SubMenu')}</span>}>
+				{getMenuItems(menu.children)}
+			</SubMenu>
+		) : (
+			<Item key={menu.path}>{getNode(menu, 'Item')}</Item>
+		)
+	)
+}
+
+const menuItems = getMenuItems(menuList)
+
+// TODO: router.isActive()方式优化
+const NavMenu = ({ location }) => (
+	<Menu
+		selectedKeys={[location.pathname]}
+		defaultOpenKeys={[location.pathname && `/${location.pathname.split('/')[1]}`]}
+		mode="inline"
+		theme="dark"
+	>
+		{menuItems}
+	</Menu>
+)
+
+export default withRouter(NavMenu)
+
+/* class NavMenu extends React.Component {
 	getNode = (menu, type) =>
 		type === 'SubMenu' ? (
 			<span>
@@ -34,18 +75,15 @@ class NavMenu extends Component {
 		)
 	}
 
-	menuItems =(() =>{
-		console.log('menuList')
-		return this.getMenuItems(menuList)
-	})()
+	menuItems = this.getMenuItems(menuList)
 
 	render() {
-		const selectKey = this.props.location.pathname
-		const openKey = selectKey && `/${selectKey.split('/')[1]}` // 截取当前路径的第一段,作为默认打开的选项
-		console.log('selectKey', selectKey)
+		const selectedKeys = this.props.location.pathname
+		const openKey = selectedKeys && `/${selectedKeys.split('/')[1]}` // 截取当前路径的第一段,作为默认打开的选项
+		console.log('selectedKeys', selectedKeys)
 		return (
 			<Menu
-				defaultSelectedKeys={[selectKey]}
+				defaultSelectedKeys={[selectedKeys]}
 				defaultOpenKeys={[openKey]}
 				mode="inline"
 				theme="dark"
@@ -57,5 +95,4 @@ class NavMenu extends Component {
 }
 
 export default withRouter(NavMenu)
-
-// TODO: router.isActive()方式优化
+ */
