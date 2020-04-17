@@ -1,3 +1,20 @@
 .header {
 	height: 60px;
+
+	@layout-header-height: 60px;
+	@header-btn-font-size: 16px;
+	.header-btn {
+		height: @layout-header-height;
+		font-size: @header-btn-font-size;
+		padding: 0 ((@layout-header-height - @header-btn-font-size) / 2 - 8);
+		display: flex;
+		align-items: center;
+
+		i {
+			padding: 8px;
+		}
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.2);
+		}
+	}
 }

@@ -7,4 +7,5 @@ export {
 	SettingOutlined,
 	SearchOutlined,
 	ClusterOutlined,
+	LogoutOutlined,
 } from '@ant-design/icons'
