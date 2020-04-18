@@ -14,7 +14,7 @@ const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
 class Admin extends Component {
 	render() {
-		const {access_token} = memoryUtils.userInfo
+		const { access_token } = memoryUtils.userInfo
 
 		if (!access_token) {
 			return <Redirect to="/login" />
@@ -23,6 +23,7 @@ class Admin extends Component {
 		const { children } = this.props
 		return (
 			<Layout style={{ height: '100vh' }} className="admin">
+				{/* TODO: 利用一个状态变量, 控制折叠, 以及小屏幕上显示折叠式样 */}
 				<Sider width="250" className="sider">
 					<header className="headerName">{baseConfig.AppName}</header>
 					<NavMenu />
