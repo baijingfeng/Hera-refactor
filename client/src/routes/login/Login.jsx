@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, Select, message } from 'antd'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import { UserOutlined, LockOutlined } from '../../configs/iconListConfig'
 import history from '../../utils/history'
 import storageUtils from '../../utils/storageUtils'
 import memoryUtils from '../../utils/memoryUtils'
