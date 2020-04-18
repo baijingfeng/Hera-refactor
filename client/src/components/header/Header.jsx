@@ -1,26 +1,47 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { Modal } from 'antd'
+import { ExclamationCircleOutlined } from '@ant-design/icons'
 
-import { UserOutlined, LogoutOutlined } from '../../configs/iconList'
+import storageUtils from '../../utils/storageUtils'
+import memoryUtils from '../../utils/memoryUtils'
+import { UserOutlined, LogoutOutlined } from '../../configs/iconListConfig'
 
 import './header.less'
+import history from '../../utils/history'
 
 export default class Header extends Component {
+	logout = () => {
+		Modal.confirm({
+			title: '确认退出吗?',
+			icon: <ExclamationCircleOutlined />,
+			okText: '确认',
+			cancelText: '取消',
+			onOk() {
+				memoryUtils.userInfo = {}
+				storageUtils.removeUserInfo()
 
-  logout= () => {
-    href("/login")
-    doLogout()
-  }
+				history.replace('/login')
+			},
+			onCancel() {
+				console.log('Cancel')
+			},
+		})
+	}
 	render() {
+		const { username } = memoryUtils.userInfo
 		return (
-			<div className="header">
-				<h3 className="title">{'title'}</h3>
-				<a className="header-btn">
+			<>
+				<h3 className="title">{'首页'}</h3>
+				<Link className="header-btn" to="">
 					<UserOutlined />
-				</a>
-				<a className="header-btn" onClick={this.logout.bind(this)}>
+					{username}
+				</Link>
+				<Link className="header-btn" to="" onClick={this.logout}>
 					<LogoutOutlined />
-				</a>
-			</div>
+					退出
+				</Link>
+			</>
 		)
 	}
 }

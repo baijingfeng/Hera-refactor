@@ -5,7 +5,7 @@
 		// top: 0;
 		// bottom: 0;
     
-		.header {
+		.headerName {
 			color: white;
 			height: 60px;
 			font-size: 50px;
@@ -13,5 +13,14 @@
 			text-align: center;
 			line-height: 60px;
 		}
+	}
+
+	@layout-header-height: 60px;
+	.right-header {
+		display: flex;
+		flex-direction: row;
+		padding-right: 0;
+    padding-left: @layout-header-height/2;
+		background-color: white;
 	}
 }

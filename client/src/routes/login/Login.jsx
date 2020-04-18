@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, Select, message } from 'antd'
 
-import { UserOutlined, LockOutlined } from '../../configs/iconList'
+import { UserOutlined, LockOutlined } from '../../configs/iconListConfig'
 import history from '../../utils/history'
 import storageUtils from '../../utils/storageUtils'
 import memoryUtils from '../../utils/memoryUtils'
@@ -14,18 +14,21 @@ const { Item } = Form
 const { Option } = Select
 
 export default class Login extends Component {
-	onFinish = async params => {
-		const { access_token } = await reqLogin(params)
+	onFinish = async ({ username, ...restParams }) => {
+		const { access_token } = await reqLogin({ username, ...restParams })
 
-		storageUtils.setToken(access_token)
-		memoryUtils.token = access_token
+		const userInfo = { username, access_token }
+
+		storageUtils.setUserInfo(userInfo)
+		memoryUtils.userInfo = userInfo
 
 		history.replace('/')
 		message.success('登录成功!')
 	}
 	render() {
-		const token = memoryUtils.token
-		if (token) {
+		const {access_token} = memoryUtils.userInfo
+
+		if (access_token) {
 			return <Redirect to="/" />
 		}
 
@@ -63,7 +66,11 @@ export default class Login extends Component {
 								},
 							]}
 						>
-							<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="用户名" allowClear />
+							<Input
+								prefix={<UserOutlined className="site-form-item-icon" />}
+								placeholder="用户名"
+								allowClear
+							/>
 						</Item>
 						<Item
 							name="password"
@@ -74,7 +81,12 @@ export default class Login extends Component {
 								},
 							]}
 						>
-							<Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="密码" allowClear />
+							<Input
+								prefix={<LockOutlined className="site-form-item-icon" />}
+								type="password"
+								placeholder="密码"
+								allowClear
+							/>
 						</Item>
 
 						<Item>

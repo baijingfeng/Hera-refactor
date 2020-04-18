@@ -1,5 +1,5 @@
 import storageUtils from './storageUtils'
 
 export default {
-  token: storageUtils.getToken(),
+  userInfo: storageUtils.getUserInfo(),
 }

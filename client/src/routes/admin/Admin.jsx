@@ -14,25 +14,24 @@ const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
 class Admin extends Component {
 	render() {
-		const token = memoryUtils.token
+		const {access_token} = memoryUtils.userInfo
 
-		if (!token) {
+		if (!access_token) {
 			return <Redirect to="/login" />
 		}
 
 		const { children } = this.props
-
 		return (
 			<Layout style={{ height: '100vh' }} className="admin">
 				<Sider width="250" className="sider">
-					<header className="header">{baseConfig.AppName}</header>
+					<header className="headerName">{baseConfig.AppName}</header>
 					<NavMenu />
 				</Sider>
 				<Layout className="main">
-					<AntdHeader>
+					<AntdHeader className="right-header">
 						<Header />
 					</AntdHeader>
-					<Content style={{ margin: '24px 16px 0', backgroundColor: '#ccc' }}>
+					<Content style={{ margin: '24px 16px 0' }}>
 						{children}
 						<BackTop />
 					</Content>

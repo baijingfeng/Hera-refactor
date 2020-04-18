@@ -3,18 +3,18 @@
  */
 import store from 'store'
 
-const TOKEN_NAME = 'X-Hera-Token'
+const USER_INFO = 'USER_INFO'
 
 export default {
-	setToken(token) {
-		store.set(TOKEN_NAME, token)
+	setUserInfo(userInfo) {
+		store.set(USER_INFO, userInfo)
 	},
 
-	getToken() {
-		return store.get(TOKEN_NAME)
+	getUserInfo() {
+		return store.get(USER_INFO) || {}
 	},
 
-	removeToken() {
-		store.remove(TOKEN_NAME)
-	},
+	removeUserInfo() {
+		store.remove(USER_INFO)
+	}
 }
