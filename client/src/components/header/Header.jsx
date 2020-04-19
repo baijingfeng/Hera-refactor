@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import history from '../../utils/history'
-import { Modal } from 'antd'
+import { message, Modal } from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 
 import storageUtils from '../../utils/storageUtils'
 import memoryUtils from '../../utils/memoryUtils'
 import { UserOutlined, LogoutOutlined } from '../../configs/iconList'
+import menuList from '../../configs/menuList'
+import { reqLogout } from '../../api'
 
 import './header.less'
-import menuList from '../../configs/menuList'
 
 class Header extends Component {
 	username = memoryUtils.userInfo.username
@@ -20,14 +21,13 @@ class Header extends Component {
 			icon: <ExclamationCircleOutlined />,
 			okText: '确认',
 			cancelText: '取消',
-			onOk() {
+			onOk: async () => {
 				memoryUtils.userInfo = {}
 				storageUtils.removeUserInfo()
 
+				const { message: msg } = await reqLogout()
 				history.replace('/login')
-			},
-			onCancel() {
-				console.log('Cancel')
+				message.success(msg)
 			},
 		})
 	}
@@ -50,19 +50,20 @@ class Header extends Component {
 		return title
 	}
 
+	// TODO: 用button标签加合适的样式替换a标签
 	render() {
 		const title = this.getTitle()
 		return (
 			<>
 				<h3 className="title">{title}</h3>
-				<Link className="header-btn" to="">
+				<a className="header-btn">
 					<UserOutlined />
 					{this.username}
-				</Link>
-				<Link className="header-btn" to="" onClick={this.logout}>
+				</a>
+				<a className="header-btn" onClick={this.logout}>
 					<LogoutOutlined />
 					退出
-				</Link>
+				</a>
 			</>
 		)
 	}

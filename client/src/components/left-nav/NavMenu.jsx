@@ -36,10 +36,10 @@ const getMenuItems = menuList => {
 const menuItems = getMenuItems(menuList)
 
 // TODO: router.isActive()方式优化
-const NavMenu = ({ location }) => (
+const NavMenu = ({ location: { pathname } }) => (
 	<Menu
-		selectedKeys={[location.pathname]}
-		defaultOpenKeys={[location.pathname && `/${location.pathname.split('/')[1]}`]}
+		selectedKeys={[pathname]}
+		defaultOpenKeys={[pathname && `/${pathname.split('/')[1]}`]}
 		mode="inline"
 		theme="dark"
 	>

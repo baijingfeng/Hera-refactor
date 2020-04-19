@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-
 import { message } from 'antd'
 
 /** 创建一个axios实例对象ajax */
@@ -30,8 +29,8 @@ ajax.interceptors.response.use(
 	},
 	error => {
 		message.error(`请求失败 ${error}`)
-    // 返回一个pending状态的promise, 中断promise链
-    return new Promise(() => {})
+		// 返回一个pending状态的promise, 中断promise链
+		return new Promise(() => {})
 	}
 )
 

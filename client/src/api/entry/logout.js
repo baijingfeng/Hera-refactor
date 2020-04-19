@@ -1,9 +1,8 @@
 import ajax from '../ajax'
 
-export function reqLogout(params) {
+export function reqLogout() {
 	return ajax({
-		url: '/logout',
-		method: 'POST',
-		data: params,
+		url: '/api/logout',
+		method: 'POST'
 	})
 }

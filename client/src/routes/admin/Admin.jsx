@@ -8,6 +8,8 @@ import baseConfig from '../../configs/baseConfig'
 import NavMenu from '../../components/left-nav/NavMenu'
 import Header from '../../components/header/Header'
 
+import ajax from '../../api/ajax'
+
 import './admin.less'
 
 const { Header: AntdHeader, Footer, Sider, Content } = Layout
@@ -18,6 +20,9 @@ class Admin extends Component {
 
 		if (!access_token) {
 			return <Redirect to="/login" />
+		} else {
+			// 成功登录后, 给之后的所有ajax请求设置权限请求头部
+			ajax.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
 		}
 
 		const { children } = this.props
