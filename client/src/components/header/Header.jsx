@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import history from '../../utils/history'
 import { message, Modal } from 'antd'
-import { ExclamationCircleOutlined } from '@ant-design/icons'
+import { UserOutlined, LogoutOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 
-import storageUtils from '../../utils/storageUtils'
-import memoryUtils from '../../utils/memoryUtils'
-import { UserOutlined, LogoutOutlined } from '../../configs/iconList'
-import menuList from '../../configs/menuList'
+import { history, memoryUtils, storageUtils } from '../../utils'
+import { menuList } from '../../configs'
 import { reqLogout } from '../../api'
 
 import './header.less'
@@ -51,6 +48,7 @@ class Header extends Component {
 	}
 
 	// TODO: 用button标签加合适的样式替换a标签
+	// TODO: 解决标题在缩小屏幕时会溢出的问题
 	render() {
 		const title = this.getTitle()
 		return (

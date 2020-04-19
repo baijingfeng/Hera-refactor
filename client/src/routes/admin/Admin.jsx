@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Layout, BackTop } from 'antd'
 
-import memoryUtils from '../../utils/memoryUtils'
-import baseConfig from '../../configs/baseConfig'
-
-import NavMenu from '../../components/left-nav/NavMenu'
-import Header from '../../components/header/Header'
-
-import ajax from '../../api/ajax'
+import { memoryUtils } from '../../utils'
+import { baseConfig } from '../../configs'
+import { ajax } from '../../api'
+import { Header, NavMenu } from '../../components'
 
 import './admin.less'
 

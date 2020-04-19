@@ -1,2 +1,5 @@
+export { default as ajax } from './ajax'
 export { reqLogin } from './entry/login'
 export { reqLogout } from './entry/logout'
+export { reqRecordsData } from './dashboard/records'
+export { reqAllTypeRecordsData } from './dashboard/records'

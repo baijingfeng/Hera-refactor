@@ -3,9 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, Select, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import history from '../../utils/history'
-import storageUtils from '../../utils/storageUtils'
-import memoryUtils from '../../utils/memoryUtils'
+import { history, memoryUtils, storageUtils } from '../../utils'
 import { reqLogin } from '../../api'
 
 import './login.less'
@@ -26,7 +24,7 @@ export default class Login extends Component {
 		message.success('登录成功!')
 	}
 	render() {
-		const {access_token} = memoryUtils.userInfo
+		const { access_token } = memoryUtils.userInfo
 
 		if (access_token) {
 			return <Redirect to="/" />
