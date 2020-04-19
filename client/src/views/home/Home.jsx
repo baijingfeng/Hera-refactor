@@ -6,19 +6,29 @@ import { reqAllTypeRecordsData } from '../../api'
 import './home.less'
 
 export default class Home extends Component {
-
-  state = {
-    newInRecords: '加载中...',
-    newOutRecords: '加载中...',
-    updateRecords: '加载中...',
-  }
-
-  rowStyle = {
-    marginTop: 25
+	state = {
+		newInRecords: '加载中...',
+		newOutRecords: '加载中...',
+		updateRecords: '加载中...',
 	}
-	
+
+	rowStyle = {
+		marginTop: 25,
+	}
+
 	async componentDidMount() {
-		const res = await 2
+		const res = await reqAllTypeRecordsData({
+			store: '586df7fe2d256304867ab346',
+		})
+
+		const [newInRecords, newOutRecords, updateRecords] = res.map(
+			res => res.data.num
+		)
+		this.setState({
+			newInRecords,
+			newOutRecords,
+			updateRecords,
+		})
 	}
 
 	render() {
@@ -26,11 +36,13 @@ export default class Home extends Component {
 			<>
 				<Row style={this.rowStyle}>
 					<Col span={24}>
-						<Card title="赫拉管理系统">亲爱的，欢迎使用赫拉管理系统，祝您心情愉快，工作顺利！</Card>
+						<Card title="赫拉管理系统">
+							亲爱的，欢迎使用赫拉管理系统，祝您心情愉快，工作顺利！
+						</Card>
 					</Col>
 				</Row>
 				<Row gutter={16} style={this.rowStyle}>
-					<Col span={8} >
+					<Col span={8}>
 						<Card title="入库单新增量">{this.state.newInRecords}</Card>
 					</Col>
 					<Col span={8}>

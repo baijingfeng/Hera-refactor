@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { message, Modal } from 'antd'
-import { UserOutlined, LogoutOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
+import {
+	UserOutlined,
+	LogoutOutlined,
+	ExclamationCircleOutlined,
+} from '@ant-design/icons'
 
 import { history, memoryUtils, storageUtils } from '../../utils'
 import { menuList } from '../../configs'

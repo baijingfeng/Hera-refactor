@@ -1,9 +1,9 @@
-import axios from 'axios'
+import Axios from 'axios'
 import qs from 'qs'
 import { message } from 'antd'
 
 /** 创建一个axios实例对象ajax */
-const ajax = axios.create({
+const ajax = Axios.create({
 	baseURL: process.env.BASE_URL,
 	timeout: 5000,
 })
