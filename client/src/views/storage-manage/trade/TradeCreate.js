@@ -4,7 +4,7 @@ export default class TradeCreate extends Component {
   render() {
     return (
       <div>
-        TradeCreate
+        TradeCreate111
       </div>
     )
   }

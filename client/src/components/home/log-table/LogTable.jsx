@@ -1,42 +1,45 @@
 import React, { Component } from 'react'
 import { ModelTable } from '../../../models'
+import { renderReport } from '../../../utils'
+import { reqLogFirstPageData } from '../../../api'
 
 export class LogTable extends Component {
 	columns = [
 		{
 			title: '日志等级',
 			dataIndex: 'level',
-			key: 'level',
+			key: 'log-level',
 		},
 		{
 			title: '操作时间',
 			dataIndex: 'timestamp',
-			key: 'timestamp',
+			key: 'log-timestamp',
 		},
 		{
 			title: '操作类型',
 			dataIndex: 'type',
-			key: 'type',
+			key: 'log-type',
 		},
 		{
 			title: '操作人',
 			dataIndex: 'user',
-			key: 'user',
+			key: 'log-user',
 			render: user => user && user.username,
 		},
 		{
 			title: '修改内容',
 			dataIndex: 'report',
-			key: 'report',
-			render: (report ={}) =>
-				report.message ? report.message : this.renderReport(report),
+			key: 'log-report',
+			render: renderReport,
 		},
 	]
 
-	getTablePage = params =>
-		Promise.resolve({
-			dataList: this.data,
-		})
+	getTablePage = async () => {
+		const {
+			data: { operations },
+		} = await reqLogFirstPageData()
+		return { dataList: [...operations] }
+	}
 
 	render() {
 		const params = {}

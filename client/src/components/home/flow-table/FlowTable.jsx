@@ -26,12 +26,6 @@ export class FlowTable extends Component {
 		{
 			title: '操作',
 			key: 'action',
-			render: (text, record) => (
-				<span>
-					<a style={{ marginRight: 16 }}>Invite</a>
-					<a>Delete</a>
-				</span>
-			),
 		},
 	]
 

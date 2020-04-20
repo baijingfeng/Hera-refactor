@@ -14,6 +14,7 @@ export class ModelTable extends PureComponent {
 		this.setState({ loading: true })
 		try {
 			const { dataList, totalCount, total } = await this.props.getPage(params)
+			
 			this.setState({
 				pageData: dataList,
 				total: totalCount,
