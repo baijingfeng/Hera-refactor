@@ -7,4 +7,6 @@ export { storageUtils } from './storeUtils/storageUtils'
 
 /** 格式化相关 */
 export { renderReport } from './renderFormat/renderReport'
+export { renderLogLevel } from './renderFormat/renderLogLevel'
+export { renderTime } from './renderFormat/renderTime'
 /** 格式化相关 */

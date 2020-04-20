@@ -25,10 +25,13 @@ class Header extends Component {
 			onOk: async () => {
 				memoryUtils.userInfo = {}
 				storageUtils.removeUserInfo()
-
-				const { message: msg } = await reqLogout()
 				history.replace('/login')
-				message.success(msg)
+				try {
+					const { message: msg } = await reqLogout()
+					message.success(msg)
+				} catch (error) {
+					message.error(error)
+				}
 			},
 		})
 	}
