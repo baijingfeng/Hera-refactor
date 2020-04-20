@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Row, Col } from 'antd'
+import { Row } from 'antd'
 
-import { FlowList, LogList } from '../../components'
+import { FlowTable, LogTable } from '../../components'
 import { reqAllTypeRecordsData } from '../../api'
 import { GridCard } from '../../models'
 
@@ -34,6 +34,7 @@ export default class Home extends Component {
 	}
 
 	render() {
+		const { newInRecords, newOutRecords, updateRecords } = this.state
 		return (
 			<>
 				<Row>
@@ -43,23 +44,23 @@ export default class Home extends Component {
 				</Row>
 				<Row gutter={16} style={this.rowStyle}>
 					<GridCard span={8} title="入库单新增量">
-						{this.state.newInRecords}
+						{newInRecords}
 					</GridCard>
 					<GridCard span={8} title="出库单新增量">
-						{this.state.newOutRecords}
+						{newOutRecords}
 					</GridCard>
 					<GridCard span={8} title="出入库修改量">
-						{this.state.updateRecords}
+						{updateRecords}
 					</GridCard>
 				</Row>
 				<Row style={this.rowStyle}>
 					<GridCard span={24} title="流程" extra={<a href="#">刷新</a>}>
-						<FlowList></FlowList>
+						<FlowTable />
 					</GridCard>
 				</Row>
 				<Row style={this.rowStyle}>
 					<GridCard span={24} title="日志" extra={<a href="#">刷新</a>}>
-						<LogList></LogList>
+						<LogTable />
 					</GridCard>
 				</Row>
 			</>

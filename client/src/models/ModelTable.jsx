@@ -1,27 +1,40 @@
-import React, { Component } from 'react'
-import {
-	Icon,
-	Pagination,
-	Spin,
-	Tooltip,
-	Modal,
-	Form,
-	Checkbox,
-	Button,
-	Col,
-	Row,
-} from 'antd'
+import React, { PureComponent } from 'react'
+import { Spin, Table } from 'antd'
 
-export default class ModelTable extends Component {
+export class ModelTable extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.state = {
 			loading: true,
+			pageData: [],
 		}
 	}
 
+	fetchPage = async (params = this.props.params) => {
+		this.setState({ loading: true })
+		try {
+			const { dataList, totalCount, total } = await this.props.getPage(params)
+			this.setState({
+				pageData: dataList,
+				total: totalCount,
+				totalEntity: total,
+			})
+		} finally {
+			this.setState({ loading: false })
+		}
+	}
+
+	componentDidMount() {
+		this.fetchPage()
+	}
+
 	render() {
-		const { loading } = this.state
-		return <Spin loading={loading}></Spin>
+		const { columns } = this.props
+		const { loading, pageData } = this.state
+		return (
+			<Spin spinning={loading} delay={100}>
+				<Table columns={columns} dataSource={pageData} />
+			</Spin>
+		)
 	}
 }
