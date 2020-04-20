@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
-import history from '../utils/history'
+import { history } from '../utils'
 import Login from './login/Login'
 import Admin from './admin/Admin'
-import Home from '../views/home/Home'
+import { Home } from '../views'
 import TradeCreate from '../views/storage-manage/trade/TradeCreate'
 import RentCreate from '../views/storage-manage/rent/RentCreate'
 
@@ -19,11 +19,15 @@ export default class Routers extends Component {
 							<Route path="/home" component={Home} />
 							<Route path="/storage-manage/trade" component={TradeCreate} />
 							<Route path="/storage-manage/rent" component={RentCreate} />
-							<Route path="/storage-query">{/* <Route path="/trade" component={}/> */}</Route>
+							<Route path="/storage-query">
+								{/* <Route path="/trade" component={}/> */}
+							</Route>
 							<Route path="/company" component={RentCreate}>
 								{/* <Route path="/trade" component={}/> */}
 							</Route>
-							<Route path="/system">{/* <Route path="/trade" component={}/> */}</Route>
+							<Route path="/system">
+								{/* <Route path="/trade" component={}/> */}
+							</Route>
 							<Redirect to="/home" />
 						</Switch>
 					</Admin>

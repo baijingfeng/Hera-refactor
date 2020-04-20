@@ -5,7 +5,7 @@ import store from 'store'
 
 const USER_INFO = 'USER_INFO'
 
-export default {
+export const storageUtils = {
 	setUserInfo(userInfo) {
 		store.set(USER_INFO, userInfo)
 	},
@@ -16,5 +16,5 @@ export default {
 
 	removeUserInfo() {
 		store.remove(USER_INFO)
-	}
+	},
 }

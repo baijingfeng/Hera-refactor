@@ -7,7 +7,7 @@ import { GridCard } from '../../models'
 
 import './home.less'
 
-export default class Home extends Component {
+export class Home extends Component {
 	state = {
 		newInRecords: '加载中...',
 		newOutRecords: '加载中...',

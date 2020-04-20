@@ -3,6 +3,4 @@
 const history = createBrowserHistory() */
 import { createHashHistory } from 'history'
 
-const history = createHashHistory()
-
-export default history
+export const history = createHashHistory()
