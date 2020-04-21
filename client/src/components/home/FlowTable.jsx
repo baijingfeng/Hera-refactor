@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ModelTable } from '../../../models'
+import { ModelTable } from '../../models'
 
 export class FlowTable extends Component {
 	columns = [

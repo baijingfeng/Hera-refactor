@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { Menu } from 'antd'
 
-import { Icons, menuList, leftNavStyle } from '../../../configs'
+import { Icons, menuList, leftNavStyle } from '../../configs'
 
 const { SubMenu, Item } = Menu
 

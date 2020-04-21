@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { ModelTable } from '../../../models'
-import { renderReport, renderLogLevel, renderTime } from '../../../utils'
-import { reqLogFirstPageData } from '../../../api'
+import { ModelTable } from '../../models'
+import { renderReport, renderLogLevel, renderTime } from '../../utils'
+import { reqLogFirstPageData } from '../../api'
 
 export class LogTable extends Component {
 	columns = [
@@ -32,7 +32,7 @@ export class LogTable extends Component {
 		{
 			title: '修改内容',
 			dataIndex: 'report',
-			key: 'log-report',
+			key: 'report',
 			render: renderReport,
 		},
 	]
@@ -43,7 +43,9 @@ export class LogTable extends Component {
 		} = await reqLogFirstPageData()
 		return { dataList: [...operations] }
 	}
-	// TODO: 统一定义接口格式; 以及写分页器
+	
+	// TODO: 统一定义接口格式
+	// TODO: 写分页器
 	render() {
 		const params = {}
 		return (

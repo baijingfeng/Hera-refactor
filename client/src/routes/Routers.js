@@ -3,9 +3,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { history } from '../utils'
 import Login from './login/Login'
 import Admin from './admin/Admin'
-import { Home } from '../views'
-import TradeCreate from '../views/storage-manage/trade/TradeCreate'
-import RentCreate from '../views/storage-manage/rent/RentCreate'
+import { Home, TradeCreate, RentCreate } from '../views'
 
 export default class Routers extends Component {
 	// TODO: 之后改为config配置的形式

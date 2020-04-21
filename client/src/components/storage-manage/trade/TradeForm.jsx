@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export class RentCreate extends Component {
+export class TradeForm extends Component {
   render() {
     return (
       <div>
-        RentCreate
+        <p>content2</p>
       </div>
     )
   }

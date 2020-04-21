@@ -54,7 +54,7 @@ export class Home extends Component {
 					</GridCard>
 				</Row>
 				<Row style={this.rowStyle}>
-					<GridCard span={24} title="流程" extra={<a href="#">刷新</a>}>
+					<GridCard span={24} title="流程" extra={<a href="#">刷新</a>}> {/** TODO: 更改为ajax异步刷新 */}
 						<FlowTable />
 					</GridCard>
 				</Row>
