@@ -2,7 +2,7 @@ import ajax from '../ajax'
 
 export function reqRecordsData(params, type) {
 	return ajax({
-		url: `/api/status/${type}`,
+		url: `/status/${type}`,
 		method: 'GET',
 		params,
 	})

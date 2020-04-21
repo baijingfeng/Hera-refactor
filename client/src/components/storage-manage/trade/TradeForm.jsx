@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import TradeHeaderForm from './TradeHeaderForm'
+import TradeFormList from './TradeFormList'
 
-export class TradeForm extends Component {
-  render() {
-    return (
-      <div>
-        <p>content2</p>
-      </div>
-    )
-  }
+export class TradeForm extends PureComponent {
+	render() {
+		return (
+			<div>
+				<TradeHeaderForm />
+				<TradeFormList />
+			</div>
+		)
+	}
 }
