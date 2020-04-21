@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
-import { PURCHASING_CLIENT_TYPES } from '../../../configs'
+import { PURCHASING_CLIENT_TYPES } from '../../../../configs'
 import TradeTable from './TradeTable'
 
 const { Item } = Form

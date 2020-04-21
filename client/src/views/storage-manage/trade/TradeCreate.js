@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'antd'
 
-import { TradeForm } from '../../../components/storage-manage/trade/TradeForm'
+import { TradeForm } from './components/TradeForm'
 
 const tabList = [
 	{
