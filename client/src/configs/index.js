@@ -1,5 +1,7 @@
 import * as Icons from './iconList'
 export { Icons }
-export { default as baseConfig } from './baseConfig'
-export { default as menuList } from './menuList'
+
+export { menuList } from './menuList'
 export { leftNavStyle } from './styleConfig'
+
+export { APP_NAME, PURCHASING_CLIENT_TYPES } from './baseConfig'

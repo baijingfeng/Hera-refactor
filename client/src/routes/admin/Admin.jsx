@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Layout, BackTop } from 'antd'
 
 import { memoryUtils } from '../../utils'
-import { baseConfig } from '../../configs'
+import { APP_NAME } from '../../configs'
 import { ajax } from '../../api'
 import { Header, NavMenu } from '../../components'
 
@@ -27,7 +27,7 @@ class Admin extends Component {
 			<Layout style={{ height: '100vh' }} className="admin">
 				{/* TODO: 利用一个状态变量, 控制折叠, 以及小屏幕上显示折叠式样 */}
 				<Sider width="250" className="sider">
-					<header className="headerName">{baseConfig.AppName}</header>
+					<header className="headerName">{APP_NAME}</header>
 					<NavMenu />
 				</Sider>
 				<Layout className="main">

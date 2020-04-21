@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card } from 'antd'
+import { Card, Button } from 'antd'
 
 import { TradeForm } from '../../../components/storage-manage/trade/TradeForm'
 
@@ -13,6 +13,12 @@ const tabList = [
 		tab: '销售出库',
 	},
 ]
+
+const SubmitButton = () => (
+	<Button type="primary" htmlType="submit">
+		保存
+	</Button>
+)
 
 export class TradeCreate extends Component {
 	state = {
@@ -30,8 +36,9 @@ export class TradeCreate extends Component {
 				tabList={tabList}
 				activeTabKey={this.state.key}
 				onTabChange={this.onTabChange}
+				tabBarExtraContent={<SubmitButton />}
 			>
-				<TradeForm/>
+				<TradeForm />
 			</Card>
 		)
 	}

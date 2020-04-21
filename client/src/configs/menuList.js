@@ -1,4 +1,4 @@
-const menuList = [
+export const menuList = [
 	{
 		title: '首页',
 		path: '/home',
@@ -97,5 +97,3 @@ const menuList = [
 		],
 	},
 ]
-
-export default menuList

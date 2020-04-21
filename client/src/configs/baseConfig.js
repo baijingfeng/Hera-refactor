@@ -1,5 +1,6 @@
-const baseConfig = {
-	AppName: 'AFX',
-}
+export const APP_NAME = 'AFX'
 
-export default baseConfig
+/**
+ * 采购支持客户类型
+ */
+export const PURCHASING_CLIENT_TYPES = ['项目仓库', '租赁客户', '同行客户', '基地仓库', '供应商']
