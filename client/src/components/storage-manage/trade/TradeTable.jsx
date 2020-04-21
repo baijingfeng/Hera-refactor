@@ -1,9 +1,16 @@
 import React, { PureComponent } from 'react'
-import { Form, Input, Card, Table, Button } from 'antd'
+import { Table, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
-const { Item } = Form
 export default class TradeFormList extends PureComponent {
+	constructor(props) {
+		super(props)
+		this.state = {
+			index: 0,
+			data: [],
+		}
+	}
+
 	columns = [
 		{
 			title: '类型',
@@ -51,21 +58,42 @@ export default class TradeFormList extends PureComponent {
 			key: 'report',
 		},
 	]
+
+	newMember = () => {
+		const { data, index } = this.state
+		const newData = data?.map(item => ({ ...item })) || []
+
+		newData.push({
+			key: `NEW_TEMP_ID_${index}`,
+			workId: '',
+			name: '',
+			department: '',
+			editable: true,
+			isNew: true,
+		})
+
+		this.setState({
+			index: index + 1,
+			newData,
+		})
+	}
+
 	render() {
 		return (
 			<>
-				<Table columns={this.columns} />
+				<Table columns={this.columns} pagination={false} />
 				<Button
-					icon={<PlusOutlined />}
-					onClick={this.handleAdd}
+					onClick={this.newMember}
 					type="primary"
 					ghost
 					style={{
-						marginBottom: 16,
+						marginTop: 16,
+						marginBottom: 8,
 						width: '100%',
 						borderStyle: 'dashed',
 					}}
 				>
+					<PlusOutlined />
 					增加
 				</Button>
 			</>
