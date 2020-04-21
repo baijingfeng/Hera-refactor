@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { ModelTable } from '../../models'
-import { renderReport, renderLogLevel, renderTime } from '../../utils'
-import { reqLogFirstPageData } from '../../api'
 
-export class LogTable extends Component {
+import { renderReport, renderLogLevel, renderTime } from '../../../utils'
+import { reqLogFirstPageData } from '../../../api'
+import { ModelTable } from '../../../components'
+
+export default class LogTable extends Component {
 	columns = [
 		{
 			title: '日志等级',
@@ -21,7 +22,7 @@ export class LogTable extends Component {
 			title: '操作类型',
 			dataIndex: 'type',
 			key: 'type',
-			render: type =>　 type || '修改'
+			render: type => type || '修改',
 		},
 		{
 			title: '操作人',
@@ -43,7 +44,7 @@ export class LogTable extends Component {
 		} = await reqLogFirstPageData()
 		return { dataList: [...operations] }
 	}
-	
+
 	// TODO: 统一定义接口格式
 	// TODO: 写分页器
 	render() {

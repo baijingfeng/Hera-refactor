@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { ModelTable } from '../../models'
+import { ModelTable } from '../../../components'
 
-export class FlowTable extends Component {
+export default class FlowTable extends Component {
 	columns = [
 		{
 			title: '时间',

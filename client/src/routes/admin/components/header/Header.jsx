@@ -7,9 +7,9 @@ import {
 	ExclamationCircleOutlined,
 } from '@ant-design/icons'
 
-import { history, memoryUtils, storageUtils } from '../../../utils'
-import { menuList } from '../../../configs'
-import { reqLogout } from '../../../api'
+import { history, memoryUtils, storageUtils } from '../../../../utils'
+import { menuList } from '../../../../configs'
+import { reqLogout } from '../../../../api'
 
 import './header.less'
 

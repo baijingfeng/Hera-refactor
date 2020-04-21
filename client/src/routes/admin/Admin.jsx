@@ -5,7 +5,8 @@ import { Layout, BackTop } from 'antd'
 import { memoryUtils } from '../../utils'
 import { APP_NAME } from '../../configs'
 import { ajax } from '../../api'
-import { Header, NavMenu } from '../../components'
+import NavMenu from './components/NavMenu'
+import Header from './components/header/Header'
 
 import './admin.less'
 

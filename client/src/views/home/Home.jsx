@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Row } from 'antd'
 
-import { FlowTable, LogTable } from '../../components'
+import FlowTable from './components/FlowTable'
+import LogTable from './components/LogTable'
 import { reqAllTypeRecordsData } from '../../api'
-import { GridCard } from '../../models'
+import { GridCard } from '../../components'
 
 import './home.less'
 
@@ -54,7 +55,9 @@ export class Home extends Component {
 					</GridCard>
 				</Row>
 				<Row style={this.rowStyle}>
-					<GridCard span={24} title="流程" extra={<a href="#">刷新</a>}> {/** TODO: 更改为ajax异步刷新 */}
+					<GridCard span={24} title="流程" extra={<a href="#">刷新</a>}>
+						{' '}
+						{/** TODO: 更改为ajax异步刷新 */}
 						<FlowTable />
 					</GridCard>
 				</Row>
