@@ -35,11 +35,11 @@ class Admin extends Component {
 					<AntdHeader className="right-header">
 						<Header />
 					</AntdHeader>
-					<Content style={{ margin: '24px 16px 0', minHeight: 'auto'}}>
+					<Content style={{ margin: '24px 16px 0', minHeight: 'auto' }}>
 						{children}
 						<BackTop />
 					</Content>
-					<Footer style={{ textAlign: 'center', marginTop: '10%' }}>
+					<Footer style={{ textAlign: 'center' }}>
 						<strong>Copyright © 2019 XX信息科技（上海）有限公司.</strong>
 					</Footer>
 				</Layout>
