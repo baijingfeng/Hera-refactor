@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row } from 'antd'
+import { Row, Button } from 'antd'
 
 import FlowTable from './components/FlowTable'
 import LogTable from './components/LogTable'
@@ -9,14 +9,23 @@ import { GridCard } from '../../components'
 import './home.less'
 
 export class Home extends Component {
-	state = {
-		newInRecords: '加载中...',
-		newOutRecords: '加载中...',
-		updateRecords: '加载中...',
+	constructor(props) {
+		super(props)
+		this.state = {
+			newInRecords: '加载中...',
+			newOutRecords: '加载中...',
+			updateRecords: '加载中...',
+		}
+
+		this.logRef = React.createRef()
 	}
 
 	rowStyle = {
 		marginTop: 25,
+	}
+
+	getLogData = () => {
+		this.logRef.current.getTablePage()
 	}
 
 	async componentDidMount() {
@@ -55,15 +64,30 @@ export class Home extends Component {
 					</GridCard>
 				</Row>
 				<Row style={this.rowStyle}>
-					<GridCard span={24} title="流程" extra={<a href="#">刷新</a>}>
-						{' '}
+					<GridCard
+						span={24}
+						title="流程"
+						extra={
+							<Button type="link" onClick={() => {}}>
+								刷新
+							</Button>
+						}
+					>
 						{/** TODO: 更改为ajax异步刷新 */}
 						<FlowTable />
 					</GridCard>
 				</Row>
 				<Row style={this.rowStyle}>
-					<GridCard span={24} title="日志" extra={<a href="#">刷新</a>}>
-						<LogTable />
+					<GridCard
+						span={24}
+						title="日志"
+						extra={
+							<Button type="link" onClick={this.getLogData}>
+								刷新
+							</Button>
+						}
+					>
+						<LogTable ref={this.logRef} />
 					</GridCard>
 				</Row>
 			</>

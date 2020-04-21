@@ -14,7 +14,7 @@ export class ModelTable extends PureComponent {
 		this.setState({ loading: true })
 		try {
 			const { dataList, totalCount, total } = await this.props.getPage(params)
-			
+
 			this.setState({
 				pageData: dataList,
 				total: totalCount,
@@ -34,7 +34,7 @@ export class ModelTable extends PureComponent {
 		const { loading, pageData } = this.state
 		return (
 			<Spin spinning={loading} delay={100}>
-				<Table columns={columns} dataSource={pageData} rowKey={rowKey}/>
+				<Table columns={columns} dataSource={pageData} rowKey={rowKey} />
 			</Spin>
 		)
 	}
