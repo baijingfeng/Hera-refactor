@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Button } from 'antd'
+import { Row, Button, message } from 'antd'
 
 import FlowTable from './components/FlowTable'
 import LogTable from './components/LogTable'
@@ -25,7 +25,13 @@ export class Home extends Component {
 	}
 
 	getLogData = () => {
-		this.logRef.current.getTablePage()
+		try {
+			this.logRef.current.getTablePage()
+		} catch (error) {
+			message.error('刷新失败, 请稍后再试!')
+		}
+
+		message.success('刷新成功!')
 	}
 
 	async componentDidMount() {

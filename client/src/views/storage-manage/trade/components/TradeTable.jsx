@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
-import { Table, Button } from 'antd'
+import { Table, Button, Input } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
+
+import styles from '../style.less'
 
 export default class TradeFormList extends PureComponent {
 	constructor(props) {
@@ -14,38 +16,53 @@ export default class TradeFormList extends PureComponent {
 	columns = [
 		{
 			title: '类型',
-			dataIndex: 'level',
-			key: 'level',
+			dataIndex: 'type',
+			key: 'type',
+			// width: '20%',
+			render: (text, record) => {
+				if (record.editable) {
+					return (
+						<Input
+							value={text}
+							autoFocus
+							onChange={e => this.handleFieldChange(e, 'name', record.key)}
+							onKeyPress={e => this.handleKeyPress(e, record.key)}
+							placeholder="类型"
+						/>
+					)
+				}
+				return text
+			},
 		},
 		{
 			title: '名称',
-			dataIndex: 'timestamp',
-			key: 'timestamp',
+			dataIndex: 'name',
+			key: 'name',
 		},
 		{
 			title: '规格',
-			dataIndex: 'type',
-			key: 'type',
+			dataIndex: 'size',
+			key: 'size',
 		},
 		{
 			title: '数量',
-			dataIndex: 'user',
-			key: 'user',
+			dataIndex: 'count',
+			key: 'count',
 		},
 		{
 			title: '小计',
-			dataIndex: 'report',
-			key: 'report',
+			// dataIndex: 'price',
+			key: 'total',
 		},
 		{
 			title: '单位',
-			dataIndex: 'report',
-			key: 'report',
+			// dataIndex: 'report',
+			key: 'unit',
 		},
 		{
 			title: '单价',
-			dataIndex: 'report',
-			key: 'report',
+			dataIndex: 'price',
+			key: 'price',
 		},
 		{
 			title: '金额',
@@ -54,22 +71,31 @@ export default class TradeFormList extends PureComponent {
 		},
 		{
 			title: '备注',
-			dataIndex: 'report',
-			key: 'report',
+			dataIndex: 'comments',
+			key: 'comments',
+		},
+		{
+			title: '操作',
+			key: 'actions',
 		},
 	]
 
 	newMember = () => {
+		console.log('object')
 		const { data, index } = this.state
-		const newData = data?.map(item => ({ ...item })) || []
+		const newData = (data && data.map(item => ({ ...item }))) || []
 
 		newData.push({
 			key: `NEW_TEMP_ID_${index}`,
-			workId: '',
+			type: '',
 			name: '',
-			department: '',
-			editable: true,
-			isNew: true,
+			size: '',
+			count: '',
+			total: '',
+			unit: '',
+			price: '',
+			report: '',
+			comments: '',
 		})
 
 		this.setState({
@@ -79,9 +105,15 @@ export default class TradeFormList extends PureComponent {
 	}
 
 	render() {
+		const { newData } = this.state
 		return (
 			<>
-				<Table columns={this.columns} pagination={false} />
+				<Table
+					columns={this.columns}
+					dataSource={newData}
+					rowClassName={record => (record.editable ? styles.editable : '')}
+					pagination={false}
+				/>
 				<Button
 					onClick={this.newMember}
 					type="primary"

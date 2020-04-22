@@ -30,11 +30,11 @@ export class ModelTable extends PureComponent {
 	}
 
 	render() {
-		const { columns, rowKey } = this.props
+		const { ...tableOptions } = this.props
 		const { loading, pageData } = this.state
 		return (
 			<Spin spinning={loading} delay={100}>
-				<Table columns={columns} dataSource={pageData} rowKey={rowKey} />
+				<Table dataSource={pageData} {...tableOptions} />
 			</Spin>
 		)
 	}

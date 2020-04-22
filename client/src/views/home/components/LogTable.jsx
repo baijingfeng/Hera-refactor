@@ -55,6 +55,7 @@ export default class LogTable extends Component {
 				columns={this.columns}
 				params={params}
 				getPage={this.getTablePage}
+				pagination={false}
 			/>
 		)
 	}
