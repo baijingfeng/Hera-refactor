@@ -17,9 +17,10 @@ export const renderTypeInput = (text, record, tableFormRef, fieldName) => {
 	return text
 }
 
-export const type = ref => ({
+export const type = (ref, configs) => ({
 	title: '类型',
 	dataIndex: 'type',
 	key: 'type',
 	render: (text, record) => renderTypeInput(text, record, ref.current, 'type'),
+	...configs,
 })

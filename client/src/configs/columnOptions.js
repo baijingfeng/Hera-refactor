@@ -1,8 +1,10 @@
-import { type, name, size, count, total, unit, actions } from '../components/ColumnOptions'
+import { type, name, size, count, total, unit, actions } from '../components'
 
 export const tradeColumns = ref => [
 	type(ref),
-	actions(ref),
+	actions(ref, {
+    align: 'center'
+  }),
 ]
 
 const backup = (renderTypeInput, renderActions, ref) => [

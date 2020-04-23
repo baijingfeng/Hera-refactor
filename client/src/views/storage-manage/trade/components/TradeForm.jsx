@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
 import { PURCHASING_CLIENT_TYPES } from '../../../../configs'
 import TradeTableForm from './TradeTableForm'
+import { ProjectTypeItem } from '../../../../components'
 
 const { Item } = Form
 const { Option } = Select
@@ -26,21 +27,13 @@ export const TradeForm = () => {
 		<Form {...formItemLayout} onFinish={() => {}}>
 			<Card title="表头信息" bordered={false}>
 				<Row gutter={25}>
-					<Col lg={6} md={12} sm={24}>
-						<Item
-							label={fieldLabels.projectType}
-							name="projectType"
-							rules={[{ required: true, message: '请选择类型!' }]}
-						>
-							<Select style={{ width: 300 }} placeholder="请选择类型">
-								{PURCHASING_CLIENT_TYPES.map((item, index) => (
-									<Option key={`${index}${item}`} value={item}>
-										{item}
-									</Option>
-								))}
-							</Select>
-						</Item>
-					</Col>
+					<ProjectTypeItem
+						colCof={{
+							lg: 6,
+							md: 12,
+							sm: 24,
+						}}
+					/>
 					<Col
 						xl={{ span: 6, offset: 2 }}
 						lg={{ span: 8 }}

@@ -6,4 +6,4 @@ export { leftNavStyle } from './styleConfig'
 
 export { APP_NAME, PURCHASING_CLIENT_TYPES } from './baseConfig'
 
-export { tradeColumns } from './columnOptionsConfig'
+export { tradeColumns } from './columnOptions'

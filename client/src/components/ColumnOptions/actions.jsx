@@ -53,15 +53,17 @@ export const renderActions = (
 				title="是否要删除此行？"
 				onConfirm={() => removeRow(record.key)}
 			>
-				<a>删除</a>
+				<Button type="link">删除</Button>
 			</Popconfirm>
 		</span>
 	)
 }
 
-export const actions = ref => ({
+export const actions = (ref, configs) => ({
 	title: '操作',
 	key: 'actions',
-	width: '10%',
-	render: (text, record) => renderActions(text, record, ref.current),
+  width: '15%',
+  align: 'center',
+  render: (text, record) => renderActions(text, record, ref.current),
+  ...configs,
 })
