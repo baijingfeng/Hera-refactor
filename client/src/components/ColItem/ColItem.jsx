@@ -11,7 +11,7 @@ const ColItem = ({ children, colCof, itemCof }) => {
 }
 
 ColItem.propTypes = {
-	children: React.Component,
+	children: PropTypes.element,
 	colCof: PropTypes.object,
 	itemCof: PropTypes.object,
 }

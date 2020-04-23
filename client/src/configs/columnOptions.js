@@ -3,9 +3,14 @@ import { type, name, size, count, total, unit, actions } from '../components'
 export const tradeColumns = ref => [
 	type(ref),
 	actions(ref, {
-    align: 'center'
-  }),
+		align: 'center',
+	}),
 ]
+
+export const tradeColumnsInitialValue = {
+	type: '',
+	name: '',
+}
 
 const backup = (renderTypeInput, renderActions, ref) => [
 	{

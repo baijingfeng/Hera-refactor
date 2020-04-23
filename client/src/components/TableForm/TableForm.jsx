@@ -1,10 +1,13 @@
 import React, { useState, useImperativeHandle, forwardRef } from 'react'
-import { Table, Button, Input, Divider, Popconfirm, message } from 'antd'
+import { Table, Button, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
 import styles from './style.less'
 
-const TableForm = ({ columns, value, initialValue, onChange }, ref) => {
+const TableForm = (
+	{ columns = [], value = [], initialValue = {}, onChange },
+	ref
+) => {
 	const [clickedCancel, setClickedCancel] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [index, setIndex] = useState(0)
@@ -41,7 +44,9 @@ const TableForm = ({ columns, value, initialValue, onChange }, ref) => {
 	const handleFieldChange = (e, fieldName, key) => {
 		const newData = [...data]
 		const target = getRowByKey(key, newData)
-
+		console.log('key', { value: e.target.value, fieldName, key })
+		console.log('target', target)
+		console.log('data', data)
 		if (target) {
 			target[fieldName] = e.target.value
 			setData(newData)
@@ -122,8 +127,11 @@ const TableForm = ({ columns, value, initialValue, onChange }, ref) => {
 			...initialValue,
 		})
 
+		console.log('newData', newData)
+
 		setIndex(index + 1)
 		setData(newData)
+		console.log(data, index)
 	}
 
 	useImperativeHandle(ref, () => ({
