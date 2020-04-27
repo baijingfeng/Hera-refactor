@@ -30,9 +30,7 @@ class Header extends Component {
 				try {
 					const { message: msg } = await reqLogout()
 					message.success(msg)
-				} catch (error) {
-					message.error(error)
-				}
+				} catch (err) {}
 			},
 		})
 	}
