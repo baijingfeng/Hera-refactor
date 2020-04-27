@@ -62,8 +62,6 @@ export const renderActions = (
 export const actions = (ref, configs) => ({
 	title: '操作',
 	key: 'actions',
-	width: '15%',
-	align: 'center',
 	render: (text, record) => renderActions(text, record, ref.current),
 	...configs,
 })

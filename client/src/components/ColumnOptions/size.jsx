@@ -9,11 +9,11 @@ for (let i = 10; i < 36; i++) {
 }
 
 function handleChange(value) {
-	console.log(`Selected: ${value}`)
+	console.log(`名称 Selected: ${value}`)
 }
 
-/** 表单列表项-类型 */
-export const renderTypeSelect= (text, record, ref, fieldName) => {
+/** 表单列表项-规格 */
+export const renderSizeSelect = (text, record, ref, fieldName) => {
 	if (record.editable) {
 		return (
 			<Select
@@ -29,10 +29,10 @@ export const renderTypeSelect= (text, record, ref, fieldName) => {
 	return text
 }
 
-export const type = (ref, configs) => ({
-	title: '类型',
-	dataIndex: 'type',
-	key: 'type',
-	render: (text, record) => renderTypeSelect(text, record, ref, 'type'),
+export const size = (ref, configs) => ({
+	title: '规格',
+	dataIndex: 'size',
+	key: 'size',
+	render: (text, record) => renderSizeSelect(text, record, ref, 'size'),
 	...configs,
 })

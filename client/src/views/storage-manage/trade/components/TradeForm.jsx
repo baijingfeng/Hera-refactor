@@ -88,7 +88,7 @@ export const TradeForm = () => {
 						sm={24}
 					>
 						<Item label={fieldLabels.comments} name="comments">
-							<TextArea autoSize={{ maxRows: 3 }} style={{ width: 300 }} />
+							<TextArea autoSize={{ maxRows: 3 }} style={{ width: 300 }} placeholder="备注信息" />
 						</Item>
 					</Col>
 				</Row>

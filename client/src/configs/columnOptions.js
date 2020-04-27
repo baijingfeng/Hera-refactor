@@ -1,7 +1,11 @@
 import { type, name, size, count, total, unit, actions } from '../components'
 
+// 交易管理, 表格表单的表单项配置
 export const tradeColumns = ref => [
 	type(ref),
+	name(ref),
+	size(ref),
+	count(ref),
 	actions(ref, {
 		align: 'center',
 	}),
