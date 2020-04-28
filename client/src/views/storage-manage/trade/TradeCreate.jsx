@@ -22,7 +22,6 @@ const SubmitButton = () => (
 
 export const TradeCreate = () => {
 	const [key, setKey] = useState('采购入库')
-
 	return (
 		<Card
 			style={{ width: '100%' }}

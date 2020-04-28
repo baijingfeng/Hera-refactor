@@ -24,7 +24,6 @@ const TableForm = (
 
 	const removeRow = key => {
 		const newData = (data || []).filter(item => item.key !== key)
-		console.log('newData', newData)
 		setData(newData)
 	}
 
