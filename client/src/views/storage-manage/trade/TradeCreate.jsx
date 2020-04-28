@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Card, Button } from 'antd'
 
 import { TradeForm } from './components/TradeForm'
@@ -20,26 +20,18 @@ const SubmitButton = () => (
 	</Button>
 )
 
-export class TradeCreate extends Component {
-	state = {
-		key: '采购入库',
-	}
+export const TradeCreate = () => {
+	const [key, setKey] = useState('采购入库')
 
-	onTabChange = key => {
-		this.setState({ key })
-	}
-
-	render() {
-		return (
-			<Card
-				style={{ width: '100%' }}
-				tabList={tabList}
-				activeTabKey={this.state.key}
-				onTabChange={this.onTabChange}
-				tabBarExtraContent={<SubmitButton />}
-			>
-				<TradeForm />
-			</Card>
-		)
-	}
+	return (
+		<Card
+			style={{ width: '100%' }}
+			tabList={tabList}
+			activeTabKey={key}
+			onTabChange={setKey}
+			tabBarExtraContent={<SubmitButton />}
+		>
+			<TradeForm />
+		</Card>
+	)
 }
