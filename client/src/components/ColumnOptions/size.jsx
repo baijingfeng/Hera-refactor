@@ -8,31 +8,25 @@ for (let i = 10; i < 36; i++) {
 	children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>)
 }
 
-function handleChange(value) {
-	console.log(`名称 Selected: ${value}`)
-}
-
 /** 表单列表项-规格 */
-export const renderSizeSelect = (text, record, ref, fieldName) => {
-	if (record.editable) {
-		return (
-			<Select
-				size='middle'
-				defaultValue="a1"
-				onChange={handleChange}
-				style={{ width: 200 }}
-			>
-				{children}
-			</Select>
-		)
-	}
-	return text
+export const renderSizeSelect = (record, ref, fieldName) => {
+	return (
+		<Select
+			size="middle"
+			defaultValue="a1"
+			onChange={e => ref.current.handleFieldChange(e, fieldName, record.key)}
+			style={{ width: 200 }}
+		>
+			{children}
+		</Select>
+	)
 }
 
 export const size = (ref, configs) => ({
 	title: '规格',
 	dataIndex: 'size',
 	key: 'size',
-	render: (text, record) => renderSizeSelect(text, record, ref, 'size'),
+	align: 'center',
+	render: (_, record) => renderSizeSelect(record, ref, 'size'),
 	...configs,
 })

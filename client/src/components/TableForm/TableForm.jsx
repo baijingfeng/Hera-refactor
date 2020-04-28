@@ -2,36 +2,34 @@ import React, { useState, useImperativeHandle, forwardRef } from 'react'
 import { Table, Button, message } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
-import styles from './style.less'
-
 const TableForm = (
 	{ columns = [], value = [], initialValue = {}, onChange },
 	ref
 ) => {
-	const [clickedCancel, setClickedCancel] = useState(false)
-	const [loading, setLoading] = useState(false)
+	// const [clickedCancel, setClickedCancel] = useState(false)
+	// const [loading, setLoading] = useState(false)
 	const [index, setIndex] = useState(0)
-	const [cacheOriginData, setCacheOriginData] = useState({})
+	// const [cacheOriginData, setCacheOriginData] = useState({})
 	const [data, setData] = useState(value)
 
 	const getRowByKey = (key, newData) =>
 		(newData || data || []).find(item => item.key === key)
 
-	const toggleEditable = (e, key) => {
-		e.preventDefault()
-		const newData = data && data.map(item => ({ ...item }))
-		const target = getRowByKey(key, newData, data)
-		if (target) {
-			// 进入编辑状态前保存原始数据
-			if (!target.editable) {
-				cacheOriginData[key] = { ...target }
-				setCacheOriginData(cacheOriginData)
-			}
+	// const toggleEditable = (e, key) => {
+	// 	e.preventDefault()
+	// 	const newData = data && data.map(item => ({ ...item }))
+	// 	const target = getRowByKey(key, newData, data)
+	// 	if (target) {
+	// 		// 进入编辑状态前保存原始数据
+	// 		if (!target.editable) {
+	// 			cacheOriginData[key] = { ...target }
+	// 			setCacheOriginData(cacheOriginData)
+	// 		}
 
-			target.editable = !target.editable
-			setData(newData)
-		}
-	}
+	// 		target.editable = !target.editable
+	// 		setData(newData)
+	// 	}
+	// }
 
 	const removeRow = key => {
 		const newData = (data || []).filter(item => item.key !== key)
@@ -41,84 +39,94 @@ const TableForm = (
 		}
 	}
 
-	const handleFieldChange = (e, fieldName, key) => {
+	const handleFieldChange = (e, fieldName, key, value) => {
+		console.log(e, fieldName, key)
 		const newData = [...data]
 		const target = getRowByKey(key, newData)
 		if (target) {
-			target[fieldName] = e.target.value
+			target[fieldName] = e ? e.target.value : value
 			setData(newData)
 		}
 	}
 
-	const saveRow = (e, key) => {
-		e.persist()
-		setLoading(true)
-		setTimeout(() => {
-			if (clickedCancel) {
-				setClickedCancel(false)
-				return
-			}
+	// const handleFieldSelectChange = (value, fieldName ,key) => {
+	// 	const newData = [...data]
+	// 	const target = getRowByKey(key, newData)
+	// 	if (target) {
+	// 		target[fieldName] = value
+	// 		setData(newData)
+	// 	}
+	// }
 
-			const target = getRowByKey(key) || {}
+	// const saveRow = (e, key) => {
+	// 	e.persist()
+	// 	setLoading(true)
+	// 	setTimeout(() => {
+	// 		if (clickedCancel) {
+	// 			setClickedCancel(false)
+	// 			return
+	// 		}
 
-			if (!target.type || !target.name) {
-				message.error('请填写完整的成员信息')
-				e.target.focus()
-				setLoading(false)
-				return
-			}
+	// 		const target = getRowByKey(key) || {}
 
-			delete target.isNew
-			toggleEditable(e, key)
+	// 		if (!target.type || !target.name) {
+	// 			message.error('请填写完整的成员信息')
+	// 			e.target.focus()
+	// 			setLoading(false)
+	// 			return
+	// 		}
 
-			if (onChange) {
-				onChange(data)
-			}
+	// 		delete target.isNew
+	// 		toggleEditable(e, key)
 
-			setLoading(false)
-		}, 500)
-	}
+	// 		if (onChange) {
+	// 			onChange(data)
+	// 		}
 
-	const handleKeyPress = (e, key) => {
-		// 回车键自动保存
-		if (e.key === 'Enter') {
-			saveRow(e, key)
-		}
-	}
+	// 		setLoading(false)
+	// 	}, 500)
+	// }
 
-	const cancelAction = (e, key) => {
-		e.preventDefault()
-		setClickedCancel(true)
-		const newData = [...data]
+	// const handleKeyPress = (e, key) => {
+	// 	// 回车键自动保存
+	// 	if (e.key === 'Enter') {
+	// 		saveRow(e, key)
+	// 	}
+	// }
 
-		const cacheData = newData.map(item => {
-			if (item.key === key) {
-				if (cacheOriginData[key]) {
-					const originItem = {
-						...item,
-						...cacheOriginData[key],
-						editable: false,
-					}
+	// const cancelAction = (e, key) => {
+	// 	e.preventDefault()
+	// 	setClickedCancel(true)
+	// 	const newData = [...data]
 
-					delete cacheOriginData[key]
+	// 	const cacheData = newData.map(item => {
+	// 		if (item.key === key) {
+	// 			if (cacheOriginData[key]) {
+	// 				const originItem = {
+	// 					...item,
+	// 					...cacheOriginData[key],
+	// 					editable: false,
+	// 				}
 
-					setCacheOriginData(cacheOriginData)
-					return originItem
-				}
-			}
+	// 				delete cacheOriginData[key]
 
-			return item
-		})
+	// 				setCacheOriginData(cacheOriginData)
+	// 				return originItem
+	// 			}
+	// 		}
 
-		setData(cacheData)
-		setClickedCancel(false)
-	}
+	// 		return item
+	// 	})
 
-	const newMember = () => {
+	// 	setData(cacheData)
+	// 	setClickedCancel(false)
+	// }
+
+	const addNewMember = () => {
 		const newData = (data || []).map(item => ({ ...item }))
 
 		newData.push({
-			key: `NEW_TEMP_ID_${index}`,
+			key: `KEY_${index}`,
 			editable: true,
 			isNew: true,
 			...initialValue,
@@ -133,25 +141,24 @@ const TableForm = (
 
 	useImperativeHandle(ref, () => ({
 		handleFieldChange,
-		handleKeyPress,
-		cancelAction,
+		// handleKeyPress,
+		// cancelAction,
 		removeRow,
-		saveRow,
-		toggleEditable,
-		getLoading: () => loading,
+		// saveRow,
+		// toggleEditable,
+		// loading,
 	}))
 
 	return (
 		<>
 			<Table
-				loading={loading}
+				// loading={loading}
 				columns={columns}
 				dataSource={data}
-				// rowClassName={record => (record.editable ? styles.editable : '')}
 				pagination={false}
 			/>
 			<Button
-				onClick={newMember}
+				onClick={addNewMember}
 				type="primary"
 				ghost
 				style={{

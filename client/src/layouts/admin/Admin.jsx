@@ -12,16 +12,6 @@ import './admin.less'
 
 const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
-const style = {
-	height: 40,
-	width: 40,
-	lineHeight: '40px',
-	borderRadius: 4,
-	backgroundColor: '#1088e9',
-	color: '#fff',
-	textAlign: 'center',
-	fontSize: 14,
-}
 class Admin extends Component {
 	async componentDidMount() {
 		const { data } = await reqBaseConfig()

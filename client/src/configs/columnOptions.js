@@ -1,75 +1,12 @@
 import { type, name, size, count, total, unit, actions } from '../components'
 
-// 交易管理, 表格表单的表单项配置
-export const tradeColumns = ref => [
-	type(ref),
-	name(ref),
-	size(ref),
-	count(ref),
-	actions(ref, {
-		align: 'center',
-	}),
-]
+/**交易管理, 表格表单的表单项配置
+ * (ref) => name(ref, {align: 'center'}), // 带有配置参数的表单项写法
+ */
+export const tradeColumns = [type, name, size, count, actions]
 
 // 交易管理, 表格表单的表单项初始值
 export const tradeColumnsInitialValue = {
 	type: '',
 	name: '',
 }
-
-const backup = (renderTypeInput, renderActions, ref) => [
-	{
-		title: '名称',
-		dataIndex: 'name',
-		key: 'name',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '规格',
-		dataIndex: 'size',
-		key: 'size',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '数量',
-		dataIndex: 'count',
-		key: 'count',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '小计',
-		// dataIndex: 'price',
-		key: 'total',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '单位',
-		// dataIndex: 'report',
-		key: 'unit',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '单价',
-		dataIndex: 'price',
-		key: 'price',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '金额',
-		dataIndex: 'report',
-		key: 'report',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '备注',
-		dataIndex: 'comments',
-		key: 'comments',
-		render: (text, record) => renderTypeInput(text, record, ref, 'name'),
-	},
-	{
-		title: '操作',
-		key: 'actions',
-		width: '10%',
-		render: (text, record) => renderActions(text, record, ref),
-	},
-]

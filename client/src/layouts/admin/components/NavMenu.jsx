@@ -34,6 +34,7 @@ const getMenuItems = menuList => {
 const menuItems = getMenuItems(menuList)
 
 // TODO: router.isActive()方式优化
+// TODO: 配置仅仅当前页面所在的菜单项展开的功能
 const NavMenu = ({ location: { pathname } }) => (
 	<Menu
 		selectedKeys={[pathname]}

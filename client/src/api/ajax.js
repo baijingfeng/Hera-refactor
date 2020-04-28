@@ -2,6 +2,8 @@ import Axios from 'axios'
 import qs from 'qs'
 import { message } from 'antd'
 
+import { history, memoryUtils, storageUtils } from '../utils'
+
 /** 创建一个axios实例对象ajax */
 const ajax = Axios.create({
 	baseURL: 'http://localhost:6762/api', //process.env.BASE_URL
@@ -28,7 +30,15 @@ ajax.interceptors.response.use(
 		return response.data
 	},
 	error => {
-		message.error(`请求失败 ${error}`)
+		if ((error.message || '').includes('401')) {
+			memoryUtils.userInfo = {}
+			storageUtils.removeUserInfo()
+			history.replace('/login')
+			message.error('权限失效, 请重新登录')
+		} else {
+			message.error(`请求失败 ${error}`)
+		}
+
 		return Promise.reject(error)
 	}
 )
