@@ -9,13 +9,11 @@ for (let i = 10; i < 36; i++) {
 }
 
 /** 表单列表项-名称 */
-export const renderNameSelect = (record, ref, fieldName) => {
+export const renderNameSelect = (text, record, ref, fieldName) => {
 	return (
 		<Select
-			size="middle"
-			defaultValue="a1"
-			onChange={e => ref.current.handleFieldChange(e, fieldName, record.key)}
-			style={{ width: 200 }}
+			value={text}
+			onChange={value => ref.current.handleFieldChange(false, fieldName, record.key, value)}
 		>
 			{children}
 		</Select>
@@ -26,7 +24,6 @@ export const name = (ref, configs) => ({
 	title: '名称',
 	dataIndex: 'name',
 	key: 'name',
-	align: 'center',
-	render: (_, record) => renderNameSelect(record, ref, 'name'),
+	render: (text, record) => renderNameSelect(text, record, ref, 'name'),
 	...configs,
 })

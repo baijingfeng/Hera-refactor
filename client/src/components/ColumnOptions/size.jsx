@@ -9,13 +9,14 @@ for (let i = 10; i < 36; i++) {
 }
 
 /** 表单列表项-规格 */
-export const renderSizeSelect = (record, ref, fieldName) => {
+export const renderSizeSelect = (text, record, ref, fieldName) => {
 	return (
 		<Select
 			size="middle"
-			defaultValue="a1"
-			onChange={e => ref.current.handleFieldChange(e, fieldName, record.key)}
-			style={{ width: 200 }}
+			value={text}
+			onChange={value =>
+				ref.current.handleFieldChange(false, fieldName, record.key, value)
+			}
 		>
 			{children}
 		</Select>
@@ -26,7 +27,6 @@ export const size = (ref, configs) => ({
 	title: '规格',
 	dataIndex: 'size',
 	key: 'size',
-	align: 'center',
-	render: (_, record) => renderSizeSelect(record, ref, 'size'),
+	render: (text, record) => renderSizeSelect(text, record, ref, 'size'),
 	...configs,
 })

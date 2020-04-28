@@ -10,13 +10,14 @@ for (let i = 10; i < 36; i++) {
 }
 
 /** 表单列表项-类型 */
-export const renderTypeSelect = (record, ref, fieldName) => {
+export const renderTypeSelect = (text, record, ref, fieldName) => {
 	return (
 		<Select
 			size="middle"
-			defaultValue="a1"
-			onChange={value => ref.current.handleFieldChange(false, fieldName, record.key, value)}
-			style={{ width: 200 }}
+			value={text}
+			onChange={value =>
+				ref.current.handleFieldChange(false, fieldName, record.key, value)
+			}
 		>
 			{children}
 		</Select>
@@ -27,7 +28,6 @@ export const type = (ref, configs) => ({
 	title: '类型',
 	dataIndex: 'type',
 	key: 'type',
-	align: 'center',
-	render: (_, record) => renderTypeSelect(record, ref, 'type'),
+	render: (text, record) => renderTypeSelect(text, record, ref, 'type'),
 	...configs,
 })
