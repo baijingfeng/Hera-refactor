@@ -26,7 +26,7 @@ export class Home extends Component {
 
 	getLogData = () => {
 		try {
-			this.logRef.current.getTablePage()
+			this.logRef.current.fetchPage()
 		} catch (error) {
 			message.error('刷新失败, 请稍后再试!')
 		}
