@@ -44,9 +44,6 @@ const TableForm = (
 	const handleFieldChange = (e, fieldName, key) => {
 		const newData = [...data]
 		const target = getRowByKey(key, newData)
-		console.log('key', { value: e.target.value, fieldName, key })
-		console.log('target', target)
-		console.log('data', data)
 		if (target) {
 			target[fieldName] = e.target.value
 			setData(newData)
@@ -150,7 +147,7 @@ const TableForm = (
 				loading={loading}
 				columns={columns}
 				dataSource={data}
-				rowClassName={record => (record.editable ? styles.editable : '')}
+				// rowClassName={record => (record.editable ? styles.editable : '')}
 				pagination={false}
 			/>
 			<Button

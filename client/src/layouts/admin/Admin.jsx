@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Layout, BackTop } from 'antd'
+import { Layout } from 'antd'
 
 import { memoryUtils } from '../../utils'
 import { APP_NAME } from '../../configs'
-import { ajax } from '../../api'
+import { ajax, reqBaseConfig } from '../../api'
 import NavMenu from './components/NavMenu'
 import Header from './components/header/Header'
 
@@ -12,7 +12,22 @@ import './admin.less'
 
 const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
+const style = {
+	height: 40,
+	width: 40,
+	lineHeight: '40px',
+	borderRadius: 4,
+	backgroundColor: '#1088e9',
+	color: '#fff',
+	textAlign: 'center',
+	fontSize: 14,
+}
 class Admin extends Component {
+	async componentDidMount() {
+		const { data } = await reqBaseConfig()
+		memoryUtils.baseConfig = { ...data }
+	}
+
 	render() {
 		const { access_token } = memoryUtils.userInfo
 
@@ -37,7 +52,6 @@ class Admin extends Component {
 					</AntdHeader>
 					<Content style={{ margin: '24px 16px 0', minHeight: 'auto' }}>
 						{children}
-						<BackTop />
 					</Content>
 					<Footer style={{ textAlign: 'center' }}>
 						<strong>Copyright © 2019 XX信息科技（上海）有限公司.</strong>

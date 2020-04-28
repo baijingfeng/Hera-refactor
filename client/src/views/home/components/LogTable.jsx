@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { renderReport, renderLogLevel, renderTime } from '../../../utils'
-import { reqLogFirstPageData } from '../../../api'
+import { reqLogFirstPageData, reqLogNextPageData } from '../../../api'
 import { ModelTable } from '../../../components'
 
 export default class LogTable extends Component {
@@ -45,6 +45,17 @@ export default class LogTable extends Component {
 		return { dataList: [...operations] }
 	}
 
+	getNextTablePage = async currentPageData => {
+		const lastItem = [...currentPageData].pop()
+		const { _id } = lastItem
+
+		const {
+			data: { operations },
+		} = await reqLogNextPageData({ id: _id })
+
+		return { dataList: [...currentPageData, ...operations] }
+	}
+
 	// TODO: 统一定义接口格式
 	// TODO: 写分页器
 	render() {
@@ -55,7 +66,7 @@ export default class LogTable extends Component {
 				columns={this.columns}
 				params={params}
 				getPage={this.getTablePage}
-				pagination={false}
+				getNextPage={this.getNextTablePage}
 			/>
 		)
 	}

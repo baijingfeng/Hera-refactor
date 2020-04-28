@@ -5,9 +5,11 @@ export { reqLogin } from './entry/login'
 export { reqLogout } from './entry/logout'
 /** 登录页面 */
 
+/** Admin */
+export { reqBaseConfig } from './admin/load'
+/** Admin */
+
 /** 首页 */
-export { reqRecordsData } from './home/records'
-export { reqAllTypeRecordsData } from './home/records'
-export { reqLogFirstPageData } from './home/log'
-export { reqLogNextPageData } from './home/log'
+export { reqRecordsData, reqAllTypeRecordsData } from './home/records'
+export { reqLogFirstPageData, reqLogNextPageData } from './home/log'
 /** 首页 */

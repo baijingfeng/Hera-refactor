@@ -11,6 +11,7 @@ export const tradeColumns = ref => [
 	}),
 ]
 
+// 交易管理, 表格表单的表单项初始值
 export const tradeColumnsInitialValue = {
 	type: '',
 	name: '',
