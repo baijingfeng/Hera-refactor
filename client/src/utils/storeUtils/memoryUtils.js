@@ -2,5 +2,5 @@ import { storageUtils } from './storageUtils'
 
 export const memoryUtils = {
 	userInfo: storageUtils.getUserInfo(),
-	baseConfig: {},
+	systemInfo: storageUtils.getSystemInfo(),
 }

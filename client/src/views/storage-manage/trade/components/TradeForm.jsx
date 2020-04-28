@@ -1,10 +1,10 @@
 import React from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
-import { PURCHASING_CLIENT_TYPES } from '../../../../configs'
+import { getVendors, memoryUtils } from '../../../../utils'
 import TradeTableForm from './TradeTableForm'
 import { ProjectTypeItem } from '../../../../components'
 
-const { Item } = Form
+const FormItem = Form.Item
 const { Option } = Select
 const { TextArea } = Input
 
@@ -22,12 +22,21 @@ const fieldLabels = {
 	comments: '备注',
 }
 
-export const TradeForm = () => {
+export const TradeForm = (props) => {
+	const { projects } = memoryUtils.systemInfo
+	// const [form] = Form.useForm()
+	let projectType = ''
+	
+	const onProjectTypeChange = (value) => {
+		projectType = value
+	}
+	console.log(projectType)
 	return (
-		<Form {...formItemLayout} onFinish={() => {}}>
+		<Form name="tradeForm" {...formItemLayout} onFinish={() => {}}>
 			<Card title="表头信息" bordered={false}>
 				<Row gutter={25}>
 					<ProjectTypeItem
+						onChange={onProjectTypeChange}
 						colCof={{
 							lg: 6,
 							md: 12,
@@ -40,19 +49,22 @@ export const TradeForm = () => {
 						md={{ span: 12 }}
 						sm={24}
 					>
-						<Item
+						<FormItem
 							label={fieldLabels.project}
+							
 							name="project"
 							rules={[{ required: true, message: '请选择项目部!' }]}
 						>
 							<Select style={{ width: 300 }} placeholder="请选择项目部">
-								{PURCHASING_CLIENT_TYPES.map((item, index) => (
-									<Option key={`${index}${item}`} value={item}>
-										{item}
-									</Option>
-								))}
+								{getVendors(projects)
+									.filter(project => project.type === projectType)
+									.map(project => (
+										<Option key={project._id} value={project._id}>
+											{project.company + project.name}
+										</Option>
+									))}
 							</Select>
-						</Item>
+						</FormItem>
 					</Col>
 					<Col
 						xl={{ span: 8, offset: 2 }}
@@ -60,16 +72,16 @@ export const TradeForm = () => {
 						md={{ span: 24 }}
 						sm={24}
 					>
-						<Item label={fieldLabels.outDate} name="outDate">
+						<FormItem label={fieldLabels.outDate} name="outDate">
 							<DatePicker onChange={() => {}} style={{ width: 300 }} />
-						</Item>
+						</FormItem>
 					</Col>
 				</Row>
 				<Row gutter={25}>
 					<Col lg={6} md={12} sm={24}>
-						<Item label={fieldLabels.originalOrder} name="originalOrder">
+						<FormItem label={fieldLabels.originalOrder} name="originalOrder">
 							<Input style={{ width: 300 }} placeholder="请填写原始单号" />
-						</Item>
+						</FormItem>
 					</Col>
 					<Col
 						xl={{ span: 6, offset: 2 }}
@@ -77,9 +89,9 @@ export const TradeForm = () => {
 						md={{ span: 12 }}
 						sm={24}
 					>
-						<Item label={fieldLabels.carNumber} name="carNumber">
+						<FormItem label={fieldLabels.carNumber} name="carNumber">
 							<Input style={{ width: 300 }} placeholder="请填写车号" />
-						</Item>
+						</FormItem>
 					</Col>
 					<Col
 						xl={{ span: 8, offset: 2 }}
@@ -87,16 +99,20 @@ export const TradeForm = () => {
 						md={{ span: 24 }}
 						sm={24}
 					>
-						<Item label={fieldLabels.comments} name="comments">
-							<TextArea autoSize={{ maxRows: 3 }} style={{ width: 300 }} placeholder="备注信息" />
-						</Item>
+						<FormItem label={fieldLabels.comments} name="comments">
+							<TextArea
+								autoSize={{ maxRows: 3 }}
+								style={{ width: 300 }}
+								placeholder="备注信息"
+							/>
+						</FormItem>
 					</Col>
 				</Row>
 			</Card>
 			<Card title="表单信息" style={{}} bordered={false}>
-				<Item name="entries">
+				<FormItem name="entries">
 					<TradeTableForm />
-				</Item>
+				</FormItem>
 			</Card>
 		</Form>
 	)

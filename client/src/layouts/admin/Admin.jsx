@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
 
-import { memoryUtils } from '../../utils'
+import { memoryUtils, storageUtils } from '../../utils'
 import { APP_NAME } from '../../configs'
-import { ajax, reqBaseConfig } from '../../api'
+import { ajax, reqSystemInfo } from '../../api'
 import NavMenu from './components/NavMenu'
 import Header from './components/header/Header'
 
@@ -13,9 +13,14 @@ import './admin.less'
 const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
 class Admin extends Component {
-	async componentDidMount() {
-		const { data } = await reqBaseConfig()
-		memoryUtils.baseConfig = { ...data }
+	fetchSystemInfo = async () => {
+		const { data } = await reqSystemInfo()
+		storageUtils.setSystemInfo(data)
+		memoryUtils.systemInfo = data
+	}
+
+	componentDidMount() {
+		this.fetchSystemInfo()
 	}
 
 	render() {

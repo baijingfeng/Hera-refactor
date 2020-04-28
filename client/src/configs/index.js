@@ -4,6 +4,11 @@ export { Icons }
 export { menuList } from './menuList'
 export { leftNavStyle } from './styleConfig'
 
-export { APP_NAME, PURCHASING_CLIENT_TYPES } from './baseConfig'
+export {
+	APP_NAME,
+	PURCHASING_CLIENT_TYPES,
+	VENDOR_TYPE_SET,
+} from './baseConfig'
 
+/** table型表单的列表项相关配置 */
 export { tradeColumns, tradeColumnsInitialValue } from './columnOptions'

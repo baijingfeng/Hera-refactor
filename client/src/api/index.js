@@ -6,7 +6,7 @@ export { reqLogout } from './entry/logout'
 /** 登录页面 */
 
 /** Admin */
-export { reqBaseConfig } from './admin/load'
+export { reqSystemInfo } from './admin/load'
 /** Admin */
 
 /** 首页 */

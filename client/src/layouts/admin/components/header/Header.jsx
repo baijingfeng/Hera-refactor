@@ -24,8 +24,12 @@ class Header extends Component {
 			okText: '确认',
 			cancelText: '取消',
 			onOk: async () => {
+				memoryUtils.systemInfo = {}
+				storageUtils.removeSystemInfo()
+
 				memoryUtils.userInfo = {}
 				storageUtils.removeUserInfo()
+				
 				history.replace('/login')
 				try {
 					const { message: msg } = await reqLogout()

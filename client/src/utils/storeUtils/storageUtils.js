@@ -4,6 +4,7 @@
 import store from 'store'
 
 const USER_INFO = 'USER_INFO'
+const SYSTEM_INFO = 'SYSTEM_INFO'
 
 export const storageUtils = {
 	setUserInfo(userInfo) {
@@ -16,5 +17,17 @@ export const storageUtils = {
 
 	removeUserInfo() {
 		store.remove(USER_INFO)
+	},
+
+	setSystemInfo(systemInfo) {
+		store.set(SYSTEM_INFO, systemInfo)
+	},
+
+	getSystemInfo() {
+		return store.get(SYSTEM_INFO) || {}
+	},
+
+	removeSystemInfo() {
+		store.remove(SYSTEM_INFO)
 	},
 }

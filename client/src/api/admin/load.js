@@ -1,6 +1,6 @@
 import ajax from '../ajax'
 
-export function reqBaseConfig() {
+export function reqSystemInfo() {
 	return ajax({
 		url: '/load',
 		method: 'get',
