@@ -8,3 +8,5 @@ export * from './ColumnOptions'
 /** 表单项 */
 export { default as ColItem } from './ColItem/ColItem'
 export * from './FormItems'
+
+export { SubmitButton } from './SubmitButton/SubmitButton'

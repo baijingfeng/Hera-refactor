@@ -1,13 +1,20 @@
 import React, { useRef } from 'react'
 
 import { TableForm } from '../../../../components'
-import { tradeColumns, tradeColumnsInitialValue } from '../../../../configs'
+import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
 
-const TradeTableForm = () => {
+const TradeTableForm = ({ value }) => {
 	const tableForm = useRef()
 	const columns = tradeColumns.map(itemFunc => itemFunc(tableForm))
-	const initialValue = tradeColumnsInitialValue
-	return <TableForm ref={tableForm} columns={columns} initialValue={initialValue}/>
+	const initialRowValue = tradeColumnsInitialRowValue
+	return (
+		<TableForm
+			ref={tableForm}
+			columns={columns}
+			value={value}
+			initialRowValue={initialRowValue}
+		/>
+	)
 }
 
 export default TradeTableForm

@@ -8,6 +8,9 @@ import { GridCard } from '../../components'
 
 import './home.less'
 
+const rowStyle = {
+	marginTop: 25,
+}
 export class Home extends Component {
 	constructor(props) {
 		super(props)
@@ -20,8 +23,8 @@ export class Home extends Component {
 		this.logRef = React.createRef()
 	}
 
-	rowStyle = {
-		marginTop: 25,
+	componentDidMount() {
+		this.fetchAllTypeRecordsData()
 	}
 
 	getLogData = () => {
@@ -30,18 +33,17 @@ export class Home extends Component {
 		} catch (error) {
 			message.error('刷新失败, 请稍后再试!')
 		}
-
-		message.success('刷新成功!')
 	}
 
-	async componentDidMount() {
+	fetchAllTypeRecordsData = async () => {
 		const res = await reqAllTypeRecordsData({
 			store: '586df7fe2d256304867ab346',
 		})
 
 		const [newInRecords, newOutRecords, updateRecords] = res.map(
-			res => res.data.num
+			selfRes => selfRes.data.num
 		)
+
 		this.setState({
 			newInRecords,
 			newOutRecords,
@@ -58,7 +60,7 @@ export class Home extends Component {
 						亲爱的，欢迎使用赫拉管理系统，祝您心情愉快，工作顺利！
 					</GridCard>
 				</Row>
-				<Row gutter={16} style={this.rowStyle}>
+				<Row gutter={16} style={rowStyle}>
 					<GridCard span={8} title="入库单新增量">
 						{newInRecords}
 					</GridCard>
@@ -69,7 +71,7 @@ export class Home extends Component {
 						{updateRecords}
 					</GridCard>
 				</Row>
-				<Row style={this.rowStyle}>
+				<Row style={rowStyle}>
 					<GridCard
 						span={24}
 						title="流程"
@@ -83,7 +85,7 @@ export class Home extends Component {
 						<FlowTable />
 					</GridCard>
 				</Row>
-				<Row style={this.rowStyle}>
+				<Row style={rowStyle}>
 					<GridCard
 						span={24}
 						title="日志"

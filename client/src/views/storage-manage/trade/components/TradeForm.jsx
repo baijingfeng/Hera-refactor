@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
 import { getVendors, memoryUtils } from '../../../../utils'
 import TradeTableForm from './TradeTableForm'
@@ -22,21 +22,18 @@ const fieldLabels = {
 	comments: '备注',
 }
 
-export const TradeForm = (props) => {
-	const { projects } = memoryUtils.systemInfo
-	// const [form] = Form.useForm()
-	let projectType = ''
-	
-	const onProjectTypeChange = (value) => {
-		projectType = value
-	}
-	console.log(projectType)
+const { projects } = memoryUtils.systemInfo
+
+export const TradeForm = ({ onSubmit }) => {
+	const [projectType, setProjectType] = useState('项目仓库')
+	const [entries, setEntries] = useState([])
+
 	return (
-		<Form name="tradeForm" {...formItemLayout} onFinish={() => {}}>
+		<Form id="tradeForm" {...formItemLayout} onFinish={onSubmit}>
 			<Card title="表头信息" bordered={false}>
 				<Row gutter={25}>
 					<ProjectTypeItem
-						onChange={onProjectTypeChange}
+						onChange={setProjectType}
 						colCof={{
 							lg: 6,
 							md: 12,
@@ -51,7 +48,6 @@ export const TradeForm = (props) => {
 					>
 						<FormItem
 							label={fieldLabels.project}
-							
 							name="project"
 							rules={[{ required: true, message: '请选择项目部!' }]}
 						>
@@ -111,7 +107,7 @@ export const TradeForm = (props) => {
 			</Card>
 			<Card title="表单信息" style={{}} bordered={false}>
 				<FormItem name="entries">
-					<TradeTableForm />
+					<TradeTableForm value={entries}/>
 				</FormItem>
 			</Card>
 		</Form>

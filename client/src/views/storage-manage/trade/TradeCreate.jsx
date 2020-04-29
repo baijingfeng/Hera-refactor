@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Card, Button, Form } from 'antd'
+import { Card } from 'antd'
 
+import { SubmitButton } from '../../../components'
 import { TradeForm } from './components/TradeForm'
 
 const tabList = [
@@ -14,23 +15,24 @@ const tabList = [
 	},
 ]
 
-const SubmitButton = () => (
-	<Button type="primary" htmlType="submit">
-		保存
-	</Button>
-)
-
 export const TradeCreate = () => {
 	const [key, setKey] = useState('采购入库')
+	const [formValue, setFormValue] = useState(null)
+
+	const onSubmit = value => {
+		console.log('value', value)
+		setFormValue(value)
+	}
+
 	return (
 		<Card
 			style={{ width: '100%' }}
 			tabList={tabList}
 			activeTabKey={key}
 			onTabChange={setKey}
-			tabBarExtraContent={<SubmitButton />}
+			tabBarExtraContent={<SubmitButton form="tradeForm" />}
 		>
-			<TradeForm />
+			<TradeForm onSubmit={onSubmit} />
 		</Card>
 	)
 }

@@ -3,7 +3,7 @@ import { Table, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
 const TableForm = (
-	{ columns = [], value = [], initialValue = {}, onChange },
+	{ columns = [], value = [], initialRowValue = {}, onChange },
 	ref
 ) => {
 	const [index, setIndex] = useState(0)
@@ -16,7 +16,7 @@ const TableForm = (
 		const newData = (data || []).map(item => ({ ...item }))
 		newData.push({
 			key: `KEY_${index}`,
-			...initialValue,
+			...initialRowValue,
 		})
 		setIndex(index + 1)
 		setData(newData)
@@ -25,6 +25,11 @@ const TableForm = (
 	const removeRow = key => {
 		const newData = (data || []).filter(item => item.key !== key)
 		setData(newData)
+
+		if (onChange) {
+			onChange(newData)
+		}
+		
 	}
 
 	const handleFieldChange = (e, fieldName, key, value) => {
@@ -33,6 +38,10 @@ const TableForm = (
 		if (target) {
 			target[fieldName] = e ? e.target.value : value
 			setData(newData)
+		}
+
+		if (onChange) {
+			onChange(newData)
 		}
 	}
 
