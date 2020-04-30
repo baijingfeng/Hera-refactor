@@ -24,12 +24,12 @@ const fieldLabels = {
 
 const { projects } = memoryUtils.systemInfo
 
-export const TradeForm = ({ onSubmit }) => {
+export const TradeForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
 	const [entries, setEntries] = useState([])
 
 	return (
-		<Form id="tradeForm" {...formItemLayout} onFinish={onSubmit}>
+		<Form id={formId} onFinish={onSubmit} {...formItemLayout} >
 			<Card title="表头信息" bordered={false}>
 				<Row gutter={25}>
 					<ProjectTypeItem
@@ -107,7 +107,7 @@ export const TradeForm = ({ onSubmit }) => {
 			</Card>
 			<Card title="表单信息" style={{}} bordered={false}>
 				<FormItem name="entries">
-					<TradeTableForm value={entries}/>
+					<TradeTableForm value={entries} onChange={setEntries}/>
 				</FormItem>
 			</Card>
 		</Form>

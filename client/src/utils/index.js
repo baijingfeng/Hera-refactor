@@ -12,7 +12,7 @@ export { renderTime } from './renderFormat/renderTime'
 /** 格式化 */
 
 /** 表单选项生成 */
-export { getVendors } from './selectOptions/selectOptions'
+export { getVendors, transformArticle } from './selectOptions/selectOptions'
 /** 表单选项生成 */
 
 /** 数据转换 */

@@ -29,8 +29,12 @@ const transformProducts = (products = []) => {
 	return results
 }
 
-const getArticles = (products = []) =>
-	new OrderedMap(products.map(product => [product.number, product]))
+const getArticles = (products = []) => {
+	const result = new OrderedMap(products.map(product => [product.number, product]))
+	console.log('result', result)
+	return result
+}
+	
 
 const getNewSystemState = (
 	state,

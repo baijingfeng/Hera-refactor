@@ -21,6 +21,7 @@ export const TradeCreate = () => {
 
 	const onSubmit = value => {
 		console.log('value', value)
+		console.log('key', key)
 		setFormValue(value)
 	}
 
@@ -32,7 +33,7 @@ export const TradeCreate = () => {
 			onTabChange={setKey}
 			tabBarExtraContent={<SubmitButton form="tradeForm" />}
 		>
-			<TradeForm onSubmit={onSubmit} />
+			<TradeForm formId="tradeForm" formValue={formValue} onSubmit={onSubmit} />
 		</Card>
 	)
 }

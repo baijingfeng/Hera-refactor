@@ -20,6 +20,10 @@ const TableForm = (
 		})
 		setIndex(index + 1)
 		setData(newData)
+
+		if (onChange) {
+			onChange(newData)
+		}
 	}
 
 	const removeRow = key => {

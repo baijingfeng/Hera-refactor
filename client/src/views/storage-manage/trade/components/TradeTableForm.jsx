@@ -3,8 +3,8 @@ import React, { useRef } from 'react'
 import { TableForm } from '../../../../components'
 import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
 
-const TradeTableForm = ({ value }) => {
-	const tableForm = useRef()
+const TradeTableForm = ({ value, onChange }) => {
+	const tableForm = useRef(null)
 	const columns = tradeColumns.map(itemFunc => itemFunc(tableForm))
 	const initialRowValue = tradeColumnsInitialRowValue
 	return (
@@ -13,6 +13,7 @@ const TradeTableForm = ({ value }) => {
 			columns={columns}
 			value={value}
 			initialRowValue={initialRowValue}
+			onChange={onChange}
 		/>
 	)
 }
