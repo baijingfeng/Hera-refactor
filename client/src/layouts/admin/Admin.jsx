@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { Layout } from 'antd'
+import { connect } from 'react-redux'
 
 import { memoryUtils, storageUtils } from '../../utils'
 import { APP_NAME } from '../../configs'
 import { ajax, reqSystemInfo } from '../../api'
 import NavMenu from './components/NavMenu'
 import Header from './components/header/Header'
-
+import { systemLoaded } from '../../redux/actions'
 import './admin.less'
 
 const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
 class Admin extends Component {
+	static propsType = {
+		systemLoaded: PropTypes.func.isRequired,
+	}
+
 	fetchSystemInfo = async () => {
 		const { data } = await reqSystemInfo()
+		this.props.systemLoaded(data)
 		storageUtils.setSystemInfo(data)
 		memoryUtils.systemInfo = data
 	}
@@ -57,4 +64,4 @@ class Admin extends Component {
 	}
 }
 
-export default Admin
+export default connect(undefined, { systemLoaded })(Admin)
