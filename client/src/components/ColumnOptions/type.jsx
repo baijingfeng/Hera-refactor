@@ -1,34 +1,32 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useCallback } from 'react'
 import { Select } from 'antd'
+import { useDispatch } from 'react-redux'
 
-import { transformArticle } from '../../utils'
+import { useArticles } from '../../utils'
+import { changeTableFormType } from '../../redux/actions'
 
 const { Option } = Select
-
-const children = []
-
-for (let i = 10; i < 36; i++) {
-	children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>)
-}
 
 /** 表单列表项-类型 */
 export const TypeSelect = React.forwardRef(
 	({ text, record, fieldName }, ref) => {
-		const articles = useSelector(state => state.system.articles)
-		console.log('articles', articles)
-		const { typeNameMap, nameArticleMap } = transformArticle(articles.toArray())
-		console.log('typeNameMap', typeNameMap)
+		const { typeNameMap } = useArticles()
+		const dispatch = useDispatch()
+
+		const onChange = useCallback(
+			value => {
+				dispatch(changeTableFormType(value))
+				ref.current.handleFieldChange(false, fieldName, record.key, value)
+			},
+			[dispatch]
+		)
+
 		return (
-			<Select
-				size="middle"
-				value={text}
-				onChange={value =>
-					ref.current.handleFieldChange(false, fieldName, record.key, value)
-				}
-			>
+			<Select size="middle" value={text} onChange={onChange}>
 				{Object.keys(typeNameMap).map((type, index) => (
-					<Option key={index.toString()}>{type}</Option>
+					<Option key={index.toString()} value={type}>
+						{type}
+					</Option>
 				))}
 			</Select>
 		)
@@ -42,4 +40,5 @@ export const type = (ref, configs) => ({
 	render: (text, record) => (
 		<TypeSelect text={text} record={record} fieldName="type" ref={ref} />
 	),
+	...configs,
 })

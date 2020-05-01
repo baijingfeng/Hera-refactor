@@ -7,8 +7,8 @@ export const tradeColumns = [type, name, size, count, actions]
 
 // 交易管理, 表格表单的表单项初始值
 export const tradeColumnsInitialRowValue = {
-	type: 'a10',
-	name: 'b11',
-	size: 'c12',
+	type: '租赁类',
+	name: '',
+	size: '',
 	count: 1,
 }

@@ -11,7 +11,7 @@ const system = (state = new SystemRecord(), { type, data }) => {
 		default:
 			return state
 	}
-} 
+}
 
 const transformProjects = (projects = []) =>
 	new Map(projects.map(project => [project._id, project]))
@@ -29,12 +29,8 @@ const transformProducts = (products = []) => {
 	return results
 }
 
-const getArticles = (products = []) => {
-	const result = new OrderedMap(products.map(product => [product.number, product]))
-	console.log('result', result)
-	return result
-}
-	
+const getArticles = (products = []) =>
+	new OrderedMap(products.map(product => [product.number, product]))
 
 const getNewSystemState = (
 	state,
