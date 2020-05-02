@@ -2,6 +2,8 @@ import React from 'react'
 import { Table, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
+import { useTableDatas } from '../../utils'
+
 const styleObject = {
 	marginTop: 16,
 	marginBottom: 8,
@@ -9,10 +11,11 @@ const styleObject = {
 	borderStyle: 'dashed',
 }
 
-export const EditableTable = ({ columns = [], tableDatas = [], addNewRow }) => {
+export const EditableTable = ({ columns = [], initialRowValue = {} }) => {
+	const { datas, addNewRow } = useTableDatas({ initialRowValue })
 	return (
 		<>
-			<Table columns={columns} dataSource={tableDatas} pagination={false} />
+			<Table columns={columns} dataSource={datas} pagination={false} />
 			<Button onClick={addNewRow} type="primary" ghost style={styleObject}>
 				<PlusOutlined />
 				增加

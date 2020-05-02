@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux'
 
 import system from './system'
-import { formDeps } from './formDeps'
-import { tableData } from './tableData'
-
+import { tableDatas } from './tableDatas'
 
 export default combineReducers({
 	system,
-	formDeps,
-	tableData,
+	tableDatas,
 })

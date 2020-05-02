@@ -11,4 +11,4 @@ export {
 } from './baseConfig'
 
 /** table型表单的列表项相关配置 */
-export { tradeColumns, tradeColumnsInitialRowValue } from './columnOptions'
+export { tradeColumns, tradeColumnsInitialRowValue } from './tableColumnsConfig'
