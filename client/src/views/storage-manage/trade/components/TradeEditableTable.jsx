@@ -1,63 +1,58 @@
-import React, { useRef, useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { EditableTable } from '../../../../components'
 import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
+import { changeTableDatas } from '../../../../redux/actions'
 
 const TradeEditableTable = () => {
+	const dispatch = useDispatch()
 	const [index, setIndex] = useState(0)
-	const [tableDatas, setTableDatas] = useState(value)
+	const [datas, setDatas] = useState([])
 
-	const tableForm = useRef(null)
-	const columns = tradeColumns.map(itemFunc => itemFunc(tableForm))
+	const columns = tradeColumns.map(itemFunc => itemFunc())
 	const initialRowValue = tradeColumnsInitialRowValue
 
 	const addNewRow = useCallback(() => {
-		const newDatas = tableDatas.map(item => ({ ...item }))
+		const newDatas = datas.map(item => ({ ...item }))
 		newDatas.push({
 			key: `KEY_${index}`,
 			...initialRowValue,
 		})
+
 		setIndex(index + 1)
-		setTableDatas(newDatas)
+		setDatas(newDatas)
+		dispatch(changeTableDatas(newDatas))
 
-		if (onChange) {
-			onChange(newDatas)
-		}
-	}, [tableDatas, initialRowValue, onChange])
+	}, [datas, initialRowValue, dispatch, index])
 
-	const getRowByKey = (key, newData) =>
-		(newData || data || []).find(item => item.key === key)
+	// const getRowByKey = (key, newDatas) =>
+	// 	(newDatas || datas || []).find(item => item.key === key)
 
-	const removeRow = key => {
-		const newData = (data || []).filter(item => item.key !== key)
-		setData(newData)
+	// const removeRow = key => {
+	// 	const newDatas = (datas || []).filter(item => item.key !== key)
 
-		if (onChange) {
-			onChange(newData)
-		}
-	}
+	// 	setDatas(newDatas)
+	// 	dispatch(changeTableDatas(newDatas))
+	// }
 
-	const handleFieldChange = (e, fieldName, key, value) => {
-		const newData = [...data]
+	// const handleFieldChange = (e, fieldName, key, value) => {
+	// 	const newDatas = [...datas]
 
-		const target = getRowByKey(key, newData)
-		if (target) {
-			target[fieldName] = e ? e.target.value : value
-			setData(newData)
-		}
+	// 	const target = getRowByKey(key, newDatas)
+	// 	if (target) {
+	// 		target[fieldName] = e ? e.target.value : value
 
-		if (onChange) {
-			onChange(newData)
-		}
-	}
+	// 		setDatas(newDatas)
+	// 		dispatch(changeTableDatas(newDatas))
+	// 	}
+	// }
 
 	return (
 		<EditableTable
-			ref={tableForm}
 			columns={columns}
-			tableDatas={value}
+			tableDatas={datas}
 			initialRowValue={initialRowValue}
-			onChange={onChange}
 			addNewRow={addNewRow}
 		/>
 	)

@@ -15,5 +15,7 @@ export { getVendors, transformArticle } from './selectOptions/selectOptions'
 /** 数据转换 */
 export { makeKeyFromNameSize } from './transformValues/system'
 
+// export { typeFunc, actionsFunc} from './tableColumns/tableColumns'
+
 /** 自定义Hooks */
 export * from './myHooks'
