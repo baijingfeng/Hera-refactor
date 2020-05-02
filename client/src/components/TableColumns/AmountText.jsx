@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 
 import { toFixedWithoutTrailingZero as fixed, useTableDatas } from '../../utils'
 
-const getSum = ({ subtotal, price }) => {
-	const sum = subtotal * price
+const getSum = ({ total, price }) => {
+	const sum = total * price
 	return isNaN(sum) ? false : sum
 }
 

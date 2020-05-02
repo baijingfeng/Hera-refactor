@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
 
-import { getVendors, memoryUtils } from '../../../../utils'
+import { getVendors, memoryUtils, useTableDatas } from '../../../../utils'
 import { ProjectTypeItem, EditableTable } from '../../../../components'
 import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
 
@@ -27,18 +27,17 @@ const { projects } = memoryUtils.systemInfo
 
 export const TradeForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
-
 	return (
 		<Form id={formId} onFinish={onSubmit} {...formItemLayout}>
 			<Card title="表头信息" bordered={false}>
 				<Row gutter={25}>
 					<ProjectTypeItem
-						onChange={setProjectType}
 						colCof={{
 							lg: 6,
 							md: 12,
 							sm: 24,
 						}}
+						onChange={setProjectType}
 					/>
 					<Col
 						xl={{ span: 6, offset: 2 }}

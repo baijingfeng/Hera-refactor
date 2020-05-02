@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Card } from 'antd'
 
 import { SubmitButton } from '../../../components'
 import { TradeForm } from './components/TradeForm'
+import { useTableDatas } from '../../../utils'
 
 const tabList = [
 	{
@@ -18,12 +19,15 @@ const tabList = [
 export const TradeCreate = () => {
 	const [key, setKey] = useState('采购入库')
 	const [formValue, setFormValue] = useState(null)
+	const { datas } = useTableDatas()
 
-	const onSubmit = value => {
-		console.log('value', value)
-		console.log('key', key)
-		setFormValue(value)
-	}
+	const onSubmit = useCallback(
+		value => {
+			console.log({ ...value, entries: datas })
+			setFormValue({ ...value, entries: datas })
+		},
+		[datas]
+	)
 
 	return (
 		<Card

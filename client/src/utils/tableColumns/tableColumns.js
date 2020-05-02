@@ -5,7 +5,7 @@ import {
 	NameSelect,
 	SizeSelect,
 	CountInput,
-	SubTotalText,
+	TotalText,
 	UnitText,
 	PriceInput,
 	AmountText,
@@ -49,11 +49,11 @@ export const count = configs => ({
 	...configs,
 })
 
-export const subtotal = configs => ({
+export const total = configs => ({
 	title: '小计',
-	key: 'subtotal',
+	key: 'total',
 	align: 'center',
-	render: (_, record) => <SubTotalText rowValue={record} />,
+	render: (_, record) => <TotalText rowValue={record} />,
 	...configs,
 })
 

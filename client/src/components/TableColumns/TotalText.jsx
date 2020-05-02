@@ -17,15 +17,15 @@ const getTotal = (products, rowValue) => {
 }
 
 /** 表单列表项-小计 */
-export const SubTotalText = ({ rowValue }) => {
+export const TotalText = ({ rowValue }) => {
 	const products = useSelector(store => store.system.products)
-	const subtotal = fixed(getTotal(products, rowValue))
+	const total = fixed(getTotal(products, rowValue))
 
   const { handleFieldChange } = useTableDatas()
   
 	useEffect(() => {
-		handleFieldChange(rowValue.key, 'subtotal', subtotal)
-	}, [rowValue, subtotal])
+		handleFieldChange(rowValue.key, 'total', total)
+	}, [rowValue, total])
 
-	return <span>{subtotal}</span>
+	return <span>{total}</span>
 }
