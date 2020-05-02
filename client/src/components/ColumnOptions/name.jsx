@@ -58,7 +58,7 @@ export const name = (ref, configs) => ({
 	dataIndex: 'name',
 	key: 'name',
 	render: (text, record) => (
-		<NameSelect text={text} record={record} fieldName="type" ref={ref} />
+		<NameSelect text={text} record={record} fieldName="name" ref={ref} />
 	),
 	...configs,
 })

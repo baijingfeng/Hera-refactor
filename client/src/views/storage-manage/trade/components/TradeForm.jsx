@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
+
 import { getVendors, memoryUtils } from '../../../../utils'
 import TradeTableForm from './TradeTableForm'
+import TradeEditableTable from './TradeEditableTable'
 import { ProjectTypeItem } from '../../../../components'
 
 const FormItem = Form.Item
@@ -28,6 +30,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
 	const [entries, setEntries] = useState([])
 
+	// console.log('entries', entries)
 	return (
 		<Form id={formId} onFinish={onSubmit} {...formItemLayout} >
 			<Card title="表头信息" bordered={false}>
@@ -108,6 +111,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 			<Card title="表单信息" style={{}} bordered={false}>
 				<FormItem name="entries">
 					<TradeTableForm value={entries} onChange={setEntries}/>
+					<TradeEditableTable value={entries} onChange={setEntries}/>
 				</FormItem>
 			</Card>
 		</Form>

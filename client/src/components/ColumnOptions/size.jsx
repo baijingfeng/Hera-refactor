@@ -9,24 +9,27 @@ for (let i = 10; i < 36; i++) {
 }
 
 /** 表单列表项-规格 */
-export const renderSizeSelect = (text, record, ref, fieldName) => {
-	return (
-		<Select
-			size="middle"
-			value={text}
-			onChange={value =>
-				ref.current.handleFieldChange(false, fieldName, record.key, value)
-			}
-		>
-			{children}
-		</Select>
-	)
-}
+export const SizeSelect = React.forwardRef(
+	({ value, record, fieldName }, ref) => {
+		return (
+			<Select
+				value={value}
+				onChange={value =>
+					ref.current.handleFieldChange(false, fieldName, record.key, value)
+				}
+			>
+				{children}
+			</Select>
+		)
+	}
+)
 
 export const size = (ref, configs) => ({
 	title: '规格',
 	dataIndex: 'size',
 	key: 'size',
-	render: (text, record) => renderSizeSelect(text, record, ref, 'size'),
+	render: (text, record) => (
+		<SizeSelect value={text} record={record} fieldName="size" ref={ref} />
+	),
 	...configs,
 })
