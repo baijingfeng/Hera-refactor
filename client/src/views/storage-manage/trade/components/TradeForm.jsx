@@ -32,7 +32,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 
 	// console.log('entries', entries)
 	return (
-		<Form id={formId} onFinish={onSubmit} {...formItemLayout} >
+		<Form id={formId} onFinish={onSubmit} {...formItemLayout}>
 			<Card title="表头信息" bordered={false}>
 				<Row gutter={25}>
 					<ProjectTypeItem
@@ -110,8 +110,8 @@ export const TradeForm = ({ formId, onSubmit }) => {
 			</Card>
 			<Card title="表单信息" style={{}} bordered={false}>
 				<FormItem name="entries">
-					<TradeTableForm value={entries} onChange={setEntries}/>
-					<TradeEditableTable value={entries} onChange={setEntries}/>
+					<TradeTableForm value={entries} onChange={setEntries} />
+					<TradeEditableTable />
 				</FormItem>
 			</Card>
 		</Form>

@@ -3,7 +3,7 @@ import React, { useRef, useState, useCallback } from 'react'
 import { EditableTable } from '../../../../components'
 import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
 
-const TradeEditableTable = ({ value, onChange }) => {
+const TradeEditableTable = () => {
 	const [index, setIndex] = useState(0)
 	const [tableDatas, setTableDatas] = useState(value)
 
@@ -24,6 +24,32 @@ const TradeEditableTable = ({ value, onChange }) => {
 			onChange(newDatas)
 		}
 	}, [tableDatas, initialRowValue, onChange])
+
+	const getRowByKey = (key, newData) =>
+		(newData || data || []).find(item => item.key === key)
+
+	const removeRow = key => {
+		const newData = (data || []).filter(item => item.key !== key)
+		setData(newData)
+
+		if (onChange) {
+			onChange(newData)
+		}
+	}
+
+	const handleFieldChange = (e, fieldName, key, value) => {
+		const newData = [...data]
+
+		const target = getRowByKey(key, newData)
+		if (target) {
+			target[fieldName] = e ? e.target.value : value
+			setData(newData)
+		}
+
+		if (onChange) {
+			onChange(newData)
+		}
+	}
 
 	return (
 		<EditableTable

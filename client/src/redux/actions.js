@@ -1,4 +1,4 @@
-import { SYSTEM_LOADED, CHANGE_TABLE, CHANGE_TABLE_FORM_TYPE } from './action-types'
+import { SYSTEM_LOADED, CHANGE_TABLE_DATAS, CHANGE_TABLE_FORM_TYPE } from './action-types'
 
 export const systemLoaded = data => ({
 	type: SYSTEM_LOADED,
@@ -11,6 +11,6 @@ export const changeTableFormType = tableFormType => ({
 })
 
 export const changeTable = payload => ({
-	type: CHANGE_TABLE,
+	type: CHANGE_TABLE_DATAS,
 	payload,
 })
