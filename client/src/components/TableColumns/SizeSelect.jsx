@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Select } from 'antd'
 
 import { useArticles, useTableDatas } from '../../utils'
@@ -21,7 +21,10 @@ export const SizeSelect = ({ value, rowValue }) => {
 
 	const optionValues = getSizeOptions(nameArticleMap, name)
 
-	const onChange = value => handleFieldChange(key, 'size', value)
+	const onChange = value => {
+		handleFieldChange(key, 'size', value)
+	}
+
 	return (
 		<Select value={value} onChange={onChange}>
 			{optionValues.map(({ value, label }, index) => (

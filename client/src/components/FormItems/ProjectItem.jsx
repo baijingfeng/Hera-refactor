@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { ColItem } from '../index'
+import ColItem from './components/ColItem'
 
 const ProjectItem = props => {
   return (

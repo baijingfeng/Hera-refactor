@@ -13,7 +13,7 @@ export { renderTime } from './renderFormat/renderTime'
 export { getVendors, transformArticle } from './selectOptions/selectOptions'
 
 /** 数据转换 */
-export { makeKeyFromNameSize } from './transformValues/system'
+export * from './transformValues/system'
 
 // export { typeFunc, actionsFunc} from './tableColumns/tableColumns'
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Select } from 'antd'
 
 import { useArticles, useTableDatas } from '../../utils'
@@ -10,8 +10,10 @@ export const TypeSelect = ({ rowKey, value }) => {
 	const { typeNameMap } = useArticles()
 	const { handleFieldChange } = useTableDatas({ rowKey })
 
-  const optionValues = Object.keys(typeNameMap)
-	const onChange = value => handleFieldChange(rowKey, 'type', value)
+	const optionValues = Object.keys(typeNameMap)
+	const onChange = value => {
+		handleFieldChange(rowKey, 'type', value)
+	}
 
 	return (
 		<Select size="middle" value={value} onChange={onChange}>
