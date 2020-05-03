@@ -27,6 +27,7 @@ export const name = configs => ({
 	dataIndex: 'name',
 	key: 'name',
 	align: 'center',
+	width: '15%',
 	render: (text, record) => <NameSelect value={text} rowValue={record} />,
 	...configs,
 })
@@ -36,6 +37,7 @@ export const size = configs => ({
 	dataIndex: 'size',
 	key: 'size',
 	align: 'center',
+	width: '15%',
 	render: (text, record) => <SizeSelect value={text} rowValue={record} />,
 	...configs,
 })
