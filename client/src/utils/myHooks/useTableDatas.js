@@ -35,6 +35,7 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 			const target = getRowByKey(key, newDatas)
 			if (target) {
 				target[fieldName] = value
+				console.log('changeTableData')
 				dispatch(changeTableDatas(newDatas))
 			}
 		},

@@ -21,11 +21,13 @@ export const TotalText = ({ rowValue }) => {
 	const products = useSelector(store => store.system.products)
 	const total = fixed(getTotal(products, rowValue))
 
-  const { handleFieldChange } = useTableDatas()
-  
+	const { handleFieldChange } = useTableDatas()
+
+	const { key } = rowValue
 	useEffect(() => {
-		handleFieldChange(rowValue.key, 'total', total)
-	}, [rowValue, total])
+		console.log('TotalText')
+		handleFieldChange(key, 'total', total)
+	}, [key, total])
 
 	return <span>{total}</span>
 }

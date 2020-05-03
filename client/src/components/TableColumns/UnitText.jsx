@@ -16,9 +16,11 @@ export const UnitText = ({ rowValue }) => {
 
 	const { handleFieldChange } = useTableDatas()
 
+	
 	useEffect(() => {
+		console.log('UnitText')
 		handleFieldChange(rowValue.key, 'unit', unit)
-	}, [rowValue, unit])
+	}, [rowValue.key, unit])
 
 	return <span>{unit}</span>
 }

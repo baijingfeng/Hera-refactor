@@ -13,7 +13,7 @@ export const AmountText = ({ rowValue }) => {
 
 	useEffect(() => {
 		handleFieldChange(rowValue.key, 'amount', amount)
-	}, [rowValue, amount])
+	}, [rowValue.key, amount])
 
 	return <span>{amount}</span>
 }
