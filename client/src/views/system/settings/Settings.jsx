@@ -7,12 +7,11 @@ import { saveSettings } from '../../../api/system/settings'
 import { useSelector, useDispatch } from 'react-redux'
 import { systemSettingsUpdated } from '../../../redux/actions'
 
+//TODO: 在本页面刷新,数据无法初始化填充
 export const Settings = () => {
 	const config = useSelector(store => store.system.config)
 	const [formValue, setFormValue] = useState(config)
 	const dispatch = useDispatch()
-
-	console.log('config', config)
 
 	const onSubmit = useCallback(
 		async settings => {
@@ -20,6 +19,7 @@ export const Settings = () => {
 			const { data } = await saveSettings(settings)
 			if (data) {
 				dispatch(systemSettingsUpdated(data))
+
 				setFormValue(data)
 				message.success('保存系统基础配置成功!')
 			} else {
@@ -39,6 +39,7 @@ export const Settings = () => {
 				formId="settingsForm"
 				formValue={formValue}
 				onSubmit={onSubmit}
+				onChange={setFormValue}
 			/>
 		</Card>
 	)
