@@ -7,7 +7,6 @@ const FormItem = Form.Item
 
 export const SettingsForm = ({ formId, formValue, onSubmit }) => {
 	const [tags, setTags] = useState(formValue['externalNames'])
-console.log('tags', tags)
 	return (
 		<Form
 			id={formId}

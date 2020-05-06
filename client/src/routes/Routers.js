@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { history } from '../utils'
 import Login from '../layouts/login/Login'
-import Admin from '../layouts/admin/Admin'
+import { Admin } from '../layouts/admin/Admin'
 import { Home, TradeCreate, RentCreate, Settings } from '../views'
 
 export default class Routers extends Component {

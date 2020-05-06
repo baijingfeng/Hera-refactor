@@ -8,13 +8,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import { systemSettingsUpdated } from '../../../redux/actions'
 
 export const Settings = () => {
-	const [formValue, setFormValue] = useState({})
 	const config = useSelector(store => store.system.config)
+	const [formValue, setFormValue] = useState(config)
 	const dispatch = useDispatch()
 
-	console.log('formValue', formValue)
+	console.log('config', config)
+	
 	const onSubmit = useCallback(
 		async settings => {
+			console.log(settings)
 			const { data } = await saveSettings(settings)
 			if (data) {
 				dispatch(systemSettingsUpdated(data))
@@ -35,7 +37,7 @@ export const Settings = () => {
 		>
 			<SettingsForm
 				formId="settingsForm"
-				formValue={formValue}
+				formValue={config}
 				onSubmit={onSubmit}
 			/>
 		</Card>
