@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Card, message } from 'antd'
 
 import { SubmitButton } from '../../../components'
@@ -13,7 +13,7 @@ export const Settings = () => {
 	const dispatch = useDispatch()
 
 	console.log('config', config)
-	
+
 	const onSubmit = useCallback(
 		async settings => {
 			console.log(settings)
@@ -37,7 +37,7 @@ export const Settings = () => {
 		>
 			<SettingsForm
 				formId="settingsForm"
-				formValue={config}
+				formValue={formValue}
 				onSubmit={onSubmit}
 			/>
 		</Card>

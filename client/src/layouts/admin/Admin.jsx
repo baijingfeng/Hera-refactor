@@ -16,6 +16,7 @@ const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
 export const Admin = ({ children }) => {
 	const dispatch = useDispatch()
+	
 	useEffect(() => {
 		const fetchSystemInfo = async () => {
 			const { data } = await reqSystemInfo()
