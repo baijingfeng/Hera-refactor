@@ -20,7 +20,7 @@ export const UnitText = ({ rowValue }) => {
 	useEffect(() => {
 		console.log('UnitText')
 		handleFieldChange(rowValue.key, 'unit', unit)
-	}, [rowValue.key, unit])
+	}, [handleFieldChange, rowValue.key, unit])
 
 	return <span>{unit}</span>
 }

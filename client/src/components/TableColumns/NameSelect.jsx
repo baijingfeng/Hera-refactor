@@ -26,9 +26,12 @@ export const NameSelect = ({ value, rowValue: { key, type } }) => {
 
 	const optionValues = getNameOptions(typeNameMap, nameArticleMap, type)
 
-	const onChange = value => {
-		handleFieldChange(key, 'name', value)
-	}
+	const onChange = useCallback(
+		value => {
+			handleFieldChange(key, 'name', value)
+		},
+		[handleFieldChange, key]
+	)
 
 	return (
 		<Select value={value} onChange={onChange}>

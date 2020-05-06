@@ -12,8 +12,8 @@ import {
 	actions,
 } from '../utils/tableColumns/tableColumns'
 
-/**交易管理, 表格表单的表单项配置 */
 // () => type({align: 'center'}), // 带有配置参数的表单项写法
+/**交易管理, 表格表单的表单项配置 */
 const tradeColumnsConfig = [
 	type,
 	name,
@@ -39,6 +39,30 @@ export const tradeColumnsInitialRowValue = {
 	unit: '',
 	price: '',
 	amount: '',
+	comments: '',
+}
+/**交易管理, 表格表单的表单项配置 */
+
+/**交易管理, 表格表单的表单项配置 */
+const rentColumnsConfig = [
+	type,
+	name,
+	size,
+	count,
+	total,
+	comments,
+	actions,
+]
+
+export const rentColumns = rentColumnsConfig.map(func => func())
+
+// 交易管理, 表格表单的表单项初始值
+export const rentColumnsInitialRowValue = {
+	type: '租赁类',
+	name: '',
+	size: '',
+	count: 0,
+	total: 0,
 	comments: '',
 }
 /**交易管理, 表格表单的表单项配置 */

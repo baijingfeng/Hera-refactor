@@ -72,7 +72,7 @@ export const menuList = [
 		children: [
 			{
 				title: '基础配置',
-				path: '/system/setting',
+				path: '/system/settings',
 			},
 			{
 				title: '产品信息',

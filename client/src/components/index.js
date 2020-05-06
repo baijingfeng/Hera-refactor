@@ -10,3 +10,5 @@ export * from './TableColumns'
 export * from './FormItems'
 
 export { SubmitButton } from './SubmitButton/SubmitButton'
+
+export { EditableTagGroup } from './EditableTagGroup/EditableTagGroup'

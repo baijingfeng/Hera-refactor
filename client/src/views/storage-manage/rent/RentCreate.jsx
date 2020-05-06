@@ -2,22 +2,22 @@ import React, { useState, useCallback } from 'react'
 import { Card } from 'antd'
 
 import { SubmitButton } from '../../../components'
-import { TradeForm } from './components/TradeForm'
+import { RentForm } from './components/RentForm'
 import { useTableDatas } from '../../../utils'
 
 const tabList = [
 	{
-		key: '采购入库',
-		tab: '采购入库',
+		key: '租赁入库',
+		tab: '租赁入库',
 	},
 	{
-		key: '销售出库',
-		tab: '销售出库',
+		key: '租赁出库',
+		tab: '租赁出库',
 	},
 ]
 
-export const TradeCreate = () => {
-	const [key, setKey] = useState('采购入库')
+export const RentCreate = () => {
+	const [key, setKey] = useState('租赁入库')
 	const [formValue, setFormValue] = useState(null)
 	const { datas } = useTableDatas()
 
@@ -36,9 +36,10 @@ export const TradeCreate = () => {
 			tabList={tabList}
 			activeTabKey={key}
 			onTabChange={setKey}
-			tabBarExtraContent={<SubmitButton form="tradeForm" />}
+			tabBarExtraContent={<SubmitButton form="rentForm" />}
 		>
-			<TradeForm formId="tradeForm" formValue={formValue} onSubmit={onSubmit} />
+			<RentForm formId="rentForm" formValue={formValue} onSubmit={onSubmit} />
 		</Card>
 	)
 }
+

@@ -4,6 +4,7 @@
 
 /** system */
 export const SYSTEM_LOADED = 'SYSTEM_LOADED'
+export const SYSTEM_SETTINGS_UPDATED = 'SYSTEM_SETTINGS_UPDATED'
 /** system */
 
 /** tableDatas */

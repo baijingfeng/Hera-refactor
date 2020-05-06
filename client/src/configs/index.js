@@ -8,7 +8,13 @@ export {
 	APP_NAME,
 	PURCHASING_CLIENT_TYPES,
 	VENDOR_TYPE_SET,
+	initialValuesOfSettingsForm,
 } from './baseConfig'
 
 /** table型表单的列表项相关配置 */
-export { tradeColumns, tradeColumnsInitialRowValue } from './tableColumnsConfig'
+export {
+	tradeColumns,
+	tradeColumnsInitialRowValue,
+	rentColumns,
+	rentColumnsInitialRowValue,
+} from './tableColumnsConfig'

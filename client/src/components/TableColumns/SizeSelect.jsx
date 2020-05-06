@@ -21,9 +21,12 @@ export const SizeSelect = ({ value, rowValue }) => {
 
 	const optionValues = getSizeOptions(nameArticleMap, name)
 
-	const onChange = value => {
-		handleFieldChange(key, 'size', value)
-	}
+	const onChange = useCallback(
+		value => {
+			handleFieldChange(key, 'size', value)
+		},
+		[handleFieldChange, key]
+	)
 
 	return (
 		<Select value={value} onChange={onChange}>

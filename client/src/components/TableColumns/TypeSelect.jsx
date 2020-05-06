@@ -11,9 +11,12 @@ export const TypeSelect = ({ rowKey, value }) => {
 	const { handleFieldChange } = useTableDatas({ rowKey })
 
 	const optionValues = Object.keys(typeNameMap)
-	const onChange = value => {
-		handleFieldChange(rowKey, 'type', value)
-	}
+	const onChange = useCallback(
+		value => {
+			handleFieldChange(rowKey, 'type', value)
+		},
+		[handleFieldChange, rowKey],
+	) 
 
 	return (
 		<Select size="middle" value={value} onChange={onChange}>

@@ -6,3 +6,7 @@ export { Home } from './home/Home'
 export { TradeCreate } from './storage-manage/trade/TradeCreate'
 export { RentCreate } from './storage-manage/rent/RentCreate' 
 /** 仓库管理 */
+
+/** 系统信息 */
+export { Settings } from './system/settings/Settings'
+/** 系统信息 */

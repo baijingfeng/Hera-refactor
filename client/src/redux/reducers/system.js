@@ -2,12 +2,14 @@ import { Map, OrderedMap } from 'immutable'
 
 import { makeKeyFromNameSize } from '../../utils'
 import { SystemRecord } from '../records'
-import { SYSTEM_LOADED } from '../action-types'
+import { SYSTEM_LOADED, SYSTEM_SETTINGS_UPDATED } from '../action-types'
 
 const system = (state = new SystemRecord(), { type, data }) => {
 	switch (type) {
 		case SYSTEM_LOADED:
 			return getNewSystemState(state, data)
+		case SYSTEM_SETTINGS_UPDATED:
+			return state.set('config', { ...state.config, ...data })
 		default:
 			return state
 	}

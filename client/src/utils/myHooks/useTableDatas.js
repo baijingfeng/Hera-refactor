@@ -26,7 +26,7 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 
 			dispatch(addTableDatas(newDatas))
 		},
-		[datas, index, dispatch]
+		[initialRowValue, datas, index, dispatch]
 	)
 
 	const handleFieldChange = useCallback(
@@ -39,7 +39,7 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 				dispatch(changeTableDatas(newDatas))
 			}
 		},
-		[datas, getRowByKey, dispatch, changeTableDatas]
+		[datas, dispatch]
 	)
 
 	const removeRow = useCallback(
