@@ -7,9 +7,12 @@ import { useTableDatas } from '../../utils'
 export const PriceInput = ({ value, rowKey }) => {
 	const { handleFieldChange } = useTableDatas()
 
-	const onChange = value => {
-		handleFieldChange(rowKey, 'price', value)
-	}
+	const onChange = useCallback(
+		value => {
+			handleFieldChange(rowKey, 'price', value)
+		},
+		[handleFieldChange, rowKey]
+	)
 
 	return <InputNumber min={0} value={value} onChange={onChange} />
 }

@@ -4,13 +4,6 @@ import {
 	REMOVE_TABLE_DATAS,
 } from '../action-types'
 
-const obj = {
-	type: '租赁类',
-	name: '',
-	size: '',
-	count: 0,
-}
-
 const initialTableDatas = {
 	index: 0,
 	dataList: [],
