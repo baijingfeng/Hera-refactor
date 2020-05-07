@@ -7,7 +7,7 @@ export { storageUtils } from './storeUtils/storageUtils'
 /** 格式化 */
 export { renderReport } from './renderFormat/renderReport'
 export { renderLogLevel } from './renderFormat/renderLogLevel'
-export { renderTime } from './renderFormat/renderTime'
+export { renderTime, renderDate } from './renderFormat/renderTime'
 
 /** 表单选项生成 */
 export { getVendors, transformArticle } from './selectOptions/selectOptions'

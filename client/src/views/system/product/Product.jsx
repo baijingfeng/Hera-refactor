@@ -11,12 +11,13 @@ import {
 import { ProductFilter } from './components/ProductFilter'
 import { ProductTable } from './components/ProductTable'
 import { ProductForm } from './components/ProductForm'
+import { AddNewButton } from '../../../components'
 
 const getFilterPageData = (pageData, filterValue) =>
 	pageData.filter(({ name }) => new RegExp(filterValue).test(name))
 
 //TODO: 将这里的状态管理简化,使用useReducer.
-export const ProductList = () => {
+export const Product = () => {
 	const [modalVisible, setModalVisible] = useState(false)
 	const [confirmLoading, setConfirmLoading] = useState(false)
 	const [modalTitle, setModalTitle] = useState('新增')
@@ -44,7 +45,6 @@ export const ProductList = () => {
 
 	const handleOk = async () => {
 		setConfirmLoading(true)
-		console.log('modalFormValue', modalFormValue)
 
 		try {
 			if (modalTitle === '新增') {
@@ -108,11 +108,7 @@ export const ProductList = () => {
 		<Card
 			title="产品信息维护"
 			style={{ width: '100%' }}
-			extra={
-				<Button type="primary" onClick={addNewProduct}>
-					<PlusOutlined /> 新增
-				</Button>
-			}
+			extra={<AddNewButton onClick={addNewProduct} />}
 		>
 			<ProductFilter getFilterValue={getFilterValue} />
 			<ProductTable

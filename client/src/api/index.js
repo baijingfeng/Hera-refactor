@@ -22,4 +22,5 @@ export {
 	editSystemProduct,
 	deleteSystemProduct,
 } from './system/product'
+export { reqSystemPrice, deleteSystemPrice } from './system/price'
 /** 系统信息 */

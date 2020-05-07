@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { Table, Button, message } from 'antd'
+import React from 'react'
+import { Table } from 'antd'
+
+import { EditButton, DeleteButton } from '../../../../components'
 
 const columns = [
 	{
@@ -67,16 +69,8 @@ export const ProductTable = ({
 		align: 'center',
 		render: product => (
 			<div>
-				<Button type="link" onClick={() => editProduct(product)}>
-					编辑
-				</Button>
-				<Button
-					type="link"
-					danger
-					onClick={() => deleteProduct(product.number)}
-				>
-					删除
-				</Button>
+				<EditButton onClick={() => editProduct(product)} />
+				<DeleteButton onClick={() => deleteProduct(product.number)} />
 			</div>
 		),
 	}

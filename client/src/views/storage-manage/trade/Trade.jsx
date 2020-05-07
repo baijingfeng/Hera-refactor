@@ -16,7 +16,7 @@ const tabList = [
 	},
 ]
 
-export const TradeCreate = () => {
+export const Trade = () => {
 	const [key, setKey] = useState('采购入库')
 	const [formValue, setFormValue] = useState(null)
 	const { datas } = useTableDatas()
