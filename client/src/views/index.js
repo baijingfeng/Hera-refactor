@@ -7,6 +7,12 @@ export { Trade } from './storage-manage/trade/Trade'
 export { RentCreate } from './storage-manage/rent/RentCreate'
 /** 仓库管理 */
 
+/** 公司 */
+export { Rent } from './company/rent/Rent'
+export { SimpleSearch } from './company/simple-search/SimpleSearch'
+export { TransportTable } from './company/transport-table/TransportTable'
+/** 公司 */
+
 /** 系统信息 */
 export { Settings } from './system/settings/Settings'
 export { Product } from './system/product/Product'

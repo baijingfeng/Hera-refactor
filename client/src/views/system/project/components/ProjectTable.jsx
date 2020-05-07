@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Button } from 'antd'
+import { Table, Button, Descriptions } from 'antd'
 
 import { EditButton, DeleteConfirmButton } from '../../../../components'
 
@@ -30,14 +30,19 @@ const columns = [
 		key: 'address',
 	},
 	{
-		title: '联系人姓名',
-		dataIndex: 'contact_name',
+		title: '联系人信息',
+		dataIndex: 'contacts',
 		key: 'contact_name',
-	},
-	{
-		title: '联系人电话',
-		dataIndex: 'contact_phone',
-		key: 'contact_phone',
+		align: 'center',
+		render: contacts => (
+			<Descriptions layout="vertical" bordered column={4} size="small">
+				{contacts.map(({ _id, name, phone }) => (
+					<Descriptions.Item key={_id} label={name}>
+						{phone}
+					</Descriptions.Item>
+				))}
+			</Descriptions>
+		),
 	},
 	{
 		title: '类型',
@@ -63,13 +68,14 @@ export const ProjectTable = ({
 		title: '操作',
 		key: 'actions',
 		align: 'center',
-		render: user => (
+		width: '5%',
+		render: project => (
 			<div>
-				<EditButton onClick={() => editProduct(user)} />
-				{/* <DeleteConfirmButton
-					title={`确认要删除用户${user.profile.name} 吗？`}
-					onConfirm={() => deleteProduct(user._id)}
-				/> */}
+				<EditButton onClick={() => editProduct(project)} />
+				<DeleteConfirmButton
+					title={`确认要删除吗`}
+					onConfirm={() => deleteProduct(project._id)}
+				/>
 				<Button type="link" danger>
 					禁用
 				</Button>

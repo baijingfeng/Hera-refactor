@@ -47,7 +47,6 @@ export const Project = () => {
 				project => key === project.type
 			)
       console.log('keyProjects', keyProjects)
-			message.success('加载客户列表成功!')
 			setPageData(keyProjects)
 			setLoading(false)
 		}

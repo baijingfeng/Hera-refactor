@@ -14,6 +14,9 @@ import {
 	Weight,
 	Operator,
 	Project,
+	Rent,
+	SimpleSearch,
+	TransportTable,
 } from '../views'
 
 const Routers = () => {
@@ -28,7 +31,9 @@ const Routers = () => {
 						<Route path="/storage-manage/rent" component={RentCreate} />
 						<Route path="/storage-manage" />
 						<Route path="/storage-query" />
-						<Route path="/company" />
+						<Route path="/company/rent" component={Rent} />
+						<Route path="/company/simple-search" component={SimpleSearch} />
+						<Route path="/company/transport-table" component={TransportTable} />
 						<Route path="/system/settings" component={Settings} />
 						<Route path="/system/product" component={Product} />
 						<Route path="/system/price" component={Price} />
