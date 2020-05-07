@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, message, Button, Modal } from 'antd'
-import { ExclamationCircleOutlined } from '@ant-design/icons'
+import { Card, message } from 'antd'
 
 import { reqSystemPrice, deleteSystemPrice } from '../../../api'
 import { PriceTable } from './components/PriceTable'

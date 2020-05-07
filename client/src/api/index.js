@@ -23,4 +23,5 @@ export {
 	deleteSystemProduct,
 } from './system/product'
 export { reqSystemPrice, deleteSystemPrice } from './system/price'
+export { reqSystemWeight, deleteSystemWeight } from './system/weight'
 /** 系统信息 */
