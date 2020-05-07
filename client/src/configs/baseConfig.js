@@ -21,3 +21,15 @@ export const VENDOR_TYPE_SET = new Set([
 	'租赁客户',
 	'供应商',
 ])
+
+/**
+ * 支持仓库类型、客户类型
+ */
+export const TAB2TYPE = [
+	'基地仓库',
+	'项目仓库',
+	'租赁客户',
+	'同行客户',
+	'供应商',
+	'承运商',
+]
