@@ -13,3 +13,13 @@ export { reqSystemInfo } from './admin/load'
 export { reqRecordsData, reqAllTypeRecordsData } from './home/records'
 export { reqLogFirstPageData, reqLogNextPageData } from './home/log'
 /** 首页 */
+
+/** 系统信息 */
+export { saveSettings } from './system/settings'
+export {
+	reqSystemProduct,
+	createSystemProduct,
+	editSystemProduct,
+	deleteSystemProduct,
+} from './system/product'
+/** 系统信息 */

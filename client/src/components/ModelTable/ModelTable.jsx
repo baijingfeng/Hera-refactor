@@ -9,10 +9,14 @@ export class ModelTable extends PureComponent {
 
 	constructor(props) {
 		super(props)
-		this.state = {  
+		this.state = {
 			loading: true,
 			pageData: [],
 		}
+	}
+
+	componentDidMount() {
+		this.fetchPage()
 	}
 
 	fetchPage = async (params = this.props.params) => {
@@ -30,10 +34,12 @@ export class ModelTable extends PureComponent {
 		}
 	}
 
-	getNextPageData = async (currentPageData) => {
+	getNextPageData = async currentPageData => {
 		this.setState({ loading: true })
 		try {
-			const { dataList, totalCount, total } = await this.props.getNextPage(currentPageData)
+			const { dataList, totalCount, total } = await this.props.getNextPage(
+				currentPageData
+			)
 			this.setState({
 				pageData: dataList,
 				total: totalCount,
@@ -42,10 +48,6 @@ export class ModelTable extends PureComponent {
 		} finally {
 			this.setState({ loading: false })
 		}
-	}
-
-	componentDidMount() {
-		this.fetchPage()
 	}
 
 	render() {

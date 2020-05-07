@@ -4,7 +4,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { history } from '../utils'
 import Login from '../layouts/login/Login'
 import { Admin } from '../layouts/admin/Admin'
-import { Home, TradeCreate, RentCreate, Settings } from '../views'
+import { Home, TradeCreate, RentCreate, Settings, ProductList } from '../views'
 
 const Routers = () => {
 	return (
@@ -20,6 +20,7 @@ const Routers = () => {
 						<Route path="/storage-query" />
 						<Route path="/company" />
 						<Route path="/system/settings" component={Settings} />
+						<Route path="/system/product" component={ProductList} />
 						<Redirect to="/home" />
 					</Switch>
 				</Admin>

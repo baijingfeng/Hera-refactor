@@ -1,17 +1,21 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Card, message } from 'antd'
 
 import { SubmitButton } from '../../../components'
-import { SettingsForm } from './SettingsForm'
+import { SettingsForm } from './components/SettingsForm'
 import { saveSettings } from '../../../api/system/settings'
 import { useSelector, useDispatch } from 'react-redux'
 import { systemSettingsUpdated } from '../../../redux/actions'
 
-//TODO: 在本页面刷新,数据无法初始化填充
+//TODO: 在本页面刷新,数据无法初始化填充, 且数据更改后无法视图更新
 export const Settings = () => {
 	const config = useSelector(store => store.system.config)
 	const [formValue, setFormValue] = useState(config)
 	const dispatch = useDispatch()
+
+	useEffect(() => {
+		setFormValue(config)
+	}, [config])
 
 	const onSubmit = useCallback(
 		async settings => {
