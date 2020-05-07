@@ -15,6 +15,7 @@ import { ProductForm } from './components/ProductForm'
 const getFilterPageData = (pageData, filterValue) =>
 	pageData.filter(({ name }) => new RegExp(filterValue).test(name))
 
+//TODO: 将这里的状态管理简化,使用useReducer.
 export const ProductList = () => {
 	const [modalVisible, setModalVisible] = useState(false)
 	const [confirmLoading, setConfirmLoading] = useState(false)
@@ -23,6 +24,7 @@ export const ProductList = () => {
 	const [pageData, setPageData] = useState([])
 	const [needUpdate, setNeedUpdate] = useState(true)
 	const [inputValue, setInputValue] = useState('')
+	const [modalFormValue, setModalFormValue] = useState(null)
 
 	useEffect(() => {
 		const getTablePage = async () => {
@@ -40,8 +42,23 @@ export const ProductList = () => {
 		}
 	}, [needUpdate])
 
-	const handleOk = () => {
+	const handleOk = async () => {
 		setConfirmLoading(true)
+		console.log('modalFormValue', modalFormValue)
+
+		try {
+			if (modalTitle === '新增') {
+				await createSystemProduct(modalFormValue)
+				message.success('添加成功')
+			} else {
+				await editSystemProduct(modalFormValue)
+				message.success('编辑成功')
+			}
+			setNeedUpdate(true)
+		} catch (error) {
+			message.error('出现错误.' + error)
+		}
+
 		setConfirmLoading(false)
 		setModalVisible(false)
 	}
@@ -51,17 +68,20 @@ export const ProductList = () => {
 	}
 
 	const addNewProduct = () => {
+		setModalFormValue(null)
+		setModalTitle('新增')
 		setModalVisible(true)
 	}
 
-	const editProduct = () => {
+	const editProduct = product => {
+		setModalFormValue(product)
 		setModalTitle('编辑')
 		setModalVisible(true)
 	}
 
 	const deleteProduct = number => {
 		Modal.confirm({
-			title: '确认删除?',
+			title: `确认删除编号为 ${number} 的产品记录?`,
 			icon: <ExclamationCircleOutlined />,
 			content:
 				'删除后可能造成不必要的麻烦，如果需要恢复，请新增一个编号相同的产品！',
@@ -107,8 +127,9 @@ export const ProductList = () => {
 				confirmLoading={confirmLoading}
 				onOk={handleOk}
 				onCancel={handleCancel}
+				destroyOnClose
 			>
-				<ProductForm />
+				<ProductForm formValue={modalFormValue} onChange={setModalFormValue} />
 			</Modal>
 		</Card>
 	)

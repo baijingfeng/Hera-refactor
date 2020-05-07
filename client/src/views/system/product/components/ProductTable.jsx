@@ -64,12 +64,17 @@ export const ProductTable = ({
 	const actionColumn = {
 		title: '操作',
 		key: 'actions',
-		render: ({ number }) => (
+		align: 'center',
+		render: product => (
 			<div>
-				<Button type="link" onClick={editProduct}>
+				<Button type="link" onClick={() => editProduct(product)}>
 					编辑
 				</Button>
-				<Button type="link" danger onClick={() => deleteProduct(number)}>
+				<Button
+					type="link"
+					danger
+					onClick={() => deleteProduct(product.number)}
+				>
 					删除
 				</Button>
 			</div>

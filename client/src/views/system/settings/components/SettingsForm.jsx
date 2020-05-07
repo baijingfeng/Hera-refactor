@@ -23,7 +23,6 @@ export const SettingsForm = ({ formId, formValue, onSubmit, onChange }) => {
 			id={formId}
 			onFinish={onSubmit}
 			initialValues={formValue}
-			labelAlign="right"
 		>
 			<FormItem label="系统应用名称" name="systemName">
 				<Input style={{ width: 300 }} value={name} />
