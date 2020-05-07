@@ -1,20 +1,28 @@
 import React from 'react'
 import { Table } from 'antd'
 
-import { AddNewButton, EditButton, DeleteConfirmButton } from '../../../../components'
-import { renderDate } from '../../../../utils'
+import {
+	AddNewButton,
+	EditButton,
+	DeleteConfirmButton,
+} from '../../../../components'
 
 const columns = [
 	{
-		title: '名称',
-		dataIndex: 'name',
-		key: 'name',
+		title: '用户名',
+		dataIndex: 'username',
+		key: 'username',
 	},
 	{
-		title: '日期',
-		dataIndex: 'date',
-		key: 'date',
-		render: renderDate,
+		title: '姓名',
+		dataIndex: 'profile',
+		key: 'name',
+		render: ({ name }) => <span>{name}</span>,
+	},
+	{
+		title: '角色',
+		dataIndex: 'role',
+		key: 'role',
 	},
 	{
 		title: '备注',
@@ -24,7 +32,7 @@ const columns = [
 ]
 
 //TODO: 添加详情编辑页面
-export const PriceTable = ({
+export const OperatorTable = ({
 	pageData,
 	loading,
 	addNewProduct,
@@ -35,12 +43,12 @@ export const PriceTable = ({
 		title: <AddNewButton onClick={addNewProduct} />,
 		key: 'actions',
 		align: 'center',
-		render: plan => (
+		render: user => (
 			<div>
-				<EditButton onClick={() => editProduct(plan)} />
+				<EditButton onClick={() => editProduct(user)} />
 				<DeleteConfirmButton
-					title={`确认删除“${plan.name}”方案吗？`}
-					onConfirm={() => deleteProduct(plan._id)}
+					title={`确认要删除用户${user.profile.name} 吗？`}
+					onConfirm={() => deleteProduct(user._id)}
 				/>
 			</div>
 		),
