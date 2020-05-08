@@ -7,10 +7,16 @@ export { Trade } from './storage-manage/trade/Trade'
 export { RentCreate } from './storage-manage/rent/RentCreate'
 /** 仓库管理 */
 
+/** 仓库查询 */
+export { Store } from './storage-query/store/Store'
+export { SimpleSearch } from './storage-query/simple-search/SimpleSearch'
+export { Transport } from './storage-query/transport-table/Transport'
+/** 仓库查询 */
+
 /** 公司 */
 export { Rent } from './company/rent/Rent'
-export { SimpleSearch } from './company/simple-search/SimpleSearch'
-export { Transport } from './company/transport-table/Transport'
+export { SimpleSearch as CompanySimpleSearch} from './company/simple-search/SimpleSearch'
+export { Transport as CompanyTransport} from './company/transport-table/Transport'
 /** 公司 */
 
 /** 系统信息 */

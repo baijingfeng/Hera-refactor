@@ -8,15 +8,18 @@ import {
 	Home,
 	Trade,
 	RentCreate,
+	Store,
+	SimpleSearch,
+	Transport,
+	Rent,
+	CompanySimpleSearch,
+	CompanyTransport,
 	Settings,
 	Product,
 	Price,
 	Weight,
 	Operator,
 	Project,
-	Rent,
-	SimpleSearch,
-	Transport,
 } from '../views'
 
 const Routers = () => {
@@ -30,10 +33,12 @@ const Routers = () => {
 						<Route path="/storage-manage/trade" component={Trade} />
 						<Route path="/storage-manage/rent" component={RentCreate} />
 						<Route path="/storage-manage" />
-						<Route path="/storage-query" />
+						<Route path="/storage-query/store" component={Store} />
+						<Route path="/storage-query/simple-search" component={SimpleSearch} />
+						<Route path="/storage-query/transport-table" component={Transport} />
 						<Route path="/company/rent" component={Rent} />
-						<Route path="/company/simple-search" component={SimpleSearch} />
-						<Route path="/company/transport-table" component={Transport} />
+						<Route path="/company/simple-search" component={CompanySimpleSearch} />
+						<Route path="/company/transport-table" component={CompanyTransport} />
 						<Route path="/system/settings" component={Settings} />
 						<Route path="/system/product" component={Product} />
 						<Route path="/system/price" component={Price} />

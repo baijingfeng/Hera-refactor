@@ -18,3 +18,5 @@ export {
 	rentColumns,
 	rentColumnsInitialRowValue,
 } from './tableColumnsConfig'
+
+export { dateRanges } from './componentsConfig'
