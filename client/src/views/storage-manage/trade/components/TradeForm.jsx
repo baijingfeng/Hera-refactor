@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
+import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 
-import { getVendors, memoryUtils, useTableDatas } from '../../../../utils'
+import { getVendors, memoryUtils } from '../../../../utils'
 import { ProjectType, EditableTable } from '../../../../components'
 import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
 

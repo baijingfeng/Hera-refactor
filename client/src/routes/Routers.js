@@ -16,7 +16,7 @@ import {
 	Project,
 	Rent,
 	SimpleSearch,
-	TransportTable,
+	Transport,
 } from '../views'
 
 const Routers = () => {
@@ -33,7 +33,7 @@ const Routers = () => {
 						<Route path="/storage-query" />
 						<Route path="/company/rent" component={Rent} />
 						<Route path="/company/simple-search" component={SimpleSearch} />
-						<Route path="/company/transport-table" component={TransportTable} />
+						<Route path="/company/transport-table" component={Transport} />
 						<Route path="/system/settings" component={Settings} />
 						<Route path="/system/product" component={Product} />
 						<Route path="/system/price" component={Price} />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Card, Form, Select, DatePicker, Button } from 'antd'
+import { Card, Form, Select, DatePicker, Button, Input } from 'antd'
 import { ReloadOutlined, SearchOutlined } from '@ant-design/icons'
 import moment from 'moment'
 
@@ -31,7 +31,7 @@ const getPlanOptions = plans =>
 		pinyin: '',
 	}))
 
-export const RentFilter = () => {
+export const SimpleSearchFilter = () => {
 	const projects = useSelector(store => store.system.projects)
 
 	const onChange = (dates, dateStrings) => {
@@ -53,7 +53,7 @@ export const RentFilter = () => {
 		<Form hideRequiredMark onFinish={onFinish}>
 			<Card
 				title={
-					<Button type="dashed" htmlType="reset">
+					<Button type="dashed"  htmlType="reset">
 						<ReloadOutlined />
 						重置
 					</Button>
@@ -74,16 +74,23 @@ export const RentFilter = () => {
 							{projectOptions}
 						</Select>
 					</FormItem>
+					<FormItem
+						name="type"
+						rules={[{ required: true, message: '请选择类型!' }]}
+					>
+						<Select style={{ width: 150 }} placeholder="类型">{projectOptions}</Select>
+					</FormItem>
 					<FormItem name="rangeDate">
 						<RangePicker ranges={ranges} onChange={onChange} />
 					</FormItem>
-					<FormItem
-						name="planId"
-						rules={[{ required: true, message: '请选择要使用的合同方案!' }]}
-					>
-						<Select style={{ width: 300 }} placeholder="合同方案">
-							{projectOptions}
-						</Select>
+					<FormItem name="carNumber">
+						<Input placeholder="车号" />
+					</FormItem>
+					<FormItem name="number">
+						<Input placeholder="单号" />
+					</FormItem>
+					<FormItem name="originalOrder">
+						<Input placeholder="原始单号" />
 					</FormItem>
 				</div>
 			</Card>

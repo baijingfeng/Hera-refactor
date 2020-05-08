@@ -10,7 +10,7 @@ export { RentCreate } from './storage-manage/rent/RentCreate'
 /** 公司 */
 export { Rent } from './company/rent/Rent'
 export { SimpleSearch } from './company/simple-search/SimpleSearch'
-export { TransportTable } from './company/transport-table/TransportTable'
+export { Transport } from './company/transport-table/Transport'
 /** 公司 */
 
 /** 系统信息 */
