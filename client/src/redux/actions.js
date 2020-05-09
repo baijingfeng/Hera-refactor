@@ -4,6 +4,7 @@ import {
 	ADD_TABLE_DATAS,
 	CHANGE_TABLE_DATAS,
 	REMOVE_TABLE_DATAS,
+	SAVE_RESULTS,
 } from './action-types'
 
 export const systemLoaded = data => ({
@@ -29,4 +30,9 @@ export const changeTableDatas = payload => ({
 export const removeTableDatas = payload => ({
 	type: REMOVE_TABLE_DATAS,
 	payload,
+})
+
+export const saveResults = data => ({
+	type: SAVE_RESULTS,
+	data,
 })

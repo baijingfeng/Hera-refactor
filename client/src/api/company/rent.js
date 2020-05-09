@@ -1,9 +1,11 @@
 import ajax from '../ajax'
 
-export function saveRecordData(params) {
+export function queryRentData(params) {
 	return ajax({
-		url: '/record',
-		method: 'POST',
-		data: params,
+		url: '/store/rent',
+		method: 'GET',
+		params: {
+			condition: JSON.stringify(params),
+		},
 	})
 }

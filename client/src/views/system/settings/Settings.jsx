@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { Card, message } from 'antd'
 
-import { SubmitButton } from '../../../components'
+import { SaveButton } from '../../../components'
 import { SettingsForm } from './components/SettingsForm'
 import { saveSettings } from '../../../api/system/settings'
 import { useSelector, useDispatch } from 'react-redux'
@@ -37,7 +37,7 @@ export const Settings = () => {
 		<Card
 			title="系统基础配置项"
 			style={{ width: '100%' }}
-			extra={<SubmitButton form="settingsForm" />}
+			extra={<SaveButton form="settingsForm" />}
 		>
 			<SettingsForm
 				formId="settingsForm"

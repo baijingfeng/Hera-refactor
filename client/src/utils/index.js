@@ -14,6 +14,9 @@ export { getVendors, transformArticle } from './selectOptions/selectOptions'
 
 /** 数据转换 */
 export * from './transformValues/system'
+export { convertMapToArray } from './transformValues/convert'
+export { parseRangeDate } from './transformValues/parse'
+/** 数据转换 */
 
 // export { typeFunc, actionsFunc} from './tableColumns/tableColumns'
 

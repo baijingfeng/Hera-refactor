@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { Card } from 'antd'
 
-import { SubmitButton } from '../../../components'
+import { SaveButton } from '../../../components'
 import { TradeForm } from './components/TradeForm'
 import { useTableDatas } from '../../../utils'
 
@@ -36,7 +36,7 @@ export const Trade = () => {
 			tabList={tabList}
 			activeTabKey={key}
 			onTabChange={setKey}
-			tabBarExtraContent={<SubmitButton form="tradeForm" />}
+			tabBarExtraContent={<SaveButton form="tradeForm" />}
 		>
 			<TradeForm formId="tradeForm" formValue={formValue} onSubmit={onSubmit} />
 		</Card>

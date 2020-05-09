@@ -1,10 +1,13 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Card, Form, Select, DatePicker, Button } from 'antd'
-import { ReloadOutlined, SearchOutlined } from '@ant-design/icons'
-import moment from 'moment'
 
-import { getVendors } from '../../../../utils'
+import { queryPricePlan } from '../../../../api'
+import { convertMapToArray } from '../../../../utils'
+import { PRICE_PLAN } from '../../../../redux/action-types'
+import { saveResults } from '../../../../redux/actions'
+import { dateRanges } from '../../../../configs'
+import { SearchButton, ResetButton } from '../../../../components'
 
 const FormItem = Form.Item
 const { Option } = Select
@@ -16,77 +19,86 @@ const formStyle = {
 	justifyContent: 'space-between',
 }
 
-const ranges = {
-	最近一个月: [moment().startOf('month'), moment().endOf('month')],
-	最近两个月: [moment(), moment()],
-	今年: [moment(), moment()],
-	上一年: [moment(), moment()],
-	下一年: [moment(), moment()],
-}
-
-const getPlanOptions = plans =>
+const getPlanOptions = (plans = []) =>
 	plans.map(plan => ({
 		value: plan._id,
 		label: plan.name,
 		pinyin: '',
 	}))
 
-export const RentFilter = () => {
+const getStockOptions = (projects = []) =>
+	projects
+		.filter(project => project.type !== '基地仓库')
+		.map(project => ({
+			value: project._id,
+			label: project.company + project.name,
+			pinyin: project.pinyin,
+		}))
+
+export const RentFilter = ({ onSubmit }) => {
 	const projects = useSelector(store => store.system.projects)
+	const plans = useSelector(store => store.results.get(PRICE_PLAN, []))
+	const dispatch = useDispatch()
+	const [rentForm] = Form.useForm()
 
-	const onChange = (dates, dateStrings) => {
-		console.log('From: ', dates[0], ', to: ', dates[1])
-		console.log('From: ', dateStrings[0], ', to: ', dateStrings[1])
+	useEffect(() => {
+		const fetchPricePlan = async () => {
+			const { data } = await queryPricePlan()
+			dispatch(saveResults({ key: PRICE_PLAN, result: data.plans }))
+		}
+		fetchPricePlan()
+	}, [dispatch])
+
+	const resetForm = () => {
+		rentForm.resetFields()
 	}
-
-	const onFinish = () => {
-		console.log('object')
-	}
-
-	const projectOptions = getVendors(projects).map(project => (
-		<Option key={project._id} value={project._id}>
-			{project.company + project.name}
-		</Option>
-	))
 
 	return (
-		<Form hideRequiredMark onFinish={onFinish}>
-			<Card
-				title={
-					<Button type="dashed" htmlType="reset">
-						<ReloadOutlined />
-						重置
-					</Button>
-				}
-				extra={
-					<Button type="primary" htmlType="submit">
-						<SearchOutlined />
-						查询
-					</Button>
-				}
+		<Card
+			title={<ResetButton onClick={resetForm} />}
+			extra={<SearchButton form="rentForm" />}
+		>
+			<Form
+				id="rentForm"
+				form={rentForm}
+				hideRequiredMark
+				onFinish={onSubmit}
+				style={formStyle}
 			>
-				<div style={formStyle}>
-					<FormItem
-						name="project"
-						rules={[{ required: true, message: '请选择要计算的项目部!' }]}
-					>
-						<Select style={{ width: 300 }} placeholder="项目部">
-							{projectOptions}
-						</Select>
-					</FormItem>
-					<FormItem name="rangeDate">
-						<RangePicker ranges={ranges} onChange={onChange} />
-					</FormItem>
-					<FormItem
-						name="planId"
-						rules={[{ required: true, message: '请选择要使用的合同方案!' }]}
-					>
-						<Select style={{ width: 300 }} placeholder="合同方案">
-							{projectOptions}
-						</Select>
-					</FormItem>
-				</div>
-			</Card>
-		</Form>
+				<FormItem
+					name="project"
+					rules={[{ required: true, message: '请选择要计算的项目部!' }]}
+				>
+					<Select style={{ width: 300 }} placeholder="项目部">
+						{getStockOptions(convertMapToArray(projects)).map(
+							({ value, label }) => {
+								return (
+									<Option key={value} value={value}>
+										{label}
+									</Option>
+								)
+							}
+						)}
+					</Select>
+				</FormItem>
+				<FormItem name="rangeDate">
+					<RangePicker ranges={dateRanges} />
+				</FormItem>
+				<FormItem
+					name="planId"
+					rules={[{ required: true, message: '请选择要使用的合同方案!' }]}
+				>
+					<Select style={{ width: 300 }} placeholder="合同方案">
+						{getPlanOptions(plans).map(({ value, label }) => {
+							return (
+								<Option key={value} value={value}>
+									{label}
+								</Option>
+							)
+						})}
+					</Select>
+				</FormItem>
+			</Form>
+		</Card>
 	)
 }

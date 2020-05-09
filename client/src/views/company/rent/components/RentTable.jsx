@@ -55,7 +55,8 @@ const columns = [
 	},
 ]
 
-export const RentTable = () => {
+export const RentTable = ({ rentDatas }) => {
+	const { history } = rentDatas
 	return (
 		<Card
 			style={{ marginTop: '20px' }}
@@ -70,7 +71,15 @@ export const RentTable = () => {
 				</Button>,
 			]}
 		>
-			<Table columns={columns} />
+			<Table
+				columns={columns}
+				dataSource={history}
+				rowKey={'_id'}
+				pagination={{
+					hideOnSinglePage: true,
+					simple: true,
+				}}
+			/>
 		</Card>
 	)
 }

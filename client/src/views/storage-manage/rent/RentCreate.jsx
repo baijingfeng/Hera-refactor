@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { Card } from 'antd'
 
-import { SubmitButton } from '../../../components'
+import { SaveButton } from '../../../components'
 import { RentForm } from './components/RentForm'
 import { useTableDatas } from '../../../utils'
 
@@ -36,7 +36,7 @@ export const RentCreate = () => {
 			tabList={tabList}
 			activeTabKey={key}
 			onTabChange={setKey}
-			tabBarExtraContent={<SubmitButton form="rentForm" />}
+			tabBarExtraContent={<SaveButton form="rentForm" />}
 		>
 			<RentForm formId="rentForm" formValue={formValue} onSubmit={onSubmit} />
 		</Card>

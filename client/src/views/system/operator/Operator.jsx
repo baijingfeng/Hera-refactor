@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Card, message } from 'antd'
 
-import { deleteSystemWeight } from '../../../api'
 import { OperatorTable } from './components/OperatorTable'
 
 
