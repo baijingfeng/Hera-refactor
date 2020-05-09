@@ -1,6 +1,6 @@
 import ajax from '../ajax'
 
-export function reqSystemWeight(params) {
+export function querySystemWeight(params) {
 	return ajax({
 		url: '/plan/weight',
 		method: 'GET',

@@ -1,6 +1,6 @@
 import ajax from '../ajax'
 
-export function reqSystemPrice(params) {
+export function querySystemPrice(params) {
 	return ajax({
 		url: '/plan/price',
 		method: 'GET',

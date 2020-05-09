@@ -2,7 +2,7 @@ import React from 'react'
 import { message } from 'antd'
 
 import { renderReport, renderLogLevel, renderTime } from '../../../utils'
-import { reqLogFirstPageData, reqLogNextPageData } from '../../../api'
+import { queryLogFirstPageData, queryLogNextPageData } from '../../../api'
 import { ModelTable } from '../../../components'
 
 const columns = [
@@ -41,7 +41,7 @@ const columns = [
 const getTablePage = async () => {
 	const {
 		data: { operations },
-	} = await reqLogFirstPageData()
+	} = await queryLogFirstPageData()
 	message.success('查询最近日志记录成功!')
 	return { dataList: [...operations] }
 }
@@ -52,7 +52,7 @@ const getNextTablePage = async currentPageData => {
 
 	const {
 		data: { operations },
-	} = await reqLogNextPageData({ id: _id })
+	} = await queryLogNextPageData({ id: _id })
 
 	return { dataList: [...currentPageData, ...operations] }
 }

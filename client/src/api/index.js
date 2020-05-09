@@ -6,22 +6,22 @@ export { reqLogout } from './entry/logout'
 /** 登录页面 */
 
 /** Admin */
-export { reqSystemInfo } from './admin/load'
+export { querySystemInfo } from './admin/load'
 /** Admin */
 
 /** 首页 */
-export { reqRecordsData, reqAllTypeRecordsData } from './home/records'
-export { reqLogFirstPageData, reqLogNextPageData } from './home/log'
+export { queryRecordsData, queryAllTypeRecordsData } from './home/records'
+export { queryLogFirstPageData, queryLogNextPageData } from './home/log'
 /** 首页 */
 
 /** 系统信息 */
 export { saveSettings } from './system/settings'
 export {
-	reqSystemProduct,
+	querySystemProduct,
 	createSystemProduct,
 	editSystemProduct,
 	deleteSystemProduct,
 } from './system/product'
-export { reqSystemPrice, deleteSystemPrice } from './system/price'
-export { reqSystemWeight, deleteSystemWeight } from './system/weight'
+export { querySystemPrice, deleteSystemPrice } from './system/price'
+export { querySystemWeight, deleteSystemWeight } from './system/weight'
 /** 系统信息 */

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import { memoryUtils, storageUtils } from '../../utils'
 import { APP_NAME } from '../../configs'
-import { ajax, reqSystemInfo } from '../../api'
+import { ajax, querySystemInfo } from '../../api'
 import NavMenu from './components/NavMenu'
 import Header from './components/header/Header'
 import { systemLoaded } from '../../redux/actions'
@@ -19,7 +19,7 @@ export const Admin = ({ children }) => {
 	
 	useEffect(() => {
 		const fetchSystemInfo = async () => {
-			const { data } = await reqSystemInfo()
+			const { data } = await querySystemInfo()
 			dispatch(systemLoaded(data))
 			storageUtils.setSystemInfo(data)
 			memoryUtils.systemInfo = data

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, message } from 'antd'
 
-import { reqSystemWeight, deleteSystemWeight } from '../../../api'
+import { querySystemWeight, deleteSystemWeight } from '../../../api'
 import { WeightTable } from './components/WeightTable'
 
 export const Weight = () => {
@@ -14,7 +14,7 @@ export const Weight = () => {
 			setLoading(true)
 			const {
 				data: { plans },
-			} = await reqSystemWeight()
+			} = await querySystemWeight()
 			message.success('加载计重方案成功!')
 			setPageData(plans)
 			setLoading(false)

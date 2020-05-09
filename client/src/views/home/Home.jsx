@@ -3,7 +3,7 @@ import { Row, Button, message } from 'antd'
 
 import FlowTable from './components/FlowTable'
 import LogTable from './components/LogTable'
-import { reqAllTypeRecordsData } from '../../api'
+import { queryAllTypeRecordsData } from '../../api'
 import { GridCard } from '../../components'
 
 import './home.less'
@@ -36,7 +36,7 @@ export class Home extends Component {
 	}
 
 	fetchAllTypeRecordsData = async () => {
-		const res = await reqAllTypeRecordsData({
+		const res = await queryAllTypeRecordsData({
 			store: '586df7fe2d256304867ab346',
 		})
 

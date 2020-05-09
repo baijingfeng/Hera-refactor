@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, message } from 'antd'
 
-import { reqSystemPrice, deleteSystemPrice } from '../../../api'
+import { querySystemPrice, deleteSystemPrice } from '../../../api'
 import { PriceTable } from './components/PriceTable'
 
 export const Price = () => {
@@ -14,7 +14,7 @@ export const Price = () => {
 			setLoading(true)
 			const {
 				data: { plans },
-			} = await reqSystemPrice()
+			} = await querySystemPrice()
 			message.success('加载合同方案成功!')
 			setPageData(plans)
 			setLoading(false)

@@ -1,6 +1,6 @@
 import ajax from '../ajax'
 
-export function reqSystemProduct(params) {
+export function querySystemProduct(params) {
 	return ajax({
 		url: '/product',
 		method: 'GET',

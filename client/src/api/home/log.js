@@ -1,13 +1,13 @@
 import ajax from '../ajax'
 
-export function reqLogFirstPageData() {
+export function queryLogFirstPageData() {
 	return ajax({
 		url: '/operation/top_k',
 		method: 'GET',
 	})
 }
 
-export function reqLogNextPageData(params) {
+export function queryLogNextPageData(params) {
 	return ajax({
 		url: '/operation/next_k',
 		method: 'GET',

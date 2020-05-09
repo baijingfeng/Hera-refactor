@@ -3,7 +3,7 @@ import { Card, message, Button, Modal } from 'antd'
 import { PlusOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
 
 import {
-	reqSystemProduct,
+	querySystemProduct,
 	createSystemProduct,
 	editSystemProduct,
 	deleteSystemProduct,
@@ -32,7 +32,7 @@ export const Product = () => {
 			setLoading(true)
 			const {
 				data: { products },
-			} = await reqSystemProduct()
+			} = await querySystemProduct()
 			message.success('查询产品信息成功!')
 			setPageData(products)
 			setLoading(false)
