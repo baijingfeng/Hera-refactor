@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Form, Select, DatePicker, Button } from 'antd'
+import { Card, Form, Select, DatePicker } from 'antd'
 
 import { queryPricePlan } from '../../../../api'
-import { convertMapToArray } from '../../../../utils'
+import { convertMapToArray, useResetForm } from '../../../../utils'
 import { PRICE_PLAN } from '../../../../redux/action-types'
 import { saveResults } from '../../../../redux/actions'
 import { dateRanges } from '../../../../configs'
@@ -39,7 +39,7 @@ export const RentFilter = ({ onSubmit }) => {
 	const projects = useSelector(store => store.system.projects)
 	const plans = useSelector(store => store.results.get(PRICE_PLAN, []))
 	const dispatch = useDispatch()
-	const [rentForm] = Form.useForm()
+	const { form, resetForm } = useResetForm()
 
 	useEffect(() => {
 		const fetchPricePlan = async () => {
@@ -49,10 +49,6 @@ export const RentFilter = ({ onSubmit }) => {
 		fetchPricePlan()
 	}, [dispatch])
 
-	const resetForm = () => {
-		rentForm.resetFields()
-	}
-
 	return (
 		<Card
 			title={<ResetButton onClick={resetForm} />}
@@ -60,7 +56,7 @@ export const RentFilter = ({ onSubmit }) => {
 		>
 			<Form
 				id="rentForm"
-				form={rentForm}
+				form={form}
 				hideRequiredMark
 				onFinish={onSubmit}
 				style={formStyle}

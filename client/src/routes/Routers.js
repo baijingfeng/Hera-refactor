@@ -20,7 +20,7 @@ import {
 	Weight,
 	Operator,
 	Project,
-} from '../views'
+} from '../pages'
 
 const Routers = () => {
 	return (
