@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'antd'
 
 import { AddNewButton, EditButton, DeleteConfirmButton } from '../../../../components'
-import { renderDate } from '../../../../utils'
+import { formatDate } from '../../../../utils'
 
 const columns = [
 	{
@@ -14,7 +14,7 @@ const columns = [
 		title: '日期',
 		dataIndex: 'date',
 		key: 'date',
-		render: renderDate,
+		render: formatDate,
 	},
 	{
 		title: '备注',

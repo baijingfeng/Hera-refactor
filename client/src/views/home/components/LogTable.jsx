@@ -1,7 +1,7 @@
 import React from 'react'
 import { message } from 'antd'
 
-import { renderReport, renderLogLevel, renderTime } from '../../../utils'
+import { renderReport, renderLogLevel, formatTime } from '../../../utils'
 import { queryLogFirstPageData, queryLogNextPageData } from '../../../api'
 import { ModelTable } from '../../../components'
 
@@ -16,7 +16,7 @@ const columns = [
 		title: '操作时间',
 		dataIndex: 'timestamp',
 		key: 'timestamp',
-		render: renderTime, // TODO:　解决时间显示为英文的问题
+		render: formatTime, // TODO:　解决时间显示为英文的问题
 	},
 	{
 		title: '操作类型',
