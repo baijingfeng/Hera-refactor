@@ -2,6 +2,10 @@
  * 定义action的type常量名称模块
  */
 
+/** store */
+export const UPDATE_RECORD =  'UPDATE_RECORD'
+/** store */
+
 /** results */
 export const SAVE_RESULTS = 'SAVE_RESULTS'
 export const PAYER_TRANSPORT_PAID_STATUS_CHANGED = 'PAYER_TRANSPORT_PAID_STATUS_CHANGED'

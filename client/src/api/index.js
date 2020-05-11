@@ -16,6 +16,8 @@ export { queryLogFirstPageData, queryLogNextPageData } from './home/log'
 
 /** 公司 */
 export { queryRentData } from './company/rent'
+export { querySimpleSearchData } from './company/simple-search'
+export { queryRecordData } from './company/record'
 /** 公司 */
 
 /** 系统信息 */

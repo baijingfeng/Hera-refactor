@@ -14,6 +14,7 @@ import {
 	Rent,
 	CompanySimpleSearch,
 	CompanyTransport,
+	CompanyRecord,
 	Settings,
 	Product,
 	Price,
@@ -37,6 +38,7 @@ const Routers = () => {
 						<Route path="/storage-query/simple-search" component={SimpleSearch} />
 						<Route path="/storage-query/transport-table" component={Transport} />
 						<Route path="/company/rent" component={Rent} />
+						<Route path="/company/simple-search/record/:id" component={CompanyRecord} />
 						<Route path="/company/simple-search" component={CompanySimpleSearch} />
 						<Route path="/company/transport-table" component={CompanyTransport} />
 						<Route path="/system/settings" component={Settings} />

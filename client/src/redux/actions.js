@@ -5,6 +5,7 @@ import {
 	CHANGE_TABLE_DATAS,
 	REMOVE_TABLE_DATAS,
 	SAVE_RESULTS,
+	UPDATE_RECORD,
 } from './action-types'
 
 export const systemLoaded = data => ({
@@ -34,5 +35,10 @@ export const removeTableDatas = payload => ({
 
 export const saveResults = data => ({
 	type: SAVE_RESULTS,
+	data,
+})
+
+export const updateRecord = data => ({
+	type: UPDATE_RECORD,
 	data,
 })

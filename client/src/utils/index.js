@@ -30,11 +30,12 @@ export {
 	getPlanOptions,
 } from './getOptions/getOptions'
 
-/** 数据转换 */
+/** 数据转换, 获取数据 */
 export * from './transformValues/system'
 export { convertMapToArray } from './transformValues/convert'
+export { getProjectName } from './transformValues/getValue'
 export { parseRangeDate } from './transformValues/parse'
-/** 数据转换 */
+/** 数据转换, 获取数据 */
 
 // export { typeFunc, actionsFunc} from './tableColumns/tableColumns'
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Card, Form, Select, DatePicker, Input } from 'antd'
 
@@ -14,49 +14,52 @@ import { RECORD_TYPES, dateRanges, formStyle } from '../../../../configs'
 const FormItem = Form.Item
 const { RangePicker } = DatePicker
 
-export const SimpleSearchFilter = () => {
+export const SimpleSearchFilter = ({ onSubmit }) => {
+	const [project, setProject] = useState()
 	const projects = useSelector(store => store.system.projects)
 	const { form, resetForm } = useResetForm()
 
-	const onChange = (dates, dateStrings) => {
-		console.log('From: ', dates[0], ', to: ', dates[1])
-		console.log('From: ', dateStrings[0], ', to: ', dateStrings[1])
-	}
-
-	const onFinish = () => {
-		console.log('object')
+	const onResetForm = () => {
+		resetForm()
+		setProject(undefined)
 	}
 
 	return (
 		<Card
-			title={<ResetButton onClick={resetForm} />}
+			title={<ResetButton onClick={onResetForm} />}
 			extra={<SearchButton form="simpleSearchForm" />}
 		>
 			<Form
 				id="simpleSearchForm"
 				form={form}
 				hideRequiredMark
-				onFinish={onFinish}
+				onFinish={onSubmit}
 				style={formStyle}
 			>
-				<FormItem
-					name="project"
-					rules={[{ required: true, message: '请选择要计算的项目部!' }]}
-				>
-					<Select style={{ width: 300 }} placeholder="项目部">
+				<FormItem name="project">
+					<Select
+						style={{ width: 300 }}
+						placeholder="项目部"
+						onChange={setProject}
+						allowClear
+					>
 						{getStockOptions(projects).map(generateOptions)}
 					</Select>
 				</FormItem>
-				<FormItem
-					name="type"
-					rules={[{ required: true, message: '请选择类型!' }]}
-				>
-					<Select style={{ width: 300 }} placeholder="类型">
+				<FormItem name="type">
+					<Select style={{ width: 300 }} placeholder="类型" allowClear>
 						{getTypeOptions(RECORD_TYPES).map(generateOptions)}
 					</Select>
 				</FormItem>
+				{project && (
+					<FormItem name="inOut">
+						<Select style={{ width: 300 }} placeholder="出入库" allowClear>
+							{getTypeOptions(['出库', '入库']).map(generateOptions)}
+						</Select>
+					</FormItem>
+				)}
 				<FormItem name="rangeDate">
-					<RangePicker style={{ width: 300 }} ranges={dateRanges} onChange={onChange} />
+					<RangePicker style={{ width: 300 }} ranges={dateRanges} allowClear />
 				</FormItem>
 				<FormItem name="carNumber">
 					<Input style={{ width: 200 }} placeholder="车号" />

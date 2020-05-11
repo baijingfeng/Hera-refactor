@@ -17,6 +17,7 @@ export { Transport } from './storage-query/transport-table/Transport'
 export { Rent } from './company/rent/Rent'
 export { SimpleSearch as CompanySimpleSearch} from './company/simple-search/SimpleSearch'
 export { Transport as CompanyTransport} from './company/transport-table/Transport'
+export { Record as CompanyRecord } from './company/simple-search/Record'
 /** 公司 */
 
 /** 系统信息 */
