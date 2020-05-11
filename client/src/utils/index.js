@@ -18,8 +18,17 @@ export { renderReport } from './renderFormat/renderReport'
 export { renderLogLevel } from './renderFormat/renderLogLevel'
 /** 格式化 */
 
-/** 表单选项生成 */
-export { getVendors, transformArticle } from './selectOptions/selectOptions'
+/**
+ * 表单选项生成
+ */
+export { generateOptions } from './getOptions/generateOptions'
+export {
+	getVendors,
+	transformArticle,
+	getStockOptions,
+	getTypeOptions,
+	getPlanOptions,
+} from './getOptions/getOptions'
 
 /** 数据转换 */
 export * from './transformValues/system'

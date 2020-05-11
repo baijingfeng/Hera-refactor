@@ -12,6 +12,11 @@ export const PURCHASING_CLIENT_TYPES = [
 ]
 
 /**
+ * 支持的订单类型
+ */
+export const RECORD_TYPES = ['购销', '调拨', '暂存', '盘点']
+
+/**
  * 支持的供应商类型
  */
 export const VENDOR_TYPE_SET = new Set([

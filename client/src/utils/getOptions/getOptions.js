@@ -1,4 +1,5 @@
 import { VENDOR_TYPE_SET } from '../../configs'
+import { convertMapToArray } from '../transformValues/convert'
 
 /**
  * 筛选供应商列表
@@ -36,3 +37,30 @@ export function transformArticle(articles) {
 		nameArticleMap,
 	}
 }
+
+/**
+ * 获取"项目部"选择项数据
+ */
+export const getStockOptions = (projects, filter = () => true) =>
+	convertMapToArray(projects)
+		.filter(filter)
+		.map(project => ({
+			value: project._id,
+			label: project.company + project.name,
+			pinyin: project.pinyin,
+		}))
+
+/**
+ *  获取"合同方案"的选择项数据
+ */
+export const getPlanOptions = (plans = []) =>
+	plans.map(plan => ({
+		value: plan._id,
+		label: plan.name,
+		pinyin: '',
+	}))
+
+/**
+ * 根据types获取相应的选择项数据
+ */
+export const getTypeOptions = types => types.map(v => ({ value: v, label: v }))
