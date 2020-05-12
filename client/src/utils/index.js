@@ -28,6 +28,7 @@ export {
 	getStockOptions,
 	getTypeOptions,
 	getPlanOptions,
+	getPayerOptions,
 } from './getOptions/getOptions'
 
 /** 数据转换, 获取数据 */

@@ -64,3 +64,14 @@ export const getPlanOptions = (plans = []) =>
  * 根据types获取相应的选择项数据
  */
 export const getTypeOptions = types => types.map(v => ({ value: v, label: v }))
+
+/**
+ *  获取"付款方"的选择项数据
+ */
+export const getPayerOptions = (payers = []) => {
+	return payers.map(payer => ({
+		value: payer.name,
+		label: payer.name,
+		pinyin: payer.pinyin,
+	}))
+}

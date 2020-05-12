@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Card, Table, Button } from 'antd'
 import { ExportOutlined } from '@ant-design/icons'
 
+import { formatDate } from '../../../../utils'
+
 const columns = [
 	{
 		title: '结清',
@@ -18,6 +20,7 @@ const columns = [
 		title: '时间',
 		dataIndex: 'outDate',
 		key: 'outDate',
+		render: formatDate,
 	},
 	{
 		title: '车号',
@@ -60,7 +63,7 @@ const columns = [
 	},
 ]
 
-export const TransportTable = () => {
+export const TransportTable = ({ tableDatas }) => {
 	return (
 		<Card
 			style={{ marginTop: '20px' }}
@@ -71,7 +74,15 @@ export const TransportTable = () => {
 				</Button>,
 			]}
 		>
-			<Table columns={columns} />
+			<Table
+				columns={columns}
+				dataSource={tableDatas}
+				rowKey={'_id'}
+				pagination={{
+					hideOnSinglePage: true,
+					simple: true,
+				}}
+			/>
 		</Card>
 	)
 }
