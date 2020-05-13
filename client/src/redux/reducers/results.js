@@ -14,7 +14,7 @@ export function results(state = new Map(), { type, data }) {
 		case SAVE_RESULTS:
 			return state.set(data.key, data.result)
 		case PAYER_TRANSPORT_PAID_STATUS_CHANGED: {
-			const records = state.get(data.key)
+			const records = state.get(data.key) || []
 			const newRecords = []
 			records.forEach(record => {
 				if (record._id === data.id) {
@@ -25,7 +25,7 @@ export function results(state = new Map(), { type, data }) {
 			return state.set(data.key, newRecords)
 		}
 		case PAYER_TRANSPORT_CHECKED_STATUS_CHANGED: {
-			const records = state.get(data.key)
+			const records = state.get(data.key) || []
 			const newRecords = []
 			records.forEach(record => {
 				if (record._id === data.id) {

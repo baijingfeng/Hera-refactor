@@ -6,6 +6,8 @@ import {
 	REMOVE_TABLE_DATAS,
 	SAVE_RESULTS,
 	UPDATE_RECORD,
+	PAYER_TRANSPORT_PAID_STATUS_CHANGED,
+	PAYER_TRANSPORT_CHECKED_STATUS_CHANGED,
 } from './action-types'
 
 export const systemLoaded = data => ({
@@ -40,5 +42,15 @@ export const saveResults = data => ({
 
 export const updateRecord = data => ({
 	type: UPDATE_RECORD,
+	data,
+})
+
+export const changePayerTrabsportPaidStatus = data => ({
+	type: PAYER_TRANSPORT_PAID_STATUS_CHANGED,
+	data,
+})
+
+export const changePayerTrabsportCheckedStatus = data => ({
+	type: PAYER_TRANSPORT_CHECKED_STATUS_CHANGED,
 	data,
 })

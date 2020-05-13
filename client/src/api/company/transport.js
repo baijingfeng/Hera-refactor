@@ -7,3 +7,21 @@ export function queryAllPayerData(params) {
 		params,
 	})
 }
+
+export function updateTransportPaidStatus({ id, paid }) {
+	return ajax({
+		url: `/record/${id}/transport_paid`,
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		data: JSON.stringify({ paid }),
+	})
+}
+
+export function updateTransportCheckedStatus({ id, checked }) {
+	return ajax({
+		url: `/record/${id}/transport_checked`,
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		data: JSON.stringify({ checked }),
+	})
+}

@@ -54,10 +54,10 @@ export const TransportFilter = ({ onSubmit }) => {
 					</Select>
 				</FormItem>
 				<FormItem name="payee">
-					<Input placeholder="收款人" />
+					<Input style={{ width: 300 }} placeholder="收款人" />
 				</FormItem>
 				<FormItem name="rangeDate">
-					<RangePicker ranges={dateRanges} />
+					<RangePicker style={{ width: 300 }} ranges={dateRanges} />
 				</FormItem>
 				<FormItem name="carNumber">
 					<Input placeholder="车号" />

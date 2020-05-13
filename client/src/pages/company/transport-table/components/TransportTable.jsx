@@ -1,20 +1,44 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Table, Button } from 'antd'
+import { useSelector, useDispatch } from 'react-redux'
+import { Card, Table, Button, Checkbox, message } from 'antd'
 import { ExportOutlined } from '@ant-design/icons'
 
-import { formatDate } from '../../../../utils'
+import {
+	formatDate,
+	getProjectName,
+	toFixedWithoutTrailingZero,
+} from '../../../../utils'
+import {
+	updateTransportPaidStatus,
+	updateTransportCheckedStatus,
+} from '../../../../api'
+import {
+	changePayerTrabsportPaidStatus,
+	changePayerTrabsportCheckedStatus,
+} from '../../../../redux/actions'
 
-const columns = [
+const getColumns = (projects, onCheck) => [
 	{
 		title: '结清',
 		dataIndex: 'transportPaid',
 		key: 'transportPaid',
+		width: '7%',
+		render: (paid, { _id }) => (
+			<Checkbox defaultChecked={paid} onChange={e => onCheck(_id, 'paid', e)} />
+		),
 	},
 	{
 		title: '核对',
 		dataIndex: 'transportChecked',
 		key: 'transportChecked',
+		width: '7%',
+		render: (checked, { _id }) => (
+			<Checkbox
+				defaultChecked={checked}
+				onChange={e => onCheck(_id, 'checked', e)}
+			/>
+		),
 	},
 	{
 		title: '时间',
@@ -41,21 +65,27 @@ const columns = [
 		title: '出库',
 		dataIndex: 'outStock',
 		key: 'outStock',
+		width: '15%',
+		render: getProjectName.bind(null, projects),
 	},
 	{
 		title: '入库',
 		dataIndex: 'inStock',
 		key: 'inStock',
+		width: '15%',
+		render: getProjectName.bind(null, projects),
 	},
 	{
 		title: '收款人',
 		dataIndex: 'transport',
 		key: 'transport_payee',
+		render: ({ payee }) => payee,
 	},
 	{
 		title: '运费',
 		dataIndex: 'transport',
 		key: 'transport_fee',
+		render: ({ fee }) => toFixedWithoutTrailingZero(fee),
 	},
 	{
 		key: 'actions',
@@ -64,6 +94,36 @@ const columns = [
 ]
 
 export const TransportTable = ({ tableDatas }) => {
+	const projects = useSelector(state => state.system.projects)
+	const dispatch = useDispatch()
+
+	const onCheck = async (id, type, e) => {
+		const status = e.target.checked
+
+		if (type === 'paid') {
+			await updateTransportPaidStatus({ id, paid: status })
+			dispatch(
+				changePayerTrabsportPaidStatus({
+					key: '运输单查询公司',
+					id,
+					paid: status,
+				})
+			)
+		} else {
+			await updateTransportCheckedStatus({ id, checked: status })
+			dispatch(
+				changePayerTrabsportCheckedStatus({
+					key: '运输单查询公司',
+					id,
+					checked: status,
+				})
+			)
+		}
+
+		message.success('修改成功')
+	}
+
+	const columns = getColumns(projects, onCheck)
 	return (
 		<Card
 			style={{ marginTop: '20px' }}
