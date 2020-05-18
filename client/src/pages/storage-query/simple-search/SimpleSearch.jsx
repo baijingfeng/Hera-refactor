@@ -30,12 +30,14 @@ export const SimpleSearch = () => {
 		}
 	}
 
-	const stasTableDatas = []
+	const statsTableDatas = []
 	return (
 		<>
 			<SimpleSearchFilter onSubmit={onSubmit} />
 			<SimpleSearchTable tableDatas={tableDatas} storeID={_id} />
-			<SimpleSearchStatsTable tableDatas={stasTableDatas} />
+			{tableDatas.length > 0 && (
+				<SimpleSearchStatsTable tableDatas={statsTableDatas} />
+			)}
 		</>
 	)
 }

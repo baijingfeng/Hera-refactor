@@ -80,7 +80,7 @@ export const Transport = () => {
 		checked: total.checked,
 	}
 
-	const stasTableDatas = payees.map(item => ({
+	const statsTableDatas = payees.map(item => ({
 		payee: item,
 		...payeeInfo[item],
 	}))
@@ -89,7 +89,9 @@ export const Transport = () => {
 		<>
 			<TransportFilter onSubmit={onSubmit} />
 			<TransportTable tableDatas={rows} />
-			<TransportStatsTable tableDatas={stasTableDatas} />
+			{tableDatas.length > 0 && (
+				<TransportStatsTable tableDatas={statsTableDatas} />
+			)}
 		</>
 	)
 }

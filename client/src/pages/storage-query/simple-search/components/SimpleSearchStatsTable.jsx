@@ -5,37 +5,27 @@ import { toFixedWithoutTrailingZero as fixed_ } from '../../../../utils'
 
 const columns = [
 	{
-		title: '收款人',
+		title: '名称',
 		dataIndex: 'payee',
 		key: 'payee',
+	},
+	
+	{
+		title: '出库数量',
+		dataIndex: 'paid',
+		key: 'paid',
+		render: fixed_,
+	},
+	{
+		title: '入库数量',
+		key: 'fee-paid',
+		render: ({ fee, paid }) => fixed_(fee - paid),
 	},
 	{
 		title: '小计',
 		dataIndex: 'fee',
 		key: 'fee',
 		render: fixed_,
-	},
-	{
-		title: '已结清款',
-		dataIndex: 'paid',
-		key: 'paid',
-		render: fixed_,
-	},
-	{
-		title: '未结清款',
-		key: 'fee-paid',
-		render: ({ fee, paid }) => fixed_(fee - paid),
-	},
-	{
-		title: '已核对款',
-		dataIndex: 'checked',
-		key: 'checked',
-		render: fixed_,
-	},
-	{
-		title: '未核对款',
-		key: 'fee-checked',
-		render: ({ fee, checked }) => fixed_(fee - checked),
 	},
 ]
 
