@@ -8,6 +8,7 @@ import {
 	UPDATE_RECORD,
 	PAYER_TRANSPORT_PAID_STATUS_CHANGED,
 	PAYER_TRANSPORT_CHECKED_STATUS_CHANGED,
+	SELECT_STORE,
 } from './action-types'
 
 export const systemLoaded = data => ({
@@ -19,6 +20,15 @@ export const systemSettingsUpdated = data => ({
 	type: SYSTEM_SETTINGS_UPDATED,
 	data,
 })
+
+export const selectStore = (config, store) => {
+	localStorage.setItem(`store-${config.db}`, JSON.stringify(store))
+
+	return {
+		type: SELECT_STORE,
+		data: store,
+	}
+}
 
 export const addTableDatas = payload => ({
 	type: ADD_TABLE_DATAS,

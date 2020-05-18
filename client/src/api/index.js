@@ -14,6 +14,10 @@ export { queryRecordsData, queryAllTypeRecordsData } from './home/records'
 export { queryLogFirstPageData, queryLogNextPageData } from './home/log'
 /** 首页 */
 
+/** 仓库查询 */
+export { queryStoreData } from './storage-query/store'
+/** 仓库查询 */
+
 /** 公司 */
 export { queryRentData } from './company/rent'
 export { querySimpleSearchData } from './company/simple-search'

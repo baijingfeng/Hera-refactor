@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { message, Modal } from 'antd'
+import { message, Modal, Button } from 'antd'
 import {
 	UserOutlined,
 	LogoutOutlined,
@@ -14,7 +14,6 @@ import { reqLogout } from '../../../../api'
 import './header.less'
 
 class Header extends Component {
-
 	username = memoryUtils.userInfo.username
 
 	logout = () => {
@@ -29,7 +28,7 @@ class Header extends Component {
 
 				memoryUtils.userInfo = {}
 				storageUtils.removeUserInfo()
-				
+
 				history.replace('/login')
 				try {
 					const { message: msg } = await reqLogout()
@@ -64,14 +63,14 @@ class Header extends Component {
 		return (
 			<>
 				<h3 className="title">{title}</h3>
-				<a className="header-btn">
+				<Button type="link" className="header-btn">
 					<UserOutlined />
 					{this.username}
-				</a>
-				<a className="header-btn" onClick={this.logout}>
+				</Button>
+				<Button type="link" className="header-btn" onClick={this.logout}>
 					<LogoutOutlined />
 					退出
-				</a>
+				</Button>
 			</>
 		)
 	}

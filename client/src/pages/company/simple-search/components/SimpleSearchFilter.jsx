@@ -58,7 +58,10 @@ export const SimpleSearchFilter = ({ onSubmit }) => {
 						</Select>
 					</FormItem>
 				)}
-				<FormItem name="rangeDate">
+				<FormItem
+					name="rangeDate"
+					rules={[{ required: true, message: '请选择时间范围!' }]}
+				>
 					<RangePicker style={{ width: 300 }} ranges={dateRanges} allowClear />
 				</FormItem>
 				<FormItem name="carNumber">

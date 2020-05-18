@@ -19,6 +19,7 @@ export const PAYERS = 'PAYERS'
 /** system */
 export const SYSTEM_LOADED = 'SYSTEM_LOADED'
 export const SYSTEM_SETTINGS_UPDATED = 'SYSTEM_SETTINGS_UPDATED'
+export const SELECT_STORE = 'SELECT_STORE'
 /** system */
 
 /** tableDatas */

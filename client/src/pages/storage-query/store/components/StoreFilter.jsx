@@ -14,11 +14,18 @@ import { SearchButton, ResetButton } from '../../../../components'
 const FormItem = Form.Item
 const { RangePicker } = DatePicker
 
-export const StoreFilter = () => {
+export const StoreFilter = ({ onSubmit }) => {
 	const store = useSelector(state => state.system.store)
 	const { form, resetForm } = useResetForm()
 
-	const { _id, company, name, pinyin } = store || {}
+	// TODO: 之后根据具体的业务逻辑处理仓库选择的问题, 这里暂且写死
+	const { _id, company, name, pinyin } = store || {
+		_id: '586df7fe2d256304867ab346',
+		company: '上海创兴建筑设备租赁有限公司',
+		name: '松江基地仓库',
+		pinyin:
+			'shanghaichuangxingjianzhushebeizulinyouxiangongsisongjiangjididecangku',
+	}
 
 	const options = [
 		{
@@ -28,11 +35,6 @@ export const StoreFilter = () => {
 		},
 	]
 
-	const onFinish = () => {
-		console.log('object')
-	}
-
-	console.log('options', options)
 	return (
 		<Card
 			title={<ResetButton onClick={resetForm} />}
@@ -43,15 +45,12 @@ export const StoreFilter = () => {
 				form={form}
 				style={formStyle}
 				hideRequiredMark
-				onFinish={onFinish}
+				onFinish={onSubmit}
 			>
 				<FormItem name="rangeDate">
 					<RangePicker ranges={dateRanges} style={{ width: 300 }} />
 				</FormItem>
-				<FormItem
-					name="type"
-					rules={[{ required: true, message: '请选择类型!' }]}
-				>
+				<FormItem name="type">
 					<Select style={{ width: 200 }} placeholder="类型">
 						{getTypeOptions(RECORD_TYPES).map(generateOptions)}
 					</Select>

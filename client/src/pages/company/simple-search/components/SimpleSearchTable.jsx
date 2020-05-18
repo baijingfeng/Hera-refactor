@@ -1,37 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { Map } from 'immutable'
 import { Card, Table } from 'antd'
 
-import {
-	formatDate,
-	total_,
-	toFixedWithoutTrailingZero,
-	getProjectName,
-} from '../../../../utils'
-
-const getTotal = (entries = [], products) => {
-	let names = new Map()
-	entries.forEach(entry => {
-		names = names.update(
-			entry.name,
-			0,
-			total => total + total_(entry, products)
-		)
-	})
-
-	return names
-}
-
-const getTotalString = (products, entries) => {
-	let totals = []
-	getTotal(entries, products).forEach((v, k) => {
-		totals.push(k + '：' + toFixedWithoutTrailingZero(v)) //拼凑显示的字符串
-	})
-
-	return totals.join(' ')
-}
+import { formatDate, getProjectName, getTotalString } from '../../../../utils'
 
 const getColumns = (projects, products) => [
 	{
@@ -76,6 +48,7 @@ const getColumns = (projects, products) => [
 		title: '订单内容',
 		dataIndex: 'entries',
 		key: 'entries',
+		width: '15%',
 		render: getTotalString.bind(null, products),
 	},
 	{

@@ -8,7 +8,7 @@ import { APP_NAME } from '../../configs'
 import { ajax, querySystemInfo } from '../../api'
 import NavMenu from './components/NavMenu'
 import Header from './components/header/Header'
-import { systemLoaded } from '../../redux/actions'
+import { systemLoaded, selectStore } from '../../redux/actions'
 
 import './admin.less'
 
@@ -16,11 +16,21 @@ const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
 export const Admin = ({ children }) => {
 	const dispatch = useDispatch()
-	
+
 	useEffect(() => {
 		const fetchSystemInfo = async () => {
 			const { data } = await querySystemInfo()
 			dispatch(systemLoaded(data))
+
+			const { config } = data
+			try {
+				const store_ = JSON.parse(localStorage.getItem(`store-${config.db}`))
+				if ('_id' in store_) {
+					// 简单验证是否为有效的仓库信息
+					dispatch(selectStore(config, store_))
+				}
+			} catch (e) {}
+
 			storageUtils.setSystemInfo(data)
 			memoryUtils.systemInfo = data
 		}
