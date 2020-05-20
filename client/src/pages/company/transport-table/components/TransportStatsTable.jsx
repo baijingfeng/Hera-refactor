@@ -8,6 +8,9 @@ const columns = [
 		title: '收款人',
 		dataIndex: 'payee',
 		key: 'payee',
+		render: payee => (
+			<span style={payee === '合计' ? { color: 'red' } : {}}>{payee}</span>
+		),
 	},
 	{
 		title: '小计',
@@ -45,7 +48,7 @@ export const TransportStatsTable = ({ tableDatas = [] }) => {
 			<Table
 				columns={columns}
 				dataSource={tableDatas}
-				rowKey={({ payee }) => payee}
+				rowKey={'payee'}
 				pagination={{
 					hideOnSinglePage: true,
 					simple: true,

@@ -56,7 +56,10 @@ export const TransportFilter = ({ onSubmit }) => {
 				<FormItem name="payee">
 					<Input style={{ width: 300 }} placeholder="收款人" />
 				</FormItem>
-				<FormItem name="rangeDate">
+				<FormItem
+					name="rangeDate"
+					rules={[{ required: true, message: '请选择时间范围!' }]}
+				>
 					<RangePicker style={{ width: 300 }} ranges={dateRanges} />
 				</FormItem>
 				<FormItem name="carNumber">

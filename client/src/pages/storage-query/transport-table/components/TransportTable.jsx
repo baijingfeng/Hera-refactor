@@ -41,14 +41,22 @@ const columns = [
 	{
 		title: '操作',
 		key: 'actions',
-		render: ({ _id }) => <Link to={`/company_record/${_id}`}>查看详情</Link>,
+		render: ({ _id }) => <Link to={`/company_record/${_id}`}>查看运输单</Link>,
 	},
 ]
 
-export const TransportTable = () => {
+export const TransportTable = ({ tableDatas }) => {
 	return (
 		<Card style={{ marginTop: '20px' }}>
-			<Table columns={columns} />
+			<Table
+				columns={columns}
+				dataSource={tableDatas}
+				rowKey={'_id'}
+				pagination={{
+					hideOnSinglePage: true,
+					simple: true,
+				}}
+			/>
 		</Card>
 	)
 }
