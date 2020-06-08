@@ -1,12 +1,16 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Card, Table } from 'antd'
 
-const columns = [
+import { formatDate, getProjectName } from '../../../../utils'
+
+const getColumns = projects => [
 	{
 		title: '时间',
 		dataIndex: 'outDate',
 		key: 'outDate',
+		render: formatDate,
 	},
 	{
 		title: '车号',
@@ -27,11 +31,13 @@ const columns = [
 		title: '项目部',
 		dataIndex: 'outStock',
 		key: 'outStock',
+		render: getProjectName.bind(null, projects),
 	},
 	{
 		title: '出入库',
 		dataIndex: 'inStock',
 		key: 'inStock',
+		render: getProjectName.bind(null, projects),
 	},
 	{
 		title: '订单内容',
@@ -46,6 +52,8 @@ const columns = [
 ]
 
 export const TransportTable = ({ tableDatas }) => {
+	const projects = useSelector(state => state.system.projects)
+	const columns = getColumns(projects)
 	return (
 		<Card style={{ marginTop: '20px' }}>
 			<Table
