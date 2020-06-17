@@ -2,8 +2,12 @@ import React, { useState } from 'react'
 import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 
 import { getVendors, memoryUtils } from '../../../../utils'
-import { ProjectType, EditableTable } from '../../../../components'
-import { tradeColumns, tradeColumnsInitialRowValue } from '../../../../configs'
+import { EditableTable } from '../../../../components'
+import {
+	PURCHASING_CLIENT_TYPES,
+	tradeColumns,
+	tradeColumnsInitialRowValue,
+} from '../../../../configs'
 
 const FormItem = Form.Item
 const { Option } = Select
@@ -25,43 +29,42 @@ const fieldLabels = {
 
 const { projects } = memoryUtils.systemInfo
 
-// const projectTypeWrapperCol = {
-// 	lg: 6,
-// 	md: 12,
-// 	sm: 24,
-// }
-
 export const TradeForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
 	return (
 		<Form id={formId} onFinish={onSubmit} {...formItemLayout}>
 			<Card title="表头信息" bordered={false}>
-				<Row>
-					<ProjectType
-						// wrapperCol={{
-						// 	lg: 8,
-						// 	md: 12,
-						// 	sm: 24,
-						// }}
-						style={{ display: 'flex' }}
-						onChange={setProjectType}
-					/>
+				<Row
+					style={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						justifyContent: 'space-between',
+					}}
+				>
+					<FormItem
+						label="类型"
+						name="projectType"
+						rules={[{ required: true, message: '请选择类型!' }]}
+					>
+						<Select
+							style={{ width: 300 }}
+							placeholder="请选择类型"
+							onChange={setProjectType}
+						>
+							{PURCHASING_CLIENT_TYPES.map((item, index) => (
+								<Select.Option key={`${index}${item}`} value={item}>
+									{item}
+								</Select.Option>
+							))}
+						</Select>
+					</FormItem>
 
 					<FormItem
 						label={fieldLabels.project}
 						name="project"
 						rules={[{ required: true, message: '请选择项目部!' }]}
-						// wrapperCol={{
-						// 	xl: { span: 6, offset: 2 },
-						// 	lg: { span: 8 },
-						// 	md: { span: 12 },
-						// 	sm: 24,
-						// }}
 					>
-						<Select
-							// style={{ width: 300 }}
-							placeholder="请选择项目部"
-						>
+						<Select style={{ width: 300 }} placeholder="请选择项目部">
 							{getVendors(projects)
 								.filter(project => project.type === projectType)
 								.map(project => (
@@ -72,67 +75,29 @@ export const TradeForm = ({ formId, onSubmit }) => {
 						</Select>
 					</FormItem>
 
-					<FormItem
-						label={fieldLabels.outDate}
-						name="outDate"
-						// wrapperCol={{
-						// 	xl: { span: 6, offset: 2 },
-						// 	lg: { span: 8 },
-						// 	md: { span: 12 },
-						// 	sm: 24,
-						// }}
-					>
-						<DatePicker
-							onChange={() => {}}
-							// style={{ width: 300 }}
-						/>
+					<FormItem label={fieldLabels.outDate} name="outDate">
+						<DatePicker onChange={() => {}} style={{ width: 300 }} />
 					</FormItem>
 				</Row>
-				<Row>
-					<FormItem
-						label={fieldLabels.originalOrder}
-						name="originalOrder"
-						// wrapperCol={{
-						// 	lg: 6,
-						// 	md: 12,
-						// 	sm: 24,
-						// }}
-					>
-						<Input
-							// style={{ width: 300 }}
-							placeholder="请填写原始单号"
-						/>
+				<Row
+					style={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						justifyContent: 'space-between',
+					}}
+				>
+					<FormItem label={fieldLabels.originalOrder} name="originalOrder">
+						<Input style={{ width: 300 }} placeholder="请填写原始单号" />
 					</FormItem>
 
-					<FormItem
-						label={fieldLabels.carNumber}
-						name="carNumber"
-						// wrapperCol={{
-						// 	xl: { span: 6, offset: 2 },
-						// 	lg: { span: 8 },
-						// 	md: { span: 12 },
-						// 	sm: 24,
-						// }}
-					>
-						<Input
-							// style={{ width: 300 }}
-							placeholder="请填写车号"
-						/>
+					<FormItem label={fieldLabels.carNumber} name="carNumber">
+						<Input style={{ width: 300 }} placeholder="请填写车号" />
 					</FormItem>
 
-					<FormItem
-						label={fieldLabels.comments}
-						name="comments"
-						// wrapperCol={{
-						// 	xl: { span: 8, offset: 2 },
-						// 	lg: { span: 10 },
-						// 	md: { span: 24 },
-						// 	sm: 24,
-						// }}
-					>
+					<FormItem label={fieldLabels.comments} name="comments">
 						<TextArea
 							autoSize={{ maxRows: 3 }}
-							// style={{ width: 200 }}
+							style={{ width: 300 }}
 							placeholder="备注信息"
 						/>
 					</FormItem>
