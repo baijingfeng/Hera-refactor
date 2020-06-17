@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { message } from 'antd'
 
 import { querySimpleSearchData } from '../../../api'
-import { parseRangeDate } from '../../../utils'
+import { parseRangeDate } from '../../../tools'
 import { TransportFilter } from './components/TransportFilter'
 import { TransportTable } from './components/TransportTable'
 

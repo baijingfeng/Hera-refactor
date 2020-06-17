@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Layout } from 'antd'
 import { useDispatch } from 'react-redux'
 
-import { memoryUtils, storageUtils } from '../../utils'
+import { memoryUtils, storageUtils } from '../../tools'
 import { APP_NAME } from '../../configs'
 import { ajax, querySystemInfo } from '../../api'
 import NavMenu from './components/NavMenu'

@@ -8,7 +8,7 @@ import {
 	renderNumber,
 	renderCurrency,
 	formatNumber,
-} from '../../../../utils'
+} from '../../../../tools'
 
 const { Item } = Descriptions
 

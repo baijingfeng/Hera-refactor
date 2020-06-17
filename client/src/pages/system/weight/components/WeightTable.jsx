@@ -6,7 +6,7 @@ import {
 	EditButton,
 	DeleteConfirmButton,
 } from '../../../../components'
-import { formatDate } from '../../../../utils'
+import { formatDate } from '../../../../tools'
 
 const columns = [
 	{

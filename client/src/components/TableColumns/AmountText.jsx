@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { toFixedWithoutTrailingZero as fixed, useTableDatas } from '../../utils'
+import { toFixedWithoutTrailingZero as fixed, useTableDatas } from '../../tools'
 
 const getSum = ({ total, price }) => {
 	const sum = total * price

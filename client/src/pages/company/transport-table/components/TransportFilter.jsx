@@ -7,7 +7,7 @@ import {
 	getStockOptions,
 	generateOptions,
 	getPayerOptions,
-} from '../../../../utils'
+} from '../../../../tools'
 import { PAYERS } from '../../../../redux/action-types'
 import { saveResults } from '../../../../redux/actions'
 import { queryAllPayerData } from '../../../../api'

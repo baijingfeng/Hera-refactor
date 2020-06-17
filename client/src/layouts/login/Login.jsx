@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, Select, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import { history, memoryUtils, storageUtils } from '../../utils'
+import { history, memoryUtils, storageUtils } from '../../tools'
 import { reqLogin } from '../../api'
 
 import './login.less'

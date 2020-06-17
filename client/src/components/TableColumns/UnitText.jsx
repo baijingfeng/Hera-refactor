@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { useArticles, useTableDatas } from '../../utils'
+import { useArticles, useTableDatas } from '../../tools'
 
 // 下面进行数字计算的函数的原则是，如果能算出数字，返回数字，否则返回 false
 // 除不尽的情况下不处理

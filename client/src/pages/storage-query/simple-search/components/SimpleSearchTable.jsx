@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Card, Table } from 'antd'
 
-import { formatDate, getProjectName, getTotalString } from '../../../../utils'
+import { formatDate, getProjectName, getTotalString } from '../../../../tools'
 
 const getDirection = (entry, storeID) =>
 	entry.inStock === storeID ? '入库' : '出库'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Table } from 'antd'
 
-import { toFixedWithoutTrailingZero as fixed_ } from '../../../../utils'
+import { toFixedWithoutTrailingZero as fixed_ } from '../../../../tools'
 
 const columns = [
 	{

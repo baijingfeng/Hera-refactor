@@ -4,7 +4,7 @@ import { Card, Table } from 'antd'
 import {
 	toFixedWithoutTrailingZero,
 	makeKeyFromNameSize,
-} from '../../../../utils'
+} from '../../../../tools'
 
 const columns = [
 	{

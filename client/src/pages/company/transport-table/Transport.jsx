@@ -4,7 +4,7 @@ import { message } from 'antd'
 import _ from 'lodash'
 
 import { querySimpleSearchData } from '../../../api'
-import { parseRangeDate } from '../../../utils'
+import { parseRangeDate } from '../../../tools'
 import { TransportFilter } from './components/TransportFilter'
 import { TransportTable } from './components/TransportTable'
 import { TransportStatsTable } from './components/TransportStatsTable'

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { InputNumber } from 'antd'
 
-import { useTableDatas } from '../../utils'
+import { useTableDatas } from '../../tools'
 
 /** 表单列表项-数量 */
 export const CountInput = ({ value, rowKey }) => {

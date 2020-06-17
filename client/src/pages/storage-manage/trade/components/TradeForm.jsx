@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 
-import { getVendors, memoryUtils } from '../../../../utils'
+import { getVendors, memoryUtils } from '../../../../tools'
 import { EditableTable } from '../../../../components'
 import {
 	PURCHASING_CLIENT_TYPES,

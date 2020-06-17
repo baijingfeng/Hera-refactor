@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { message } from 'antd'
 
 import { queryRentData } from '../../../api'
-import { parseRangeDate } from '../../../utils'
+import { parseRangeDate } from '../../../tools'
 import { RentFilter } from './components/RentFilter'
 import { RentTable } from './components/RentTable'
 

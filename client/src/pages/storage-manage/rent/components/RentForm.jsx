@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Form, Input, Select, DatePicker, Card } from 'antd'
 
-import { getVendors, memoryUtils } from '../../../../utils'
+import { getVendors, memoryUtils } from '../../../../tools'
 import { EditableTable } from '../../../../components'
 import { rentColumns, rentColumnsInitialRowValue } from '../../../../configs'
 

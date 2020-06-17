@@ -7,7 +7,7 @@ import {
 	getVendors,
 	getTypeOptions,
 	generateOptions,
-} from '../../../../utils'
+} from '../../../../tools'
 import { RECORD_TYPES, dateRanges, formStyle } from '../../../../configs'
 import { SearchButton, ResetButton } from '../../../../components'
 

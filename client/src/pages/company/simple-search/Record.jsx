@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { queryRecordData } from '../../../api'
 import { updateRecord } from '../../../redux/actions'
-import { getProjectName, formatDate, history } from '../../../utils'
+import { getProjectName, formatDate, history } from '../../../tools'
 
 const { Item } = Descriptions
 

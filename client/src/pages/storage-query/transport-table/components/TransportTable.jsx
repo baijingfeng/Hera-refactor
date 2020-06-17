@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Card, Table } from 'antd'
 
-import { formatDate, getProjectName } from '../../../../utils'
+import { formatDate, getProjectName } from '../../../../tools'
 
 const getColumns = projects => [
 	{

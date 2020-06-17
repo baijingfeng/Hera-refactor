@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Input } from 'antd'
 
-import { useTableDatas } from '../../utils'
+import { useTableDatas } from '../../tools'
 
 /** 表单列表项-数量 */
 export const CommentsInput = ({ value, rowKey }) => {

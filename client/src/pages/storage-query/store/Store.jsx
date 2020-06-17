@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { message } from 'antd'
 
 import { queryStoreData } from '../../../api'
-import { parseRangeDate } from '../../../utils'
+import { parseRangeDate } from '../../../tools'
 import { StoreFilter } from './components/StoreFilter'
 import { StoreTable } from './components/StoreTable'
 

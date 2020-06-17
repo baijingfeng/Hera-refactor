@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 
-import { history } from '../utils'
+import { history } from '../tools'
 import Login from '../layouts/login/Login'
 import { Admin } from '../layouts/admin/Admin'
 import {

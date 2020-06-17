@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
 
-import { useTableDatas } from '../../utils'
+import { useTableDatas } from '../../tools'
 
 /** 表单列表项-操作 */
 export const ActionsDelete = ({ rowKey }) => {

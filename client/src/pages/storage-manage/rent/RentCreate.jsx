@@ -3,7 +3,7 @@ import { Card } from 'antd'
 
 import { SaveButton } from '../../../components'
 import { RentForm } from './components/RentForm'
-import { useTableDatas } from '../../../utils'
+import { useTableDatas } from '../../../tools'
 
 const tabList = [
 	{

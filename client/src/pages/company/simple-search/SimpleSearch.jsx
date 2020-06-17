@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { message } from 'antd'
 
 import { querySimpleSearchData } from '../../../api'
-import { parseRangeDate } from '../../../utils'
+import { parseRangeDate } from '../../../tools'
 import { SimpleSearchFilter } from './components/SimpleSearchFilter'
 import { SimpleSearchTable } from './components/SimpleSearchTable'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { message } from 'antd'
 
-import { renderReport, renderLogLevel, formatTime } from '../../../utils'
+import { renderReport, renderLogLevel, formatTime } from '../../../tools'
 import { queryLogFirstPageData, queryLogNextPageData } from '../../../api'
 import { ModelTable } from '../../../components'
 

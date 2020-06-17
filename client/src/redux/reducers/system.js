@@ -1,6 +1,6 @@
 import { Map, OrderedMap } from 'immutable'
 
-import { makeKeyFromNameSize } from '../../utils'
+import { makeKeyFromNameSize } from '../../tools'
 import { SystemRecord } from '../records'
 import {
 	SYSTEM_LOADED,

@@ -5,7 +5,7 @@ import {
 	total_,
 	toFixedWithoutTrailingZero as fixed,
 	useTableDatas,
-} from '../../utils'
+} from '../../tools'
 
 const getTotal = (products, rowValue) => {
 	try {

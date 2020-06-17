@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'antd'
 
 import { AddNewButton, EditButton, DeleteConfirmButton } from '../../../../components'
-import { formatDate } from '../../../../utils'
+import { formatDate } from '../../../../tools'
 
 const columns = [
 	{

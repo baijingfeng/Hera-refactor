@@ -2,7 +2,7 @@ import React from 'react'
 import { Table, Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
-import { useTableDatas, useArticles } from '../../utils'
+import { useTableDatas, useArticles } from '../../tools'
 import { ReportFooter } from './components/ReportFooter'
 
 const styleObject = {

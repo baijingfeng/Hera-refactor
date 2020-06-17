@@ -3,7 +3,7 @@ import { Card } from 'antd'
 
 import { SaveButton } from '../../../components'
 import { TradeForm } from './components/TradeForm'
-import { useTableDatas } from '../../../utils'
+import { useTableDatas } from '../../../tools'
 
 const tabList = [
 	{
