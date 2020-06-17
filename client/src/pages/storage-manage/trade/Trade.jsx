@@ -4,6 +4,7 @@ import { Card } from 'antd'
 import { SaveButton } from '../../../components'
 import { TradeForm } from './components/TradeForm'
 import { useTableDatas } from '../../../tools'
+import { saveRecordData } from '../../../api'
 
 const tabList = [
 	{
@@ -24,7 +25,7 @@ export const Trade = () => {
 	const onSubmit = useCallback(
 		value => {
 			console.log({ ...value, entries: datas })
-			
+			saveRecordData({ ...value, entries: datas })
 			setFormValue({ ...value, entries: datas })
 		},
 		[datas]

@@ -103,7 +103,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 					</FormItem>
 				</Row>
 			</Card>
-			<Card title="表单信息" style={{}} bordered={false}>
+			<Card title="表单信息" bordered={false}>
 				<FormItem name="entries">
 					<EditableTable
 						columns={tradeColumns}
