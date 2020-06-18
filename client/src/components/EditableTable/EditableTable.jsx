@@ -29,7 +29,6 @@ const getReport = (fields, nameArticleMap) => {
 	}
 
 	let total = []
-	/* eslint guard-for-in: off */
 	for (let i in totalObj) {
 		total.push({
 			name: i,
@@ -44,7 +43,7 @@ const getReport = (fields, nameArticleMap) => {
 export const EditableTable = ({ columns = [], initialRowValue = {} }) => {
 	const { nameArticleMap } = useArticles()
 	const { datas, addNewRow } = useTableDatas({ initialRowValue })
-	console.log("111object")
+	
 	return (
 		<>
 			<Table columns={columns} dataSource={datas} pagination={false} />

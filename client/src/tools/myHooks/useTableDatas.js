@@ -1,20 +1,15 @@
-import { useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-import {
-	addTableDatas,
-	changeTableDatas,
-	removeTableDatas,
-} from '../../redux/actions'
+import { useState, useCallback } from 'react'
 
 const getRowByKey = (key, newDatas = []) =>
 	newDatas.find(item => item.key === key)
 
 export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
-	const datas = useSelector(store => store.tableDatas.dataList)
-	const index = useSelector(store => store.tableDatas.index)
-	const dispatch = useDispatch()
+	// const datas = useSelector(store => store.tableDatas.dataList)
+	// const index = useSelector(store => store.tableDatas.index)
+	// const dispatch = useDispatch()
 
+	const [datas, setDatas] = useState([])
+	const [index, setIndex] = useState(0)
 	const addNewRow = useCallback(
 		initValue => {
 			const lastInitValue = initialRowValue || initValue
@@ -24,9 +19,10 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 				...lastInitValue,
 			})
 
-			dispatch(addTableDatas(newDatas))
+			// dispatch(addTableDatas(newDatas))
+			setDatas(newDatas)
 		},
-		[initialRowValue, datas, index, dispatch]
+		[initialRowValue, datas, index]
 	)
 
 	const handleFieldChange = useCallback(
@@ -36,19 +32,21 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 			if (target) {
 				target[fieldName] = value
 				console.log('changeTableData')
-				dispatch(changeTableDatas(newDatas))
+				// dispatch(changeTableDatas(newDatas))
+				setDatas(newDatas)
 			}
 		},
-		[datas, dispatch]
+		[datas]
 	)
 
 	const removeRow = useCallback(
 		key => {
 			const targetKey = rowKey || key
 			const newDatas = datas.filter(item => item.key !== targetKey)
-			dispatch(removeTableDatas(newDatas))
+			// dispatch(removeTableDatas(newDatas))
+			setDatas(newDatas)
 		},
-		[rowKey, datas, dispatch]
+		[rowKey, datas]
 	)
 
 	return {

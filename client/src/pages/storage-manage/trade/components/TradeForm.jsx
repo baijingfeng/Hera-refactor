@@ -14,26 +14,12 @@ const FormItem = Form.Item
 const { Option } = Select
 const { TextArea } = Input
 
-const formItemLayout = {
-	layout: 'vertical',
-	hideRequiredMark: true,
-}
-
-const fieldLabels = {
-	projectType: '类型',
-	project: '项目部',
-	outDate: '日期',
-	originalOrder: '原始单号',
-	carNumber: '车号',
-	comments: '备注',
-}
-
 const { projects } = memoryUtils.systemInfo
 
 export const TradeForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
 	return (
-		<Form id={formId} onFinish={onSubmit} {...formItemLayout}>
+		<Form id={formId} onFinish={onSubmit} layout="vertical" hideRequiredMark>
 			<Card title="表头信息" bordered={false}>
 				<Row style={formStyle}>
 					<FormItem
@@ -53,9 +39,8 @@ export const TradeForm = ({ formId, onSubmit }) => {
 							))}
 						</Select>
 					</FormItem>
-
 					<FormItem
-						label={fieldLabels.project}
+						label="项目部"
 						name="project"
 						rules={[{ required: true, message: '请选择项目部!' }]}
 					>
@@ -69,21 +54,19 @@ export const TradeForm = ({ formId, onSubmit }) => {
 								))}
 						</Select>
 					</FormItem>
-
-					<FormItem label={fieldLabels.outDate} name="outDate">
+					<FormItem label="日期" name="outDate">
 						<DatePicker onChange={() => {}} style={{ width: 300 }} />
 					</FormItem>
 				</Row>
 				<Row style={formStyle}>
-					<FormItem label={fieldLabels.originalOrder} name="originalOrder">
+					<FormItem label="原始单号" name="originalOrder">
 						<Input style={{ width: 300 }} placeholder="请填写原始单号" />
 					</FormItem>
 
-					<FormItem label={fieldLabels.carNumber} name="carNumber">
+					<FormItem label="车号" name="carNumber">
 						<Input style={{ width: 300 }} placeholder="请填写车号" />
 					</FormItem>
-
-					<FormItem label={fieldLabels.comments} name="comments">
+					<FormItem label="备注" name="comments">
 						<TextArea
 							autoSize={{ maxRows: 3 }}
 							style={{ width: 300 }}
