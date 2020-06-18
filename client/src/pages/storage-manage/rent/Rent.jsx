@@ -16,7 +16,7 @@ const tabList = [
 	},
 ]
 
-export const RentCreate = () => {
+export const Rent = () => {
 	const [key, setKey] = useState('租赁入库')
 	const [formValue, setFormValue] = useState(null)
 	const { datas } = useTableDatas()

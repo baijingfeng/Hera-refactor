@@ -4,7 +4,7 @@ export { Home } from './home/Home'
 
 /** 仓库管理 */
 export { Trade } from './storage-manage/trade/Trade'
-export { RentCreate } from './storage-manage/rent/RentCreate'
+export { Rent as RentCreate } from './storage-manage/rent/Rent'
 /** 仓库管理 */
 
 /** 仓库查询 */

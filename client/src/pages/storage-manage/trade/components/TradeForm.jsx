@@ -7,6 +7,7 @@ import {
 	PURCHASING_CLIENT_TYPES,
 	tradeColumns,
 	tradeColumnsInitialRowValue,
+	formStyle,
 } from '../../../../configs'
 
 const FormItem = Form.Item
@@ -34,13 +35,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 	return (
 		<Form id={formId} onFinish={onSubmit} {...formItemLayout}>
 			<Card title="表头信息" bordered={false}>
-				<Row
-					style={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						justifyContent: 'space-between',
-					}}
-				>
+				<Row style={formStyle}>
 					<FormItem
 						label="类型"
 						name="projectType"
@@ -79,13 +74,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 						<DatePicker onChange={() => {}} style={{ width: 300 }} />
 					</FormItem>
 				</Row>
-				<Row
-					style={{
-						display: 'flex',
-						flexWrap: 'wrap',
-						justifyContent: 'space-between',
-					}}
-				>
+				<Row style={formStyle}>
 					<FormItem label={fieldLabels.originalOrder} name="originalOrder">
 						<Input style={{ width: 300 }} placeholder="请填写原始单号" />
 					</FormItem>
