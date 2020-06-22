@@ -25,7 +25,7 @@ export const TotalText = ({ rowValue }) => {
 
 	const { key } = rowValue
 	useEffect(() => {
-		console.log('TotalText')
+		// console.log('TotalText')
 		handleFieldChange(key, 'total', total)
 	}, [handleFieldChange, key, total])
 

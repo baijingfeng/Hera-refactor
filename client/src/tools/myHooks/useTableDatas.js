@@ -19,8 +19,13 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 				...lastInitValue,
 			})
 
+			setIndex(prevIndex => prevIndex + 1)
+			console.log('newDatas_addNew', newDatas)
+			// console.log('index', index)
+			
 			// dispatch(addTableDatas(newDatas))
 			setDatas(newDatas)
+			console.log('datas_now', datas)
 		},
 		[initialRowValue, datas, index]
 	)
@@ -34,6 +39,7 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 				console.log('changeTableData')
 				// dispatch(changeTableDatas(newDatas))
 				setDatas(newDatas)
+				
 			}
 		},
 		[datas]
@@ -41,9 +47,12 @@ export const useTableDatas = ({ rowKey, initialRowValue } = {}) => {
 
 	const removeRow = useCallback(
 		key => {
+			console.log('datas', datas)
 			const targetKey = rowKey || key
 			const newDatas = datas.filter(item => item.key !== targetKey)
 			// dispatch(removeTableDatas(newDatas))
+			console.log('targetKey', targetKey)
+			console.log('newDatas', newDatas)
 			setDatas(newDatas)
 		},
 		[rowKey, datas]

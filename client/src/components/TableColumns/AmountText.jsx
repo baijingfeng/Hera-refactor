@@ -12,7 +12,7 @@ export const AmountText = ({ rowValue }) => {
 	const { handleFieldChange } = useTableDatas()
 
 	useEffect(() => {
-		console.log("AmountText")
+		// console.log("AmountText")
 		handleFieldChange(rowValue.key, 'amount', amount)
 	}, [rowValue.key, amount, handleFieldChange])
 
