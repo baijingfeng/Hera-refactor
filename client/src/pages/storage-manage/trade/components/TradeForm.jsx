@@ -10,7 +10,7 @@ import {
 	formStyle,
 } from '../../../../configs'
 
-const FormItem = Form.Item
+const { Item: FormItem } = Form
 const { Option } = Select
 const { TextArea } = Input
 
