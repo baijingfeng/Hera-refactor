@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 
 import { getVendors, memoryUtils } from '../../../../tools'
-import { EditableTable } from '../../../../components'
+import { EditableTable, EditableTable1 } from '../../../../components'
 import {
 	PURCHASING_CLIENT_TYPES,
 	getTradeColumns,
@@ -81,6 +81,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 						getColumns={getTradeColumns}
 						initialRowValue={tradeColumnsInitialRowValue}
 					/>
+					{/* <EditableTable1/> */}
 				</FormItem>
 			</Card>
 		</Form>

@@ -1,22 +1,21 @@
 import React, { useCallback } from 'react'
 import { Select } from 'antd'
 
-import { useArticles, useTableDatas } from '../../tools'
+import { useArticles } from '../../tools'
 
 const { Option } = Select
 
 /** 表单列表项-类型 */
-export const TypeSelect = ({ rowKey, value }) => {
+export const TypeSelect = ({ rowKey, value, handleFieldChange }) => {
 	const { typeNameMap } = useArticles()
-	const { handleFieldChange } = useTableDatas({ rowKey })
 
 	const optionValues = Object.keys(typeNameMap)
 	const onChange = useCallback(
 		value => {
 			handleFieldChange(rowKey, 'type', value)
 		},
-		[handleFieldChange, rowKey],
-	) 
+		[handleFieldChange, rowKey]
+	)
 
 	return (
 		<Select size="middle" value={value} onChange={onChange}>

@@ -19,8 +19,12 @@ export const useTableDatas = ({ initialRowValue = {} } = {}) => {
 
 	const handleFieldChange = useCallback(
 		(key, fieldName, value) => {
+			// console.log('key', key)
+			// console.log('datas', datas)
 			const newDatas = [...datas]
+			// console.log('newDatas', newDatas)
 			const target = getRowByKey(key, newDatas)
+			// console.log('target', target)
 			if (target) {
 				target[fieldName] = value
 				console.log('changeTableData')

@@ -13,82 +13,124 @@ import {
 	ActionsDelete,
 } from '../../components'
 
-export const type = {
+export const type = handleFieldChange => ({
 	title: '类型',
 	dataIndex: 'type',
 	key: 'type',
 	align: 'center',
-	render: (text, { key }) => <TypeSelect value={text} rowKey={key} />,
-}
+	render: (text, { key }) => (
+		<TypeSelect
+			value={text}
+			rowKey={key}
+			handleFieldChange={handleFieldChange}
+		/>
+	),
+})
 
-export const name = {
+export const name = handleFieldChange => ({
 	title: '名称',
 	dataIndex: 'name',
 	key: 'name',
 	align: 'center',
 	width: '15%',
-	render: (text, record) => <NameSelect value={text} rowValue={record} />,
-}
+	render: (text, record) => (
+		<NameSelect
+			value={text}
+			rowValue={record}
+			handleFieldChange={handleFieldChange}
+		/>
+	),
+})
 
-export const size = {
+export const size = handleFieldChange => ({
 	title: '规格',
 	dataIndex: 'size',
 	key: 'size',
 	align: 'center',
 	width: '15%',
-	render: (text, record) => <SizeSelect value={text} rowValue={record} />,
-}
+	render: (text, record) => (
+		<SizeSelect
+			value={text}
+			rowValue={record}
+			handleFieldChange={handleFieldChange}
+		/>
+	),
+})
 
-export const count = {
+export const count = handleFieldChange => ({
 	title: '数量',
 	dataIndex: 'count',
 	key: 'count',
 	align: 'center',
-	render: (text, { key }) => <CountInput value={text} rowKey={key} />,
-}
+	render: (text, { key }) => (
+		<CountInput
+			value={text}
+			rowKey={key}
+			handleFieldChange={handleFieldChange}
+		/>
+	),
+})
 
-export const total = {
+export const total = handleFieldChange => ({
 	title: '小计',
 	key: 'total',
 	align: 'center',
-	render: (_, record) => <TotalText rowValue={record} />,
-}
+	render: (_, record) => (
+		<TotalText rowValue={record} handleFieldChange={handleFieldChange} />
+	),
+})
 
-export const unit = {
+export const unit = handleFieldChange => ({
 	title: '单位',
 	key: 'unit',
 	align: 'center',
-	render: (_, record) => <UnitText rowValue={record} />,
-}
+	render: (_, record) => (
+		<UnitText rowValue={record} handleFieldChange={handleFieldChange} />
+	),
+})
 
-export const price = {
+export const price = handleFieldChange => ({
 	title: '单价',
 	dataIndex: 'price',
 	key: 'price',
 	align: 'center',
-	render: (text, { key }) => <PriceInput value={text} rowKey={key} />,
-}
+	render: (text, { key }) => (
+		<PriceInput
+			value={text}
+			rowKey={key}
+			handleFieldChange={handleFieldChange}
+		/>
+	),
+})
 
-export const amount = {
+export const amount = handleFieldChange => ({
 	title: '金额',
 	key: 'amount',
 	align: 'center',
-	render: (_, record) => <AmountText rowValue={record} />,
+	render: (_, record) => (
+		<AmountText rowValue={record} handleFieldChange={handleFieldChange} />
+	),
+})
 
-}
-
-export const comments = {
+export const comments = handleFieldChange => ({
 	title: '备注',
 	dataIndex: 'comments',
 	key: 'comments',
 	align: 'center',
-	render: (text, { key }) => <CommentsInput value={text} rowKey={key} />,
-
-}
+	render: (text, { key }) => (
+		<CommentsInput
+			value={text}
+			rowKey={key}
+			handleFieldChange={handleFieldChange}
+		/>
+	),
+})
 
 export const actions = handleDelete => ({
 	title: '操作',
 	key: 'actions',
 	align: 'center',
-	render: (_, { key }) => <ActionsDelete rowKey={key} handleDelete={handleDelete}/>,
+	render: (_, { key }) => (
+		<ActionsDelete rowKey={key} handleDelete={handleDelete} />
+	),
 })

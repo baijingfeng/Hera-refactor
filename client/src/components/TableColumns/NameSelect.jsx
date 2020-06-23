@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Select } from 'antd'
 
-import { useArticles, useTableDatas } from '../../tools'
+import { useArticles } from '../../tools'
 
 const { Option } = Select
 
@@ -20,9 +20,12 @@ const getNameOptions = (typeNameMap, nameArticleMap, type) => {
 }
 
 /** 表单列表项-名称 */
-export const NameSelect = ({ value, rowValue: { key, type } }) => {
+export const NameSelect = ({
+	handleFieldChange,
+	value,
+	rowValue: { key, type },
+}) => {
 	const { typeNameMap, nameArticleMap } = useArticles()
-	const { handleFieldChange } = useTableDatas()
 
 	const optionValues = getNameOptions(typeNameMap, nameArticleMap, type)
 

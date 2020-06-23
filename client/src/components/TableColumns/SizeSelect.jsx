@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import { Select } from 'antd'
 
-import { useArticles, useTableDatas } from '../../tools'
+import { useArticles } from '../../tools'
 
 const { Option } = Select
 
@@ -13,9 +13,8 @@ const getSizeOptions = (nameArticleMap, name) => {
 }
 
 /** 表单列表项-规格 */
-export const SizeSelect = ({ value, rowValue }) => {
+export const SizeSelect = ({ handleFieldChange, value, rowValue }) => {
 	const { nameArticleMap } = useArticles()
-	const { handleFieldChange } = useTableDatas({ rowValue })
 
 	const { key, name } = rowValue
 

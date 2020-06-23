@@ -1,6 +1,6 @@
 export { GridCard } from './GridCard/GridCard'
 export { ModelTable } from './ModelTable/ModelTable'
-export { EditableTable } from './EditableTable/EditableTable'
+export { EditableTable, EditableTable1 } from './EditableTable/EditableTable'
 
 /** 表单列表项 */
 export * from './TableColumns'

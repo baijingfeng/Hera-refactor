@@ -1,12 +1,8 @@
 import React, { useCallback } from 'react'
 import { InputNumber } from 'antd'
 
-import { useTableDatas } from '../../tools'
-
 /** 表单列表项-单价 */
-export const PriceInput = ({ value, rowKey }) => {
-	const { handleFieldChange } = useTableDatas()
-
+export const PriceInput = ({ handleFieldChange, value, rowKey }) => {
 	const onChange = useCallback(
 		value => {
 			handleFieldChange(rowKey, 'price', value)

@@ -1,11 +1,8 @@
 import React, { useCallback } from 'react'
 import { Input } from 'antd'
 
-import { useTableDatas } from '../../tools'
-
 /** 表单列表项-数量 */
-export const CommentsInput = ({ value, rowKey }) => {
-	const { handleFieldChange } = useTableDatas()
+export const CommentsInput = ({ value, rowKey, handleFieldChange }) => {
 	const onChange = useCallback(
 		e => {
 			handleFieldChange(rowKey, 'comments', e.target.value)

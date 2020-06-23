@@ -29,16 +29,16 @@ import {
 
 // export const tradeColumns = tradeColumnsConfig.map(func => func())
 
-export const getTradeColumns = handleDelete => [
-	type,
-	name,
-	size,
-	count,
-	total,
-	unit,
-	price,
-	amount,
-	comments,
+export const getTradeColumns = (handleFieldChange, handleDelete) => [
+	type(handleFieldChange),
+	name(handleFieldChange),
+	size(handleFieldChange),
+	count(handleFieldChange),
+	total(handleFieldChange),
+	unit(handleFieldChange),
+	price(handleFieldChange),
+	amount(handleFieldChange),
+	comments(handleFieldChange),
 	actions(handleDelete),
 ]
 
@@ -58,7 +58,7 @@ export const tradeColumnsInitialRowValue = {
 
 /**交易管理, 表格表单的表单项配置 */
 // const rentColumnsConfig = [type, name, size, count, total, comments, actions]
-// 
+//
 // export const rentColumns = rentColumnsConfig.map(func => func())
 
 // 交易管理, 表格表单的表单项初始值

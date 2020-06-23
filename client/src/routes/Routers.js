@@ -32,7 +32,7 @@ const Routers = () => {
 					<Switch>
 						<Route path="/home" component={Home} />
 						<Route path="/storage-manage/trade" component={Trade} />
-						<Route path="/storage-manage/rent" component={RentCreate} />
+						{/* <Route path="/storage-manage/rent" component={RentCreate} /> */}
 						<Route path="/storage-manage" />
 						<Route path="/storage-query/store" component={Store} />
 						<Route path="/storage-query/simple-search" component={SimpleSearch} />
