@@ -14,7 +14,22 @@ import {
 
 // () => type({align: 'center'}), // 带有配置参数的表单项写法
 /**交易管理, 表格表单的表单项配置 */
-const tradeColumnsConfig = [
+// const tradeColumnsConfig = [
+// 	type,
+// 	name,
+// 	size,
+// 	count,
+// 	total,
+// 	unit,
+// 	price,
+// 	amount,
+// 	comments,
+// 	actions,
+// ]
+
+// export const tradeColumns = tradeColumnsConfig.map(func => func())
+
+export const getTradeColumns = handleDelete => [
 	type,
 	name,
 	size,
@@ -24,10 +39,8 @@ const tradeColumnsConfig = [
 	price,
 	amount,
 	comments,
-	actions,
+	actions(handleDelete),
 ]
-
-export const tradeColumns = tradeColumnsConfig.map(func => func())
 
 // 交易管理, 表格表单的表单项初始值
 export const tradeColumnsInitialRowValue = {
@@ -44,17 +57,9 @@ export const tradeColumnsInitialRowValue = {
 /**交易管理, 表格表单的表单项配置 */
 
 /**交易管理, 表格表单的表单项配置 */
-const rentColumnsConfig = [
-	type,
-	name,
-	size,
-	count,
-	total,
-	comments,
-	actions,
-]
-
-export const rentColumns = rentColumnsConfig.map(func => func())
+// const rentColumnsConfig = [type, name, size, count, total, comments, actions]
+// 
+// export const rentColumns = rentColumnsConfig.map(func => func())
 
 // 交易管理, 表格表单的表单项初始值
 export const rentColumnsInitialRowValue = {

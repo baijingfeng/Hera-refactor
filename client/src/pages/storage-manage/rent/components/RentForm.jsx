@@ -4,7 +4,7 @@ import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 import { getVendors, memoryUtils } from '../../../../tools'
 import { EditableTable } from '../../../../components'
 import {
-	rentColumns,
+	// rentColumns,
 	rentColumnsInitialRowValue,
 	formStyle,
 } from '../../../../configs'
@@ -27,6 +27,7 @@ const fieldLabels = {
 	comments: '备注',
 }
 
+const rentColumns = []
 const { projects } = memoryUtils.systemInfo
 
 export const RentForm = ({ formId, onSubmit }) => {

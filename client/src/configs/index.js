@@ -14,9 +14,9 @@ export {
 
 /** table型表单的列表项相关配置 */
 export {
-	tradeColumns,
+	getTradeColumns,
 	tradeColumnsInitialRowValue,
-	rentColumns,
+	// rentColumns,
 	rentColumnsInitialRowValue,
 } from './tableColumnsConfig'
 

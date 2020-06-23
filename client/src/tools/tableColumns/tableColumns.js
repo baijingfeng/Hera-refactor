@@ -13,90 +13,82 @@ import {
 	ActionsDelete,
 } from '../../components'
 
-export const type = configs => ({
+export const type = {
 	title: '类型',
 	dataIndex: 'type',
 	key: 'type',
 	align: 'center',
 	render: (text, { key }) => <TypeSelect value={text} rowKey={key} />,
-	...configs,
-})
+}
 
-export const name = configs => ({
+export const name = {
 	title: '名称',
 	dataIndex: 'name',
 	key: 'name',
 	align: 'center',
 	width: '15%',
 	render: (text, record) => <NameSelect value={text} rowValue={record} />,
-	...configs,
-})
+}
 
-export const size = configs => ({
+export const size = {
 	title: '规格',
 	dataIndex: 'size',
 	key: 'size',
 	align: 'center',
 	width: '15%',
 	render: (text, record) => <SizeSelect value={text} rowValue={record} />,
-	...configs,
-})
+}
 
-export const count = configs => ({
+export const count = {
 	title: '数量',
 	dataIndex: 'count',
 	key: 'count',
 	align: 'center',
 	render: (text, { key }) => <CountInput value={text} rowKey={key} />,
-	...configs,
-})
+}
 
-export const total = configs => ({
+export const total = {
 	title: '小计',
 	key: 'total',
 	align: 'center',
 	render: (_, record) => <TotalText rowValue={record} />,
-	...configs,
-})
+}
 
-export const unit = configs => ({
+export const unit = {
 	title: '单位',
 	key: 'unit',
 	align: 'center',
 	render: (_, record) => <UnitText rowValue={record} />,
-	...configs,
-})
+}
 
-export const price = configs => ({
+export const price = {
 	title: '单价',
 	dataIndex: 'price',
 	key: 'price',
 	align: 'center',
 	render: (text, { key }) => <PriceInput value={text} rowKey={key} />,
-	...configs,
-})
+}
 
-export const amount = configs => ({
+export const amount = {
 	title: '金额',
 	key: 'amount',
 	align: 'center',
 	render: (_, record) => <AmountText rowValue={record} />,
-	...configs,
-})
 
-export const comments = configs => ({
+}
+
+export const comments = {
 	title: '备注',
 	dataIndex: 'comments',
 	key: 'comments',
 	align: 'center',
 	render: (text, { key }) => <CommentsInput value={text} rowKey={key} />,
-	...configs,
-})
 
-export const actions = configs => ({
+}
+
+export const actions = handleDelete => ({
 	title: '操作',
 	key: 'actions',
 	align: 'center',
-	render: (_, { key }) => <ActionsDelete rowKey={key} />,
-	...configs,
+	render: (_, { key }) => <ActionsDelete rowKey={key} handleDelete={handleDelete}/>,
 })

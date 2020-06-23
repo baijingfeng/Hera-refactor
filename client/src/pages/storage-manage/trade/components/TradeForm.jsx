@@ -5,7 +5,7 @@ import { getVendors, memoryUtils } from '../../../../tools'
 import { EditableTable } from '../../../../components'
 import {
 	PURCHASING_CLIENT_TYPES,
-	tradeColumns,
+	getTradeColumns,
 	tradeColumnsInitialRowValue,
 	formStyle,
 } from '../../../../configs'
@@ -78,7 +78,7 @@ export const TradeForm = ({ formId, onSubmit }) => {
 			<Card title="表单信息" bordered={false}>
 				<FormItem name="entries">
 					<EditableTable
-						columns={tradeColumns}
+						getColumns={getTradeColumns}
 						initialRowValue={tradeColumnsInitialRowValue}
 					/>
 				</FormItem>

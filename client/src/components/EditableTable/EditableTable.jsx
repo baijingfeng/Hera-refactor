@@ -40,13 +40,13 @@ const getReport = (fields, nameArticleMap) => {
 	return total
 }
 
-export const EditableTable = ({ columns = [], initialRowValue = {} }) => {
+export const EditableTable = ({ getColumns, initialRowValue = {} }) => {
 	const { nameArticleMap } = useArticles()
-	const { datas, addNewRow } = useTableDatas({ initialRowValue })
+	const { datas, addNewRow, removeRow } = useTableDatas({ initialRowValue })
 	
 	return (
 		<>
-			<Table columns={columns} dataSource={datas} pagination={false} />
+			<Table columns={getColumns(removeRow)} dataSource={datas} pagination={false} />
 			<Button onClick={addNewRow} type="primary" ghost style={styleObject}>
 				<PlusOutlined />
 				增加
