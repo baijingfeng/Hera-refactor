@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { set } from 'store'
 
 const getRowByKey = (key, newDatas = []) =>
 	newDatas.find(item => item.key === key)
@@ -17,23 +18,18 @@ export const useTableDatas = ({ initialRowValue = {} } = {}) => {
 		setIndex(prevIndex => prevIndex + 1)
 	}, [initialRowValue, datas, index])
 
-	const handleFieldChange = useCallback(
-		(key, fieldName, value) => {
-			// console.log('key', key)
-			// console.log('datas', datas)
-			const newDatas = [...datas]
-			// console.log('newDatas', newDatas)
+	const handleFieldChange = useCallback((key, fieldName, value) => {
+		setDatas(prevDatas => {
+			const newDatas = [...prevDatas]
 			const target = getRowByKey(key, newDatas)
-			// console.log('target', target)
+
 			if (target) {
 				target[fieldName] = value
-				console.log('changeTableData')
-
-				setDatas(newDatas)
 			}
-		},
-		[datas]
-	)
+			console.log('newDatas', newDatas)
+			return newDatas
+		})
+	}, [])
 
 	const removeRow = useCallback(
 		rowKey => {
