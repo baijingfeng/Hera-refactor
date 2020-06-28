@@ -3,10 +3,10 @@ import { useState, useCallback } from 'react'
 const getRowByKey = (key, newDatas = []) =>
 	newDatas.find(item => item.key === key)
 
-export const useTableDatas = ({ initialRowValue = {} } = {}) => {
-	const [datas, setDatas] = useState([])
+export const useTableDatas = ({ initialRowValue = {}, value = [] } = {}) => {
+	const [datas, setDatas] = useState(value)
 	const [index, setIndex] = useState(0)
-	
+
 	const addNewRow = useCallback(() => {
 		const newDatas = datas.map(item => ({ ...item }))
 		newDatas.push({
@@ -26,7 +26,7 @@ export const useTableDatas = ({ initialRowValue = {} } = {}) => {
 			if (target) {
 				target[fieldName] = value
 			}
-			// console.log('newDatas', newDatas)
+
 			return newDatas
 		})
 	}, [])

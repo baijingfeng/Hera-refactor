@@ -1,4 +1,10 @@
-import React, { useContext, useRef, useState, useEffect } from 'react'
+import React, {
+	useContext,
+	useRef,
+	useState,
+	useEffect,
+	useCallback,
+} from 'react'
 import { Table, Button, Form, Input } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
@@ -40,11 +46,21 @@ const getReport = (fields, nameArticleMap) => {
 	return total
 }
 
-export const EditableTable = ({ getColumns, initialRowValue = {} }) => {
+export const EditableTable = ({
+	value,
+	onChange,
+	getColumns,
+	initialRowValue = {},
+}) => {
 	const { nameArticleMap } = useArticles()
 	const { datas, addNewRow, handleFieldChange, removeRow } = useTableDatas({
 		initialRowValue,
+		value,
 	})
+
+	useEffect(() => {
+		onChange(datas)
+	}, [datas, onChange])
 
 	return (
 		<>

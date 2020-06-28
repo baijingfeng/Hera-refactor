@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 
 import { getVendors, memoryUtils } from '../../../../tools'
-import { EditableTable, EditableTable1 } from '../../../../components'
+import { EditableTable } from '../../../../components'
 import {
 	PURCHASING_CLIENT_TYPES,
 	getTradeColumns,
@@ -19,7 +19,15 @@ const { projects } = memoryUtils.systemInfo
 export const TradeForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
 	return (
-		<Form id={formId} onFinish={onSubmit} layout="vertical" hideRequiredMark>
+		<Form
+			id={formId}
+			onFinish={onSubmit}
+			layout="vertical"
+			hideRequiredMark
+			initialValues={{
+				entries: [],
+			}}
+		>
 			<Card title="表头信息" bordered={false}>
 				<Row style={formStyle}>
 					<FormItem
