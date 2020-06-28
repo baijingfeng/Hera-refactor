@@ -81,7 +81,6 @@ export const TradeForm = ({ formId, onSubmit }) => {
 						getColumns={getTradeColumns}
 						initialRowValue={tradeColumnsInitialRowValue}
 					/>
-					{/* <EditableTable1/> */}
 				</FormItem>
 			</Card>
 		</Form>

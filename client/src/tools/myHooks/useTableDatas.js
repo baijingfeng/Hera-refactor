@@ -26,7 +26,7 @@ export const useTableDatas = ({ initialRowValue = {} } = {}) => {
 			if (target) {
 				target[fieldName] = value
 			}
-			console.log('newDatas', newDatas)
+			// console.log('newDatas', newDatas)
 			return newDatas
 		})
 	}, [])
