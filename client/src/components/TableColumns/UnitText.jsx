@@ -14,10 +14,9 @@ export const UnitText = ({ handleFieldChange, rowValue }) => {
 	const { nameArticleMap } = useArticles()
 	const unit = getUnit(nameArticleMap, rowValue)
 
-	// useEffect(() => {
-	// 	// console.log('UnitText')
-	// 	handleFieldChange(rowValue.key, 'unit', unit)
-	// }, [handleFieldChange, rowValue.key, unit])
+	useEffect(() => {
+		handleFieldChange(rowValue.key, 'unit', unit)
+	}, [handleFieldChange, rowValue.key, unit])
 
 	return <span>{unit}</span>
 }

@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react'
-import { set } from 'store'
 
 const getRowByKey = (key, newDatas = []) =>
 	newDatas.find(item => item.key === key)
@@ -7,6 +6,7 @@ const getRowByKey = (key, newDatas = []) =>
 export const useTableDatas = ({ initialRowValue = {} } = {}) => {
 	const [datas, setDatas] = useState([])
 	const [index, setIndex] = useState(0)
+	
 	const addNewRow = useCallback(() => {
 		const newDatas = datas.map(item => ({ ...item }))
 		newDatas.push({

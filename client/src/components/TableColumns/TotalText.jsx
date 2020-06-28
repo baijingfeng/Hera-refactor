@@ -18,10 +18,9 @@ export const TotalText = ({ handleFieldChange, rowValue }) => {
 	const total = fixed(getTotal(products, rowValue))
 
 	const { key } = rowValue
-	// useEffect(() => {
-	// 	// console.log('TotalText')
-	// 	handleFieldChange(key, 'total', total)
-	// }, [handleFieldChange, key, total])
+	useEffect(() => {
+		handleFieldChange(key, 'total', total)
+	}, [handleFieldChange, key, total])
 
 	return <span>{total}</span>
 }

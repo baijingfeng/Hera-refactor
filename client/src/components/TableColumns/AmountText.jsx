@@ -7,13 +7,11 @@ const getSum = ({ total, price }) => {
 	return isNaN(sum) ? false : sum
 }
 
+/** 表单列表项-金额 */
 export const AmountText = ({ handleFieldChange, rowValue }) => {
 	const amount = fixed(getSum(rowValue))
 	const {key} = rowValue
-	console.log('amount', key, amount)
-	
 	useEffect(() => {
-		console.log("AmountText")
 		handleFieldChange(key, 'amount', amount)
 	}, [amount, handleFieldChange, key])
 
