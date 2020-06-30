@@ -22,6 +22,8 @@ export {
 	transferColumnsInitialRowValue,
 	getStocktakingColumns,
 	stocktakingColumnsInitialRowValue,
+	getWeightColumns,
+	weightColumnsInitialRowValue,
 } from './tableColumnsConfig'
 
 export { dateRanges } from './componentsConfig'

@@ -34,6 +34,7 @@ export const WeightTable = ({
 	addNewProduct,
 	editProduct,
 	deleteProduct,
+	copyProduct,
 }) => {
 	const actionColumn = {
 		title: <AddNewButton onClick={addNewProduct} />,

@@ -21,6 +21,7 @@ import {
 	Product,
 	Price,
 	Weight,
+	WeightCreate,
 	Operator,
 	Project,	
 } from '../pages'
@@ -47,6 +48,8 @@ const Routers = () => {
 						<Route path="/system/settings" component={Settings} />
 						<Route path="/system/product" component={Product} />
 						<Route path="/system/price" component={Price} />
+						<Route path="/system/weight/create" component={WeightCreate} />
+						<Route path="/system/weight/:id" component={WeightCreate} />
 						<Route path="/system/weight" component={Weight} />
 						<Route path="/system/operator" component={Operator} />
 						<Route path="/system/project" component={Project} />

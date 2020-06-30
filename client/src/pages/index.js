@@ -27,6 +27,7 @@ export { Settings } from './system/settings/Settings'
 export { Product } from './system/product/Product'
 export { Price } from './system/price/Price'
 export { Weight } from './system/weight/Weight'
+export { WeightCreate } from './system/weight/WeightCreate'
 export { Operator } from './system/operator/Operator'
 export { Project } from './system/project/Project'
 /** 系统信息 */

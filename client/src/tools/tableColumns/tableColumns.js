@@ -10,6 +10,7 @@ import {
 	PriceInput,
 	AmountText,
 	CommentsInput,
+	WeightInput,
 	ActionsDelete,
 } from '../../components'
 
@@ -109,6 +110,20 @@ export const amount = handleFieldChange => ({
 	align: 'center',
 	render: (_, record) => (
 		<AmountText rowValue={record} handleFieldChange={handleFieldChange} />
+	),
+})
+
+export const weight = handleFieldChange => ({
+	title: '重量',
+	dataIndex: 'weight',
+	key: 'weight',
+	align: 'center',
+	render: (text, { key }) => (
+		<WeightInput
+			value={text}
+			rowKey={key}
+			handleFieldChange={handleFieldChange}
+		/>
 	),
 })
 

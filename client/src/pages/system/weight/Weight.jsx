@@ -3,6 +3,7 @@ import { Card, message } from 'antd'
 
 import { querySystemWeight, deleteSystemWeight } from '../../../api'
 import { WeightTable } from './components/WeightTable'
+import { history } from '../../../tools'
 
 export const Weight = () => {
 	const [loading, setLoading] = useState(false)
@@ -25,9 +26,9 @@ export const Weight = () => {
 		}
 	}, [needUpdate])
 
-	const addNewProduct = () => {}
+	const addNewProduct = () => history.push('/system/weight/create')
 
-	const editProduct = product => {}
+	const editProduct = ({ _id }) => history.push(`/system/weight/${_id}`)
 
 	const deleteProduct = async id => {
 		try {
@@ -39,12 +40,15 @@ export const Weight = () => {
 		}
 	}
 
+	const copyProduct = () => {}
+
 	return (
 		<Card style={{ width: '100%' }}>
 			<WeightTable
 				addNewProduct={addNewProduct}
 				editProduct={editProduct}
 				deleteProduct={deleteProduct}
+				copyProduct={copyProduct}
 				pageData={pageData}
 				loading={loading}
 			/>
