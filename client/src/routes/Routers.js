@@ -8,6 +8,8 @@ import {
 	Home,
 	Trade,
 	RentCreate,
+	Transfer,
+	Stocktaking,
 	Store,
 	SimpleSearch,
 	Transport,
@@ -20,7 +22,7 @@ import {
 	Price,
 	Weight,
 	Operator,
-	Project,
+	Project,	
 } from '../pages'
 
 const Routers = () => {
@@ -32,8 +34,9 @@ const Routers = () => {
 					<Switch>
 						<Route path="/home" component={Home} />
 						<Route path="/storage-manage/trade" component={Trade} />
-						{/* <Route path="/storage-manage/rent" component={RentCreate} /> */}
-						<Route path="/storage-manage" />
+						<Route path="/storage-manage/rent" component={RentCreate} />
+						<Route path="/storage-manage/transfer" component={Transfer} />
+						<Route path="/storage-manage/stocktaking" component={Stocktaking} />
 						<Route path="/storage-query/store" component={Store} />
 						<Route path="/storage-query/simple-search" component={SimpleSearch} />
 						<Route path="/storage-query/transport-table" component={Transport} />

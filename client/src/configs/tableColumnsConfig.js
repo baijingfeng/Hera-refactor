@@ -56,12 +56,19 @@ export const tradeColumnsInitialRowValue = {
 }
 /**交易管理, 表格表单的表单项配置 */
 
-/**交易管理, 表格表单的表单项配置 */
-// const rentColumnsConfig = [type, name, size, count, total, comments, actions]
-//
-// export const rentColumns = rentColumnsConfig.map(func => func())
+/**租赁管理, 表格表单的表单项配置 */
+export const getRentColumns = (handleFieldChange, handleDelete) => [
+	type(handleFieldChange),
+	name(handleFieldChange),
+	size(handleFieldChange),
+	count(handleFieldChange),
+	total(handleFieldChange),
+	comments(handleFieldChange),
+	actions(handleDelete),
+]
 
-// 交易管理, 表格表单的表单项初始值
+
+// 租赁管理, 表格表单的表单项初始值
 export const rentColumnsInitialRowValue = {
 	type: '租赁类',
 	name: '',
@@ -70,4 +77,63 @@ export const rentColumnsInitialRowValue = {
 	total: 0,
 	comments: '',
 }
-/**交易管理, 表格表单的表单项配置 */
+/**租赁管理, 表格表单的表单项配置 */
+
+/**暂存管理, 表格表单的表单项配置 */
+export const getTransferColumns = (handleFieldChange, handleDelete) => [
+	type(handleFieldChange),
+	name(handleFieldChange),
+	size(handleFieldChange),
+	count(handleFieldChange),
+	total(handleFieldChange),
+	unit(handleFieldChange),
+	price(handleFieldChange),
+	amount(handleFieldChange),
+	comments(handleFieldChange),
+	actions(handleDelete),
+]
+
+// 暂存管理, 表格表单的表单项初始值
+export const transferColumnsInitialRowValue = {
+	type: '租赁类',
+	name: '',
+	size: '',
+	count: 0,
+	total: 0,
+	unit: '',
+	price: '',
+	amount: '',
+	comments: '',
+}
+/**暂存管理, 表格表单的表单项配置 */
+
+
+/**暂存管理, 表格表单的表单项配置 */
+export const getStocktakingColumns = (handleFieldChange, handleDelete) => [
+	type(handleFieldChange),
+	name(handleFieldChange),
+	size(handleFieldChange),
+	count(handleFieldChange),
+	total(handleFieldChange),
+	unit(handleFieldChange),
+	price(handleFieldChange),
+	amount(handleFieldChange),
+	comments(handleFieldChange),
+	actions(handleDelete),
+]
+
+
+
+// 暂存管理, 表格表单的表单项初始值
+export const stocktakingColumnsInitialRowValue = {
+	type: '租赁类',
+	name: '',
+	size: '',
+	count: 0,
+	total: 0,
+	unit: '',
+	price: '',
+	amount: '',
+	comments: '',
+}
+/**暂存管理, 表格表单的表单项配置 */

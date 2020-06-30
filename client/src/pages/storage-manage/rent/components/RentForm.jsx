@@ -4,7 +4,7 @@ import { Row, Form, Input, Select, DatePicker, Card } from 'antd'
 import { getVendors, memoryUtils } from '../../../../tools'
 import { EditableTable } from '../../../../components'
 import {
-	// rentColumns,
+	getRentColumns,
 	rentColumnsInitialRowValue,
 	formStyle,
 } from '../../../../configs'
@@ -12,11 +12,6 @@ import {
 const FormItem = Form.Item
 const { Option } = Select
 const { TextArea } = Input
-
-const formItemLayout = {
-	layout: 'vertical',
-	hideRequiredMark: true,
-}
 
 const fieldLabels = {
 	projectType: '类型',
@@ -27,16 +22,15 @@ const fieldLabels = {
 	comments: '备注',
 }
 
-const rentColumns = []
 const { projects } = memoryUtils.systemInfo
 
 export const RentForm = ({ formId, onSubmit }) => {
 	return (
-		<Form id={formId} onFinish={onSubmit} {...formItemLayout}>
+		<Form id={formId} onFinish={onSubmit} layout="vertical" hideRequiredMark>
 			<Card title="表头信息" bordered={false}>
 				<Row style={formStyle}>
 					<FormItem
-						label={fieldLabels.project}
+						label="项目部"
 						name="project"
 						rules={[{ required: true, message: '请选择项目部!' }]}
 					>
@@ -49,19 +43,19 @@ export const RentForm = ({ formId, onSubmit }) => {
 						</Select>
 					</FormItem>
 
-					<FormItem label={fieldLabels.outDate} name="outDate">
+					<FormItem label="日期" name="outDate">
 						<DatePicker onChange={() => {}} style={{ width: 300 }} />
 					</FormItem>
-					<FormItem label={fieldLabels.originalOrder} name="originalOrder">
+					<FormItem label="原始单号" name="originalOrder">
 						<Input style={{ width: 300 }} placeholder="请填写原始单号" />
 					</FormItem>
 				</Row>
 				<Row style={formStyle}>
-					<FormItem label={fieldLabels.carNumber} name="carNumber">
+					<FormItem label="车号" name="carNumber">
 						<Input style={{ width: 300 }} placeholder="请填写车号" />
 					</FormItem>
 
-					<FormItem label={fieldLabels.comments} name="comments">
+					<FormItem label="备注" name="comments">
 						<TextArea
 							autoSize={{ maxRows: 3 }}
 							style={{ width: 300 }}
@@ -71,33 +65,33 @@ export const RentForm = ({ formId, onSubmit }) => {
 				</Row>
 			</Card>
 			<Card title="租赁" style={{}} bordered={false}>
-				<FormItem name="entries">
+				<FormItem name="entries-L">
 					<EditableTable
-						columns={rentColumns}
+						getColumns={getRentColumns}
 						initialRowValue={rentColumnsInitialRowValue}
 					/>
 				</FormItem>
 			</Card>
 			<Card title="销售" style={{}} bordered={false}>
-				<FormItem name="entries">
+				<FormItem name="entries-S">
 					<EditableTable
-						columns={rentColumns}
+						getColumns={getRentColumns}
 						initialRowValue={rentColumnsInitialRowValue}
 					/>
 				</FormItem>
 			</Card>
 			<Card title="赔偿" style={{}} bordered={false}>
-				<FormItem name="entries">
+				<FormItem name="entries-C">
 					<EditableTable
-						columns={rentColumns}
+						getColumns={getRentColumns}
 						initialRowValue={rentColumnsInitialRowValue}
 					/>
 				</FormItem>
 			</Card>
 			<Card title="服务(维修或者运费等不影响库存)" style={{}} bordered={false}>
-				<FormItem name="entries">
+				<FormItem name="entries-R">
 					<EditableTable
-						columns={rentColumns}
+						getColumns={getRentColumns}
 						initialRowValue={rentColumnsInitialRowValue}
 					/>
 				</FormItem>

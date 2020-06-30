@@ -5,8 +5,8 @@ import { getVendors, memoryUtils } from '../../../../tools'
 import { EditableTable } from '../../../../components'
 import {
 	PURCHASING_CLIENT_TYPES,
-	getTradeColumns,
-	tradeColumnsInitialRowValue,
+	getTransferColumns,
+	transferColumnsInitialRowValue,
 	formStyle,
 } from '../../../../configs'
 
@@ -16,7 +16,7 @@ const { TextArea } = Input
 
 const { projects } = memoryUtils.systemInfo
 
-export const TradeForm = ({ formId, onSubmit }) => {
+export const TransferForm = ({ formId, onSubmit }) => {
 	const [projectType, setProjectType] = useState('项目仓库')
 	return (
 		<Form
@@ -83,8 +83,8 @@ export const TradeForm = ({ formId, onSubmit }) => {
 			<Card title="表单信息" bordered={false}>
 				<FormItem name="entries">
 					<EditableTable
-						getColumns={getTradeColumns}
-						initialRowValue={tradeColumnsInitialRowValue}
+						getColumns={getTransferColumns}
+						initialRowValue={transferColumnsInitialRowValue}
 					/>
 				</FormItem>
 			</Card>

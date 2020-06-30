@@ -5,6 +5,8 @@ export { Home } from './home/Home'
 /** 仓库管理 */
 export { Trade } from './storage-manage/trade/Trade'
 export { Rent as RentCreate } from './storage-manage/rent/Rent'
+export { Transfer } from './storage-manage/transfer/Transfer'
+export { Stocktaking } from './storage-manage/stocktaking/Stocktaking'
 /** 仓库管理 */
 
 /** 仓库查询 */
@@ -15,8 +17,8 @@ export { Transport } from './storage-query/transport-table/Transport'
 
 /** 公司 */
 export { Rent } from './company/rent/Rent'
-export { SimpleSearch as CompanySimpleSearch} from './company/simple-search/SimpleSearch'
-export { Transport as CompanyTransport} from './company/transport-table/Transport'
+export { SimpleSearch as CompanySimpleSearch } from './company/simple-search/SimpleSearch'
+export { Transport as CompanyTransport } from './company/transport-table/Transport'
 export { Record as CompanyRecord } from './company/simple-search/Record'
 /** 公司 */
 

@@ -16,8 +16,12 @@ export {
 export {
 	getTradeColumns,
 	tradeColumnsInitialRowValue,
-	// rentColumns,
+	getRentColumns,
 	rentColumnsInitialRowValue,
+	getTransferColumns,
+	transferColumnsInitialRowValue,
+	getStocktakingColumns,
+	stocktakingColumnsInitialRowValue,
 } from './tableColumnsConfig'
 
 export { dateRanges } from './componentsConfig'
