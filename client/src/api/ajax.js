@@ -2,7 +2,7 @@ import Axios from 'axios'
 import qs from 'qs'
 import { message } from 'antd'
 
-import { history, memoryUtils, storageUtils } from '../utils'
+import { history, memoryUtils, storageUtils } from '../tools'
 
 /** 创建一个axios实例对象ajax */
 const ajax = Axios.create({

@@ -1,6 +1,6 @@
 import ajax from '../ajax'
 
-export function reqRecordsData(params, type) {
+export function queryRecordsData(params, type) {
 	return ajax({
 		url: `/status/${type}`,
 		method: 'GET',
@@ -8,10 +8,10 @@ export function reqRecordsData(params, type) {
 	})
 }
 
-export function reqAllTypeRecordsData(params) {
+export function queryAllTypeRecordsData(params) {
 	return Promise.all([
-		reqRecordsData(params, 'new_in_records'),
-		reqRecordsData(params, 'new_out_records'),
-		reqRecordsData(params, 'update_records'),
+		queryRecordsData(params, 'new_in_records'),
+		queryRecordsData(params, 'new_out_records'),
+		queryRecordsData(params, 'update_records'),
 	])
 }

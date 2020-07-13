@@ -1,17 +1,25 @@
 import { Map, OrderedMap } from 'immutable'
 
-import { makeKeyFromNameSize } from '../../utils'
+import { makeKeyFromNameSize } from '../../tools'
 import { SystemRecord } from '../records'
-import { SYSTEM_LOADED } from '../action-types'
+import {
+	SYSTEM_LOADED,
+	SYSTEM_SETTINGS_UPDATED,
+	SELECT_STORE,
+} from '../action-types'
 
 const system = (state = new SystemRecord(), { type, data }) => {
 	switch (type) {
 		case SYSTEM_LOADED:
 			return getNewSystemState(state, data)
+		case SYSTEM_SETTINGS_UPDATED:
+			return state.set('config', { ...state.config, ...data })
+		case SELECT_STORE:
+			return state.set('store', data)
 		default:
 			return state
 	}
-} 
+}
 
 const transformProjects = (projects = []) =>
 	new Map(projects.map(project => [project._id, project]))

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Select } from 'antd'
 import { PURCHASING_CLIENT_TYPES } from '../../configs'
-import { ColItem } from '../index'
+import ColItem from './components/ColItem'
 
 export const ProjectTypeItem = ({ colCof, itemCof, onChange }) => {
 	const baseItemCof = {

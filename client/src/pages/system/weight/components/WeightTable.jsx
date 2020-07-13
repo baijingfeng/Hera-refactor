@@ -1,0 +1,66 @@
+import React from 'react'
+import { Table } from 'antd'
+
+import {
+	AddNewButton,
+	EditButton,
+	DeleteConfirmButton,
+} from '../../../../components'
+import { formatDate } from '../../../../tools'
+
+const columns = [
+	{
+		title: '名称',
+		dataIndex: 'name',
+		key: 'name',
+	},
+	{
+		title: '日期',
+		dataIndex: 'date',
+		key: 'date',
+		render: formatDate,
+	},
+	{
+		title: '备注',
+		dataIndex: 'comments',
+		key: 'comments',
+	},
+]
+
+//TODO: 添加详情编辑页面
+export const WeightTable = ({
+	pageData,
+	loading,
+	addNewProduct,
+	editProduct,
+	deleteProduct,
+	copyProduct,
+}) => {
+	const actionColumn = {
+		title: <AddNewButton onClick={addNewProduct} />,
+		key: 'actions',
+		align: 'center',
+		render: plan => (
+			<div>
+				<EditButton onClick={() => editProduct(plan)} />
+				<DeleteConfirmButton
+					title={`确认删除“${plan.name}”方案1吗？`}
+					onConfirm={() => deleteProduct(plan._id)}
+				/>
+			</div>
+		),
+	}
+
+	return (
+		<Table
+			columns={[...columns, actionColumn]}
+			dataSource={pageData}
+			pagination={{
+				hideOnSinglePage: true,
+				simple: true,
+			}}
+			rowKey={'_id'}
+			loading={loading}
+		/>
+	)
+}

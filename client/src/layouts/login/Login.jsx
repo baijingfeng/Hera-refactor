@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { Form, Input, Button, Select, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
-import { history, memoryUtils, storageUtils } from '../../utils'
+import { history, memoryUtils, storageUtils } from '../../tools'
 import { reqLogin } from '../../api'
 
 import './login.less'
@@ -52,7 +52,9 @@ export default class Login extends Component {
 							]}
 						>
 							<Select style={{ width: '100%' }} allowClear>
-								<Option value="上海创兴建筑设备租赁有限公司">上海创兴建筑设备租赁有限公司</Option>
+								<Option value="上海创兴建筑设备租赁有限公司">
+									上海创兴建筑设备租赁有限公司
+								</Option>
 							</Select>
 						</Item>
 						<Item
@@ -88,7 +90,11 @@ export default class Login extends Component {
 						</Item>
 
 						<Item>
-							<Button type="primary" htmlType="submit" className="login-form-button">
+							<Button
+								type="primary"
+								htmlType="submit"
+								className="login-form-button"
+							>
 								登录
 							</Button>
 						</Item>

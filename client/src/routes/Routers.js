@@ -1,36 +1,63 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
-import { history } from '../utils'
-import Login from '../layouts/login/Login'
-import Admin from '../layouts/admin/Admin'
-import { Home, TradeCreate, RentCreate } from '../views'
 
-export default class Routers extends Component {
-	// TODO: 之后改为config配置的形式
-	render() {
-		return (
-			<Router history={history}>
-				<Switch>
-					<Route path="/login" component={Login} />
-					<Admin>
-						<Switch>
-							<Route path="/home" component={Home} />
-							<Route path="/storage-manage/trade" component={TradeCreate} />
-							<Route path="/storage-manage/rent" component={RentCreate} />
-							<Route path="/storage-query">
-								{/* <Route path="/trade" component={}/> */}
-							</Route>
-							<Route path="/company" component={RentCreate}>
-								{/* <Route path="/trade" component={}/> */}
-							</Route>
-							<Route path="/system">
-								{/* <Route path="/trade" component={}/> */}
-							</Route>
-							<Redirect to="/home" />
-						</Switch>
-					</Admin>
-				</Switch>
-			</Router>
-		)
-	}
+import { history } from '../tools'
+import Login from '../layouts/login/Login'
+import { Admin } from '../layouts/admin/Admin'
+import {
+	Home,
+	Trade,
+	RentCreate,
+	Transfer,
+	Stocktaking,
+	Store,
+	SimpleSearch,
+	Transport,
+	Rent,
+	CompanySimpleSearch,
+	CompanyTransport,
+	CompanyRecord,
+	Settings,
+	Product,
+	Price,
+	Weight,
+	WeightCreate,
+	Operator,
+	Project,	
+} from '../pages'
+
+const Routers = () => {
+	return (
+		<Router history={history}>
+			<Switch>
+				<Route path="/login" component={Login} />
+				<Admin>
+					<Switch>
+						<Route path="/home" component={Home} />
+						<Route path="/storage-manage/trade" component={Trade} />
+						<Route path="/storage-manage/rent" component={RentCreate} />
+						<Route path="/storage-manage/transfer" component={Transfer} />
+						<Route path="/storage-manage/stocktaking" component={Stocktaking} />
+						<Route path="/storage-query/store" component={Store} />
+						<Route path="/storage-query/simple-search" component={SimpleSearch} />
+						<Route path="/storage-query/transport-table" component={Transport} />
+						<Route path="/company/rent" component={Rent} />
+						<Route path="/company/simple-search/record/:id" component={CompanyRecord} />
+						<Route path="/company/simple-search" component={CompanySimpleSearch} />
+						<Route path="/company/transport-table" component={CompanyTransport} />
+						<Route path="/system/settings" component={Settings} />
+						<Route path="/system/product" component={Product} />
+						<Route path="/system/price" component={Price} />
+						<Route path="/system/weight/create" component={WeightCreate} />
+						<Route path="/system/weight/:id" component={WeightCreate} />
+						<Route path="/system/weight" component={Weight} />
+						<Route path="/system/operator" component={Operator} />
+						<Route path="/system/project" component={Project} />
+						<Redirect to="/home" />
+					</Switch>
+				</Admin>
+			</Switch>
+		</Router>
+	)
 }
+export default Routers

@@ -1,67 +1,68 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { Layout } from 'antd'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-import { memoryUtils, storageUtils } from '../../utils'
+import { memoryUtils, storageUtils } from '../../tools'
 import { APP_NAME } from '../../configs'
-import { ajax, reqSystemInfo } from '../../api'
+import { ajax, querySystemInfo } from '../../api'
 import NavMenu from './components/NavMenu'
 import Header from './components/header/Header'
-import { systemLoaded } from '../../redux/actions'
+import { systemLoaded, selectStore } from '../../redux/actions'
+
 import './admin.less'
 
 const { Header: AntdHeader, Footer, Sider, Content } = Layout
 
-class Admin extends Component {
-	static propsType = {
-		systemLoaded: PropTypes.func.isRequired,
-	}
+export const Admin = ({ children }) => {
+	const dispatch = useDispatch()
 
-	fetchSystemInfo = async () => {
-		const { data } = await reqSystemInfo()
-		this.props.systemLoaded(data)
-		storageUtils.setSystemInfo(data)
-		memoryUtils.systemInfo = data
-	}
+	useEffect(() => {
+		const fetchSystemInfo = async () => {
+			const { data } = await querySystemInfo()
+			dispatch(systemLoaded(data))
 
-	componentDidMount() {
-		this.fetchSystemInfo()
-	}
+			const { config } = data
+			try {
+				const store_ = JSON.parse(localStorage.getItem(`store-${config.db}`))
+				if ('_id' in store_) {
+					// 简单验证是否为有效的仓库信息
+					dispatch(selectStore(config, store_))
+				}
+			} catch (e) {}
 
-	render() {
-		const { access_token } = memoryUtils.userInfo
-
-		if (!access_token) {
-			return <Redirect to="/login" />
-		} else {
-			// 成功登录后, 给之后的所有ajax请求设置权限请求头部
-			ajax.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
+			storageUtils.setSystemInfo(data)
+			memoryUtils.systemInfo = data
 		}
+		fetchSystemInfo()
+	}, [dispatch])
 
-		const { children } = this.props
-		return (
-			<Layout style={{ height: '100vh' }} className="admin">
-				{/* TODO: 利用一个状态变量, 控制折叠, 以及小屏幕上显示折叠式样 */}
-				<Sider width="250" className="sider">
-					<header className="headerName">{APP_NAME}</header>
-					<NavMenu />
-				</Sider>
-				<Layout className="main">
-					<AntdHeader className="right-header">
-						<Header />
-					</AntdHeader>
-					<Content style={{ margin: '24px 16px 0', minHeight: 'auto' }}>
-						{children}
-					</Content>
-					<Footer style={{ textAlign: 'center' }}>
-						<strong>Copyright © 2019 XX信息科技（上海）有限公司.</strong>
-					</Footer>
-				</Layout>
-			</Layout>
-		)
+	const { access_token } = memoryUtils.userInfo
+	if (!access_token) {
+		return <Redirect to="/login" />
+	} else {
+		// 成功登录后, 给之后的所有ajax请求设置权限请求头部
+		ajax.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
 	}
-}
 
-export default connect(undefined, { systemLoaded })(Admin)
+	return (
+		<Layout style={{ height: '100vh' }} className="admin">
+			{/* TODO: 利用一个状态变量, 控制折叠, 以及小屏幕上显示折叠式样 */}
+			<Sider width="250" className="sider">
+				<header className="headerName">{APP_NAME}</header>
+				<NavMenu />
+			</Sider>
+			<Layout className="main">
+				<AntdHeader className="right-header">
+					<Header />
+				</AntdHeader>
+				<Content style={{ margin: '24px 16px 0', minHeight: 'auto' }}>
+					{children}
+				</Content>
+				<Footer style={{ textAlign: 'center' }}>
+					<strong>Copyright © 2019 XX信息科技（上海）有限公司.</strong>
+				</Footer>
+			</Layout>
+		</Layout>
+	)
+}
