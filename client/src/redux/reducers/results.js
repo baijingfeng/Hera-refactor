@@ -1,3 +1,4 @@
+import { Map } from 'immutable'
 import {
 	SAVE_RESULTS,
 	PAYER_TRANSPORT_PAID_STATUS_CHANGED,

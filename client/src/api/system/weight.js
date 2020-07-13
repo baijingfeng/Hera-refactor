@@ -8,6 +8,14 @@ export function querySystemWeight(params) {
 	})
 }
 
+export function saveSystemWeight(data) {
+	return ajax({
+		url: '/plan/weight',
+		method: 'POST',
+		data,
+	})
+}
+
 // export function createSystemProduct(product) {
 // 	return ajax({
 // 		url: '/product',

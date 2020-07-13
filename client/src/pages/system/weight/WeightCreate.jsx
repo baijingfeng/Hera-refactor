@@ -4,12 +4,14 @@ import { CloseOutlined } from '@ant-design/icons'
 
 import { SaveButton } from '../../../components'
 import { WeightForm } from './components/WeightForm'
-import { saveRecordData } from '../../../api'
+import { saveSystemWeight } from '../../../api'
 import { history } from '../../../tools'
 
 export const WeightCreate = () => {
-	const onSubmit = useCallback(({ date, ...rest }) => {
-		saveRecordData({ ...rest, date: date.format('YYYY-MM-DD') })
+	const onSubmit = useCallback(async ({ date, ...rest }) => {
+		await saveSystemWeight({ ...rest, date: date.format('YYYY-MM-DD') })
+		
+		history.push('/system/weight')
 	}, [])
 
 	return (

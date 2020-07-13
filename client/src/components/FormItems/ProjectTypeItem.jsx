@@ -12,7 +12,6 @@ export const ProjectTypeItem = ({ colCof, itemCof, onChange }) => {
 
 	return (
 		<ColItem
-		
 			colCof={{ ...colCof }}
 			itemCof={{
 				...baseItemCof,

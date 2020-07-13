@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Form, Input, DatePicker, Card } from 'antd'
+import moment from 'moment'
 
 import { EditableTable } from '../../../../components'
 import {
@@ -13,14 +14,27 @@ const { TextArea } = Input
 
 export const WeightForm = ({ formId, onSubmit }) => {
 	return (
-		<Form id={formId} onFinish={onSubmit} layout="vertical" hideRequiredMark>
+		<Form
+			id={formId}
+			onFinish={onSubmit}
+			layout="vertical"
+			initialValues={{ date: moment() }}
+		>
 			<Card title="表头信息" bordered={false}>
 				<Row style={formStyle}>
-					<FormItem label="名称" name="name">
+					<FormItem
+						label="名称"
+						name="name"
+						rules={[{ required: true, message: '请输入名称!' }]}
+					>
 						<Input style={{ width: 300 }} placeholder="请填写名称" />
 					</FormItem>
 
-					<FormItem label="日期" name="date">
+					<FormItem
+						label="日期"
+						name="date"
+						rules={[{ required: true, message: '请输入日期!' }]}
+					>
 						<DatePicker style={{ width: 300 }} />
 					</FormItem>
 					<FormItem label="备注" name="comments">

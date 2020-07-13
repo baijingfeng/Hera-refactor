@@ -42,7 +42,11 @@ export {
 	deleteSystemProduct,
 } from './system/product'
 export { querySystemPrice, deleteSystemPrice } from './system/price'
-export { querySystemWeight, deleteSystemWeight } from './system/weight'
+export {
+	querySystemWeight,
+	saveSystemWeight,
+	deleteSystemWeight,
+} from './system/weight'
 /** 系统信息 */
 
 /** 通用接口 */
